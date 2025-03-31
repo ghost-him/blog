@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/3dfc662c/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/3dfc662c/","path":"posts/3dfc662c/","title":"深度学习的学习笔记05"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>深度学习的学习笔记05 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/3dfc662c/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MobileNet-V1-V2-V3"><span class="nav-number">1.</span> <span class="nav-text">MobileNet V1 &amp; V2 &amp;V3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MobileNet-V1"><span class="nav-number">1.2.</span> <span class="nav-text">MobileNet V1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B"><span class="nav-number">1.2.1.</span> <span class="nav-text">改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DW-%E5%8D%B7%E7%A7%AF%EF%BC%88Depthwise-Conv%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">DW 卷积（Depthwise Conv）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E9%87%8F"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">计算量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%82%E6%95%B0"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">自定义参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MobileNet-V2"><span class="nav-number">1.3.</span> <span class="nav-text">MobileNet V2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">1.3.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Inverted-Residuals%EF%BC%88%E5%80%92%E6%AE%8B%E5%B7%AE%E7%BB%93%E6%9E%84%EF%BC%89"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Inverted Residuals（倒残差结构）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MobileNet-V3"><span class="nav-number">1.4.</span> <span class="nav-text">MobileNet V3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0-Block"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">更新 Block</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1%E8%80%97%E6%97%B6%E5%B1%82%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">重新设计耗时层结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">重新设计激活函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.2.</span> <span class="nav-text">网络结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ShuffleNet-V1-V2"><span class="nav-number">2.</span> <span class="nav-text">ShuffleNet V1 &amp; V2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ShuffleNet-V1"><span class="nav-number">2.1.</span> <span class="nav-text">ShuffleNet V1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Channel-shuffle"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Channel shuffle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B-Unit"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">改进 Unit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ShuffleNet-v2"><span class="nav-number">2.2.</span> <span class="nav-text">ShuffleNet v2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A1%E9%87%8F%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87"><span class="nav-number">2.2.1.</span> <span class="nav-text">衡量模型的指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%A7%80%E7%9A%84%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%87%86%E5%88%99"><span class="nav-number">2.2.2.</span> <span class="nav-text">优秀的模型设计准则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%93%E5%8D%B7%E7%A7%AF%E5%B1%82%E7%9A%84%E8%BE%93%E5%85%A5%E7%89%B9%E5%BE%81%E7%9F%A9%E9%98%B5%E4%B8%8E%E8%BE%93%E5%87%BA%E7%89%B9%E5%BE%81%E7%9F%A9%E9%98%B5-channel-%E7%9B%B8%E7%AD%89%E6%97%B6-MAC-%E6%9C%80%E5%B0%8F%EF%BC%88%E4%BF%9D%E6%8C%81-FLOPs-%E4%B8%8D%E5%8F%98%E6%97%B6%EF%BC%89"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">当卷积层的输入特征矩阵与输出特征矩阵 channel 相等时 MAC 最小（保持 FLOPs 不变时）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%93%E5%88%86%E7%BB%84%E5%8D%B7%E7%A7%AF%E6%97%B6%EF%BC%8C%E7%BB%84%E6%95%B0%E5%A2%9E%E5%A4%A7%E6%97%B6%EF%BC%88FLOPs-%E4%B8%8D%E5%8F%98%E6%97%B6%EF%BC%89%EF%BC%8CMAC-%E4%B9%9F%E4%BC%9A%E5%A2%9E%E5%A4%A7"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">当分组卷积时，组数增大时（FLOPs 不变时），MAC 也会增大</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%A2%8E%E7%89%87%E5%8C%96%E7%A8%8B%E5%BA%A6%E8%B6%8A%E9%AB%98%EF%BC%8C%E9%80%9F%E5%BA%A6%E8%B6%8A%E6%85%A2"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">网络设计的碎片化程度越高，速度越慢</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element-wise-%E6%93%8D%E4%BD%9C%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%BD%B1%E5%93%8D%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%BF%BD%E8%A7%86%E7%9A%84"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">Element-wise 操作带来的影响是不可忽视的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.2.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B-3"><span class="nav-number">2.2.3.</span> <span class="nav-text">改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-2"><span class="nav-number">2.2.4.</span> <span class="nav-text">网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99"><span class="nav-number">2.3.</span> <span class="nav-text">代码编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#channel-suffle-%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">channel_suffle 的实现方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SENet%E4%B8%8ECBAM"><span class="nav-number">3.</span> <span class="nav-text">SENet与CBAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SENet"><span class="nav-number">3.1.</span> <span class="nav-text">SENet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E9%80%94"><span class="nav-number">3.1.2.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9-2"><span class="nav-number">3.1.3.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CBAM"><span class="nav-number">3.2.</span> <span class="nav-text">CBAM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B-4"><span class="nav-number">3.2.1.</span> <span class="nav-text">改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.2.2.</span> <span class="nav-text">实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.2.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BD%9C%E4%B8%9A"><span class="nav-number">4.</span> <span class="nav-text">代码作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">4.1.</span> <span class="nav-text">模型代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE"><span class="nav-number">4.2.</span> <span class="nav-text">运行截图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">思考题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83HybridSN%EF%BC%8C%E7%84%B6%E5%90%8E%E5%A4%9A%E6%B5%8B%E8%AF%95%E5%87%A0%E6%AC%A1%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%8E%B0%E6%AF%8F%E6%AC%A1%E5%88%86%E7%B1%BB%E7%9A%84%E7%BB%93%E6%9E%9C%E9%83%BD%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%8C%E8%AF%B7%E6%80%9D%E8%80%83%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">5.1.</span> <span class="nav-text">训练HybridSN，然后多测试几次，会发现每次分类的结果都不一样，请思考为什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%83%B3%E8%A6%81%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%8F%90%E5%8D%87%E9%AB%98%E5%85%89%E8%B0%B1%E5%9B%BE%E5%83%8F%E7%9A%84%E5%88%86%E7%B1%BB%E6%80%A7%E8%83%BD%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="nav-number">5.2.</span> <span class="nav-text">如果想要进一步提升高光谱图像的分类性能，可以如何改进？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#depth-wise-conv-%E5%92%8C-%E5%88%86%E7%BB%84%E5%8D%B7%E7%A7%AF%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB%EF%BC%9F"><span class="nav-number">5.3.</span> <span class="nav-text">depth-wise conv 和 分组卷积有什么区别与联系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SENet-%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%98%AF%E4%B8%8D%E6%98%AF%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%9C%A8%E7%A9%BA%E9%97%B4%E4%BD%8D%E7%BD%AE%E4%B8%8A%EF%BC%9F"><span class="nav-number">5.4.</span> <span class="nav-text">SENet 的注意力是不是可以加在空间位置上？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-ShuffleNet-%E4%B8%AD%EF%BC%8C%E9%80%9A%E9%81%93%E7%9A%84-shuffle-%E5%A6%82%E4%BD%95%E7%94%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">5.5.</span> <span class="nav-text">在 ShuffleNet 中，通道的 shuffle 如何用代码实现？</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/3dfc662c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="深度学习的学习笔记05 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习的学习笔记05
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 12:03:32" itemprop="dateCreated datePublished" datetime="2024-06-07T12:03:32+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 16:53:05" itemprop="dateModified" datetime="2024-08-20T16:53:05+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">深度学习学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>MobileNet，ShuffleNet与SENet</p>
+<p>MobileNet参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yE411p7L7/">v1&amp;v2</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1GK4y1p7uE/">V3</a></p>
+<p>ShuffleNet参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15y4y1Y7SY/">bilibili</a></p>
+<p>SENet参考文章：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1052599">文章</a></p>
+<span id="more"></span>
+
+<h1 id="MobileNet-V1-V2-V3"><a href="#MobileNet-V1-V2-V3" class="headerlink" title="MobileNet V1 &amp; V2 &amp;V3"></a>MobileNet V1 &amp; V2 &amp;V3</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p> 传统网络缺点</p>
+<ul>
+<li>内存需求大，运算量大，无法在移动设备以及嵌入式设备上运行。</li>
+</ul>
+<p>MobileNet 网络专注于移动端或嵌入式夜中的轻量级 CNN 网络。其在准确率小幅降低的前提下大大减少了模型参数与运算量。</p>
+<h2 id="MobileNet-V1"><a href="#MobileNet-V1" class="headerlink" title="MobileNet V1"></a>MobileNet V1</h2><h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><h4 id="DW-卷积（Depthwise-Conv）"><a href="#DW-卷积（Depthwise-Conv）" class="headerlink" title="DW 卷积（Depthwise Conv）"></a>DW 卷积（Depthwise Conv）</h4><p>作者认为：1x1卷积核的计算量在某些情况下可能会被认为是较高的，因为它需要对每个输入通道进行独立的线性变换。所以提出了<code>DW</code>卷积。</p>
+<p>传统的卷积：</p>
+<ul>
+<li>卷积核 channel&#x3D;输入特征矩阵 channel</li>
+<li>输出特征矩阵 channel&#x3D;卷积核个数</li>
+</ul>
+<p>DW 卷积：</p>
+<ul>
+<li>卷积核 channel&#x3D;1</li>
+<li>输入特征矩阵 channel&#x3D;卷积核个数&#x3D;输出特征矩阵 channel</li>
+</ul>
+<p>PW 卷积：</p>
+<ul>
+<li>就是一个普通的卷积，不过卷积核大小为 1</li>
+</ul>
+<h5 id="计算量"><a href="#计算量" class="headerlink" title="计算量"></a>计算量</h5><p>变量的含义：</p>
+<ul>
+<li>$D_{F}$：输入特征矩阵的高与宽</li>
+<li>$D_{K}$：卷积核的大小</li>
+<li>$M$：输入特征矩阵的深度</li>
+<li>$N$：输出特征矩阵的深度</li>
+</ul>
+<p>则：普通卷积的计算量为：$D_{K}<em>D_{K}<em>M</em>N</em>D_{F}*D_{F}$<br>而 DW+PW 卷积：$D_{K}<em>D_{K}<em>M</em>D_{F}<em>D_{F}+M</em>N</em>D_{F}*D_{F}$</p>
+<h4 id="自定义参数"><a href="#自定义参数" class="headerlink" title="自定义参数"></a>自定义参数</h4><ul>
+<li>$\alpha$：卷积核的倍率，用于控制卷积核的个数</li>
+<li>$\beta$：输入图像的分辨率</li>
+</ul>
+<h2 id="MobileNet-V2"><a href="#MobileNet-V2" class="headerlink" title="MobileNet V2"></a>MobileNet V2</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>相对于 <code>MobileNet v1</code>，其准确率更高，模型更小。</p>
+<h3 id="改进-1"><a href="#改进-1" class="headerlink" title="改进"></a>改进</h3><h4 id="Inverted-Residuals（倒残差结构）"><a href="#Inverted-Residuals（倒残差结构）" class="headerlink" title="Inverted Residuals（倒残差结构）"></a>Inverted Residuals（倒残差结构）</h4><p>原始的残差结构（使用 ReLU 激活函数）：</p>
+<ol>
+<li><code>1*1</code> 卷积降维</li>
+<li><code>3*3</code> 卷积</li>
+<li><code>1*1</code> 卷积升维</li>
+</ol>
+<p>倒残差结构（使用 ReLU 6 激活函数）：</p>
+<ol>
+<li><code>1*1</code> 卷积升维</li>
+<li><code>3*3</code> 卷积 DW</li>
+<li><code>1*1</code> 卷积降维</li>
+</ol>
+<p>ReLU 6 激活函数：</p>
+<p>$$<br>y &#x3D; ReLU6(x) &#x3D; min(max(x, 0), 6)<br>$$</p>
+<p>ReLU 激活函数对低维特征信息会照成比较大的损失，而对于高维的信息，其损失不会太大，所以对于倒残差结构的最后一个卷积层，使用的并不是 ReLU 激活函数，而是线性的激活函数。</p>
+<p>卷积核的形状：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240604125555.png"></p>
+<p>当 stride&#x3D;1 且输入特征矩阵与输出特征矩阵的 shape 相同时，才会有 shortcut 连接</p>
+<p>整体的结构：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240604125956.png"></p>
+<p><code>t</code>：用于升维的倍率</p>
+<h2 id="MobileNet-V3"><a href="#MobileNet-V3" class="headerlink" title="MobileNet V3"></a>MobileNet V3</h2><h3 id="改进-2"><a href="#改进-2" class="headerlink" title="改进"></a>改进</h3><ul>
+<li>重新设计了 Block</li>
+<li>使用 NAS 搜索参数</li>
+<li>重新设计耗时层结构</li>
+</ul>
+<p>相比 V 2，耗时更少，准确率更高。</p>
+<h4 id="更新-Block"><a href="#更新-Block" class="headerlink" title="更新 Block"></a>更新 Block</h4><p>加入了注意力机制（SE 模块）</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240604150518.png"></p>
+<p>先使用平均池化层得到元素，然后对这些元素通过两个全连接层得到一个输出的向量。第一个全连接层的结点的个数为输入 channel 的 1&#x2F;4。第二个全连接层的结点的个数与 channel 保持一致。得到一个输出的向量后，将每一个 channel 中的元素，都与对应的元素相乘，得到一个新的数据。</p>
+<p><code>1*1</code> 的卷积处没有使用激活函数。</p>
+<p>只有当 <code>stride==1 </code> 且 <code>input_c == output_c </code> 才有 shortcut 连接</p>
+<h4 id="重新设计耗时层结构"><a href="#重新设计耗时层结构" class="headerlink" title="重新设计耗时层结构"></a>重新设计耗时层结构</h4><ul>
+<li>减少第一个卷积层的卷积核的个数（由 32 减为 16）。论文中说，准确率不会变</li>
+<li>精简 last Stage</li>
+</ul>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240604151228.png"></p>
+<p>将 original last stage 精简为 efficient last stage，论文中说，准确率不变，但是速度快了很多。</p>
+<h4 id="重新设计激活函数"><a href="#重新设计激活函数" class="headerlink" title="重新设计激活函数"></a>重新设计激活函数</h4><p>常用的激活函数是 <code>swish(x)</code> 。<br>$$<br>swish(x)&#x3D;x*\sigma(x)<br>$$<br>问题：</p>
+<ul>
+<li>计算，求导复杂</li>
+<li>对量化过程不友好</li>
+</ul>
+<p>改进：<code>h-swish</code></p>
+<p><code>h-sigmoid</code>：</p>
+<p>$$<br>h-sigmoid&#x3D;\frac{ReLU6(x+3)}{6}<br>$$<br><code>h-sigmoid</code> 激活函数可以在一定程度上代替 <code>sigmoid</code> 函数，所以，<code>h-swish</code> 函数可以写成：</p>
+<p>$$<br>h-swish(x)&#x3D;x*(h-sigmoid(x))&#x3D;x\frac{ReLU6(x+3)}{6}<br>$$<br><code>h-swish</code> 函数与 <code>swish</code> 函数几乎相等，但是 <code>h-swish</code> 的速度要快一些。</p>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><code>MobileNet V3</code> 的结构如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240604152036.png"></p>
+<ul>
+<li>input：输入数据的 shape</li>
+<li>operator：操作</li>
+<li>exp size: 第一个升维的卷积要升到的维度</li>
+<li>out: 输出的 channel</li>
+<li>SE：是否使用注意力体制</li>
+<li>NL: 激活函数（HS: h-swish）</li>
+<li>s: 步距</li>
+</ul>
+<h1 id="ShuffleNet-V1-V2"><a href="#ShuffleNet-V1-V2" class="headerlink" title="ShuffleNet V1 &amp; V2"></a>ShuffleNet V1 &amp; V2</h1><h2 id="ShuffleNet-V1"><a href="#ShuffleNet-V1" class="headerlink" title="ShuffleNet V1"></a>ShuffleNet V1</h2><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>提出了 channel shuffle 的思想</li>
+<li>在 ShuffleNet Unit 中使用的全是 GConv 与 DWConv</li>
+</ul>
+<h4 id="Channel-shuffle"><a href="#Channel-shuffle" class="headerlink" title="Channel shuffle"></a>Channel shuffle</h4><p>原理：GConv 虽然可以减少参数与计算量，但是 GConv 中不同组之间信息没有交流。所以，假设有 n 组，则将每组的输出分为 n 份，然后将每组的第 i 份组成一个新的组，作为第 i 组的输出。</p>
+<h4 id="改进-Unit"><a href="#改进-Unit" class="headerlink" title="改进 Unit"></a>改进 Unit</h4><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240605160848.png"></p>
+<p><code>b</code>：stride 为 1 时。<code>c</code>：stride 为 2 时。</p>
+<p>由于计算的大部分时间都被 <code>1*1</code> 的卷积网络占用了，所以将 <code>1*1</code> 的卷积网络换成了分组卷积。</p>
+<p>对于 b 模块，其运算量为<br>$$<br>hw(1<em>1</em>c<em>m)&#x2F;g+hw(3</em>3<em>m) + hw(1</em>1<em>m</em>c)&#x2F;g&#x3D;hw(2cm&#x2F;g+9m)<br>$$<br>而 <code>ResNeXt</code> 运算量为<br>$$<br>hw(2cm+9m^{2}&#x2F;g)<br>$$</p>
+<h3 id="网络结构-1"><a href="#网络结构-1" class="headerlink" title="网络结构"></a>网络结构</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240605162640.png"></p>
+<ul>
+<li>对于每一个 stage 中的第一个使用的是 stride&#x3D;2 的 block</li>
+<li>对于下一个 stage, 其通道会翻倍</li>
+<li>在一个 unit 中, 第一个分组卷积与第二个 DW 卷积的输出通道数为当前 stage 输出通道卷的 1&#x2F;4</li>
+<li>在 stage 2 中, 第一个 <code>1*1</code> 卷积不使用分组卷积.</li>
+</ul>
+<h2 id="ShuffleNet-v2"><a href="#ShuffleNet-v2" class="headerlink" title="ShuffleNet v2"></a>ShuffleNet v2</h2><h3 id="衡量模型的指标"><a href="#衡量模型的指标" class="headerlink" title="衡量模型的指标"></a>衡量模型的指标</h3><ul>
+<li><code>FLOPs</code>: 是衡量模型复杂度的一个间接的指标。</li>
+<li><code>speed</code>，模型推理的快慢才是一个直接的指标。</li>
+</ul>
+<p>对于模型推理速度的影响因素</p>
+<ul>
+<li><code>memory access cost</code>：内存访问的快慢</li>
+<li><code>degree of parallelism</code>：并行等级：并行度高的模型会比并行度低的模型快</li>
+<li><code>platform</code>：不同的平台上花费的时间也不一样。</li>
+</ul>
+<h3 id="优秀的模型设计准则"><a href="#优秀的模型设计准则" class="headerlink" title="优秀的模型设计准则"></a>优秀的模型设计准则</h3><h4 id="当卷积层的输入特征矩阵与输出特征矩阵-channel-相等时-MAC-最小（保持-FLOPs-不变时）"><a href="#当卷积层的输入特征矩阵与输出特征矩阵-channel-相等时-MAC-最小（保持-FLOPs-不变时）" class="headerlink" title="当卷积层的输入特征矩阵与输出特征矩阵 channel 相等时 MAC 最小（保持 FLOPs 不变时）"></a>当卷积层的输入特征矩阵与输出特征矩阵 channel 相等时 MAC 最小（保持 FLOPs 不变时）</h4><p>$$<br>MAC &gt;&#x3D; 2\sqrt{hwB}+\frac{B}{hw},B&#x3D;hwc_{1}c_{2}(FLOPs)<br>$$</p>
+<p>经过实验的验证，是正确的</p>
+<p>重点：</p>
+<ul>
+<li>FLOPs 不变的情况下！</li>
+</ul>
+<h4 id="当分组卷积时，组数增大时（FLOPs-不变时），MAC-也会增大"><a href="#当分组卷积时，组数增大时（FLOPs-不变时），MAC-也会增大" class="headerlink" title="当分组卷积时，组数增大时（FLOPs 不变时），MAC 也会增大"></a>当分组卷积时，组数增大时（FLOPs 不变时），MAC 也会增大</h4><p>$$<br>MAC&#x3D;hw(c_{1}+c_{2})+\frac{c_{1}c_{2}}{g}&#x3D;hwc_{1}+\frac{Bg}{c_{1}}+\frac{B}{hw}，B&#x3D;hwc_{1}c_{2}&#x2F;g（FLOPs）<br>$$</p>
+<h4 id="网络设计的碎片化程度越高，速度越慢"><a href="#网络设计的碎片化程度越高，速度越慢" class="headerlink" title="网络设计的碎片化程度越高，速度越慢"></a>网络设计的碎片化程度越高，速度越慢</h4><p>可以将碎片化程度理解为分支的程度。分支可以增加准确率，但是会降低运行的效率。</p>
+<h4 id="Element-wise-操作带来的影响是不可忽视的"><a href="#Element-wise-操作带来的影响是不可忽视的" class="headerlink" title="Element-wise 操作带来的影响是不可忽视的"></a>Element-wise 操作带来的影响是不可忽视的</h4><p>相关的操作有：</p>
+<ul>
+<li>ReLU 操作</li>
+<li>Tensor 相加的操作</li>
+<li>卷积时使用到的 Bias</li>
+</ul>
+<p>这种操作的 FLOPs 很小，但是 MAC 很大。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>使用平衡的卷积（输入特征数与输出特征数相等）</li>
+<li>要注意分组卷积的成本（不能无限增加 group 数）</li>
+<li>降低网络的碎片程度</li>
+<li>减少使用的 element-wise operations</li>
+</ol>
+<h3 id="改进-3"><a href="#改进-3" class="headerlink" title="改进"></a>改进</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240605185102.png"></p>
+<ul>
+<li><code>a</code> 为 ShuffleNet V 1 且 stride&#x3D;1 时的情况</li>
+<li><code>b</code> 为 ShuffleNet V 1 且 stride&#x3D;2 时的情况</li>
+<li><code>c</code> 为 ShuffleNet V 2 且 stride&#x3D;1 时的情况</li>
+<li><code>d</code> 为 ShuffleNet V 2 且 stride&#x3D;2 时的情况</li>
+</ul>
+<p>关注：</p>
+<ul>
+<li>v 2 中，下面使用的操作是 <code>concat</code>，因为在一开始，将数据分割开了，所以这里要拼接。</li>
+<li><code>Element-wise</code> 操作（ReLU，depth-wise）只在一个分支中存在。（V 1 中，合并之后还有一个 ReLU，而 V 2 中，拼接以后就不会使用 ReLU了）</li>
+<li>连续的 <code>Element-wise</code> 操作可以合并成一个 <code>Element-wise</code> 操作，因此可以变相的减少操作。</li>
+</ul>
+<h3 id="网络结构-2"><a href="#网络结构-2" class="headerlink" title="网络结构"></a>网络结构</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240605190927.png"></p>
+<p>与 v 1 的不同：多了一个 <code>1*1</code> 的卷积层</p>
+<h2 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h2><h3 id="channel-suffle-的实现方法"><a href="#channel-suffle-的实现方法" class="headerlink" title="channel_suffle 的实现方法"></a>channel_suffle 的实现方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">channel_shuffle</span>(<span class="params">x, groups</span>):</span><br><span class="line">    <span class="comment"># 获取输入张量的维度信息</span></span><br><span class="line">    batch_size, num_channels, height, width = x.size()</span><br><span class="line">    <span class="comment"># 计算每组的通道数</span></span><br><span class="line">    channels_per_group = num_channels // groups</span><br><span class="line">    <span class="comment"># 将输入张量重新排列为 (batch_size, groups, channels_per_group, height, width)</span></span><br><span class="line">    <span class="comment"># 这样每个组中的通道将被分隔开</span></span><br><span class="line">    x = x.view(batch_size, groups, channels_per_group, height, width)</span><br><span class="line">    <span class="comment"># 交换 groups 和 channels_per_group 维度</span></span><br><span class="line">    <span class="comment"># 这样每个组中的通道将被混合</span></span><br><span class="line">    x = torch.transpose(x, <span class="number">1</span>, <span class="number">2</span>).contiguous()</span><br><span class="line">    <span class="comment"># 将张量重新排列回 (batch_size, num_channels, height, width)</span></span><br><span class="line">    <span class="comment"># 现在通道已经被打乱</span></span><br><span class="line">    x = x.view(batch_size, -<span class="number">1</span>, height, width)</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<h1 id="SENet与CBAM"><a href="#SENet与CBAM" class="headerlink" title="SENet与CBAM"></a>SENet与CBAM</h1><h2 id="SENet"><a href="#SENet" class="headerlink" title="SENet"></a>SENet</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>原理图：</p>
+<p><img data-src="https://raw.githubusercontent.com/hujie-frank/SENet/master/figures/SE-pipeline.jpg"></p>
+<p>SENet 通过考虑特征通道之间的关系来提升了网络的性能。在该结构中，<code>Squeeze</code> 与 <code>Excitation</code> 是两个关键的动作。其目的是希望显示的建模特征通道之间的相互依赖关系：通过学习的方式（使用了两个全连接层实现）来自动获取到每个特征通道的重要程序，然后依照这个重要程度来提升有用的特征并抑制对当前任务用处不大的特征。</p>
+<p>SE 模块的操作如下：</p>
+<ol>
+<li><code>Squeeze</code>： 顺着通道，将一个二维的特征变成一个实数（如果一个特征图的通道数为 n，则处理后，生成一个长度为 n 的向量）（使用平均池化层求平均）</li>
+<li><code>Excitation</code>： 为每个特征通道生成权重。（两个全连接层）</li>
+<li>特征重标定：将权重与对应的特征通道上的数值相乘。（先使用 <code>sigmoid</code> 函数，并范围约束在 <code>0-1</code> 之间，然后再相乘）</li>
+</ol>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><p>将 SE 模块应用于残差神经网络</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240606101611.png"></p>
+<p>左侧为原始的残差神经网络的结构图，而右侧为应用了 SE 模块的残差神经网络</p>
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>SENet 构造非常简单，而且很容易被部署，不需要引入新的函数或者层。除此之外，它还在模型和计算复杂度上具有良好的特性。</li>
+<li>对模型计算量增加不多，但是可以显著的提高准确率。</li>
+<li>使用一个数值来描述一个通道的重要程度。</li>
+</ul>
+<h2 id="CBAM"><a href="#CBAM" class="headerlink" title="CBAM"></a>CBAM</h2><p>是对 SENet 的改进：引入了一个空间注意力模块。</p>
+<p>结构图：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240606145033.png"></p>
+<p>对于一个特征图，先进行通道注意力，再进行空间注意力。进行串行操作，最后得到一个重标定的特征图。</p>
+<h3 id="改进-4"><a href="#改进-4" class="headerlink" title="改进"></a>改进</h3><p>通道注意力模块的改进：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240606145159.png"></p>
+<p>相比对 SENet，对于通道注意力使用了最大池化与平均池化，并且使用了共享的 MLP，将得到的两个权重进行相加，最后才得到输出的通道权重。</p>
+<ul>
+<li>共享MLP由两层全连接层组成，第一层的输入通道数为C，输出为C&#x2F;D，第二层输入C&#x2F;D，输出C。（D为通道减少的倍率）</li>
+</ul>
+<p>在代码中，会让MaxPool与AvgPool分别通过MLP来得到对应的结果，再将相加的结果通过<code>sigmoid</code>来得到通道注意力的结果。</p>
+<p>空间注意力模块的改进：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240606145457.png"></p>
+<p>与通道注意力类似，通道注意力是在通道的维度上进行池化，而空间注意力是在空间的维度上进行池化。</p>
+<ol>
+<li>先使用最大池化与平均池化进行池化操作</li>
+<li>将结果进行拼接</li>
+<li>通过一个卷积层来学习空间的相关性</li>
+<li>使用 <code>sigmoid</code> 函数得到空间的注意力。</li>
+</ol>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><ul>
+<li>作者经过实验得出：先通过通道注意力，再通过空间注意力，会让网络更加高效。串行的方式会更好</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>代码来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_45447650/article/details/123983483">csdn</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CBAMLayer</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, channel, reduction=<span class="number">16</span>, spatial_kernel=<span class="number">7</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(CBAMLayer, <span class="variable language_">self</span>).__init__()</span><br><span class="line"> </span><br><span class="line">        <span class="comment"># channel attention 压缩H,W为1</span></span><br><span class="line">        <span class="variable language_">self</span>.max_pool = nn.AdaptiveMaxPool2d(<span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.avg_pool = nn.AdaptiveAvgPool2d(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line">        <span class="comment"># shared MLP</span></span><br><span class="line">        <span class="variable language_">self</span>.mlp = nn.Sequential(</span><br><span class="line">            <span class="comment"># Conv2d比Linear方便操作</span></span><br><span class="line">            <span class="comment"># nn.Linear(channel, channel // reduction, bias=False)</span></span><br><span class="line">            nn.Conv2d(channel, channel // reduction, <span class="number">1</span>, bias=<span class="literal">False</span>),</span><br><span class="line">            <span class="comment"># inplace=True直接替换，节省内存</span></span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            <span class="comment"># nn.Linear(channel // reduction, channel,bias=False)</span></span><br><span class="line">            nn.Conv2d(channel // reduction, channel, <span class="number">1</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        )</span><br><span class="line"> </span><br><span class="line">        <span class="comment"># spatial attention</span></span><br><span class="line">        <span class="variable language_">self</span>.conv = nn.Conv2d(<span class="number">2</span>, <span class="number">1</span>, kernel_size=spatial_kernel,</span><br><span class="line">                              padding=spatial_kernel // <span class="number">2</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.sigmoid = nn.Sigmoid()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">     	<span class="comment"># max_out，avg_out分别经过mlp</span></span><br><span class="line">        max_out = <span class="variable language_">self</span>.mlp(<span class="variable language_">self</span>.max_pool(x))</span><br><span class="line">        avg_out = <span class="variable language_">self</span>.mlp(<span class="variable language_">self</span>.avg_pool(x))</span><br><span class="line">        channel_out = <span class="variable language_">self</span>.sigmoid(max_out + avg_out)</span><br><span class="line">        <span class="comment"># 相加后得到通道注意力的权重</span></span><br><span class="line">        x = channel_out * x</span><br><span class="line">        <span class="comment"># 重新赋值权重</span></span><br><span class="line">        max_out, _ = torch.<span class="built_in">max</span>(x, dim=<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">        <span class="comment"># max_out表示在通道维度上的最大值，是一个平面</span></span><br><span class="line">        avg_out = torch.mean(x, dim=<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">        <span class="comment"># max_out表示在通道维度上的平均值，是一个平面</span></span><br><span class="line">        spatial_out = <span class="variable language_">self</span>.sigmoid(<span class="variable language_">self</span>.conv(torch.cat([max_out, avg_out], dim=<span class="number">1</span>)))</span><br><span class="line">        <span class="comment"># 先将两个平面拼接，输入通道数为2，然后对其卷积得出空间维度上的注意力权重</span></span><br><span class="line">        x = spatial_out * x</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"> </span><br><span class="line">x = torch.randn(<span class="number">1</span>,<span class="number">1024</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">net = CBAMLayer(<span class="number">1024</span>)</span><br><span class="line">y = net.forward(x)</span><br><span class="line"><span class="built_in">print</span>(y.shape)</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码作业"><a href="#代码作业" class="headerlink" title="代码作业"></a>代码作业</h1><h2 id="模型代码"><a href="#模型代码" class="headerlink" title="模型代码"></a>模型代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class_num = <span class="number">16</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HybridSN</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(HybridSN, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.conv3d1 = nn.Conv3d(in_channels=<span class="number">1</span>, out_channels=<span class="number">8</span>, kernel_size=(<span class="number">7</span>, <span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">        <span class="variable language_">self</span>.conv3d2 = nn.Conv3d(in_channels=<span class="number">8</span>, out_channels=<span class="number">16</span>, kernel_size=(<span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">        <span class="variable language_">self</span>.conv3d3 = nn.Conv3d(in_channels=<span class="number">16</span>, out_channels=<span class="number">32</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.conv2d1 = nn.Conv2d(in_channels=<span class="number">576</span>, kernel_size=<span class="number">3</span>, out_channels=<span class="number">64</span>)</span><br><span class="line">        <span class="variable language_">self</span>.flatten = nn.Flatten()</span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(<span class="number">18496</span>, <span class="number">256</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc2 = nn.Linear(<span class="number">256</span>, <span class="number">128</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc3 = nn.Linear(<span class="number">128</span>, <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.conv3d1(x))</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.conv3d2(x))</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.conv3d3(x))</span><br><span class="line">        x = x.view(x.size(<span class="number">0</span>), -<span class="number">1</span>, <span class="number">19</span>, <span class="number">19</span>)</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.conv2d1(x))</span><br><span class="line">        x = <span class="variable language_">self</span>.flatten(x)</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.fc1(x))</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.fc2(x))</span><br><span class="line">        x = <span class="variable language_">self</span>.fc3(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机输入，测试网络结构是否通</span></span><br><span class="line">x = torch.randn(<span class="number">1</span>, <span class="number">1</span>, <span class="number">30</span>, <span class="number">25</span>, <span class="number">25</span>)</span><br><span class="line">net = HybridSN()</span><br><span class="line">y = net(x)</span><br><span class="line"><span class="built_in">print</span>(y.shape)</span><br></pre></td></tr></table></figure>
+<p>直接根据模型的描述就可以写出以上代码。</p>
+<h2 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h2><p>模型部分：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240607122005.png"></p>
+<p>预测准确度：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240607122247.png"></p>
+<p>准确度达到了98.18%</p>
+<p>预测结果：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240607122302.png"></p>
+<h1 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h1><h2 id="训练HybridSN，然后多测试几次，会发现每次分类的结果都不一样，请思考为什么？"><a href="#训练HybridSN，然后多测试几次，会发现每次分类的结果都不一样，请思考为什么？" class="headerlink" title="训练HybridSN，然后多测试几次，会发现每次分类的结果都不一样，请思考为什么？"></a>训练HybridSN，然后多测试几次，会发现每次分类的结果都不一样，请思考为什么？</h2><ol>
+<li>网络中有一个比例为0.4的dropout层，所以网络在每轮训练的时候都会随机的冻结40%的结点，从而使得网络的分类结果不一样</li>
+<li>网络的训练集为随机的10%的数据，剩下的是测试集，所以每次训练的样本也会不一样，从而使得网络的分类结果不一样</li>
+</ol>
+<h2 id="如果想要进一步提升高光谱图像的分类性能，可以如何改进？"><a href="#如果想要进一步提升高光谱图像的分类性能，可以如何改进？" class="headerlink" title="如果想要进一步提升高光谱图像的分类性能，可以如何改进？"></a>如果想要进一步提升高光谱图像的分类性能，可以如何改进？</h2><p>从网络的模型中可以看到，整个网络只是使用了最基础的卷积网络线性堆叠而成，因此，对于普通的卷积层，可以使用分组卷积来提高网络的准确度。而对于网络的结构，可以参考<code>ResNeXt</code>模型，通过构建残差块来提高网络精度。还可以参考<code>SENet</code>模型，在每个残差块的后面加上一个SE模块，引入通道注意力机制来进一步的提高网络的准确度。为了网络的运行效率，还可以将使用到<code>sigmoid</code>激活函数的地方换成<code>h-sigmoid</code>激活函数。</p>
+<h2 id="depth-wise-conv-和-分组卷积有什么区别与联系？"><a href="#depth-wise-conv-和-分组卷积有什么区别与联系？" class="headerlink" title="depth-wise conv 和 分组卷积有什么区别与联系？"></a>depth-wise conv 和 分组卷积有什么区别与联系？</h2><p>如果输入的通道数为<code>C</code>,输出的通道数为<code>M</code>。则DW卷积可以看成：分成C组的分组卷积。DW卷积将每一个通道都使用一个卷积核进行卷积，而分组卷积是将输入的通道分为了G组，每组有<code>C/G</code>个输入通道，而且，每组会分配<code>M/G</code>个卷积核来做卷积操作。一个组内的参数是共享的，而不同的组是相互独立的。</p>
+<h2 id="SENet-的注意力是不是可以加在空间位置上？"><a href="#SENet-的注意力是不是可以加在空间位置上？" class="headerlink" title="SENet 的注意力是不是可以加在空间位置上？"></a>SENet 的注意力是不是可以加在空间位置上？</h2><p>可以将其放在空间位置上，CBAM就是对于SENet中SE模块的改进。它将特征图的注意力分为了通道注意力与空间注意力。通过在空间维度上的平均池化与最大池化得到空间位置上的描述中，然后使用卷积层（输入2通道，输出1通道）来生成空间位置上的权重图，最后将权重图与特征图相乘完成特征重标定。</p>
+<h2 id="在-ShuffleNet-中，通道的-shuffle-如何用代码实现？"><a href="#在-ShuffleNet-中，通道的-shuffle-如何用代码实现？" class="headerlink" title="在 ShuffleNet 中，通道的 shuffle 如何用代码实现？"></a>在 ShuffleNet 中，通道的 shuffle 如何用代码实现？</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># x：四维张量，(batch_size, channels, height, width)</span></span><br><span class="line"><span class="comment"># groups:要分成的组数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">channel_shuffle</span>(<span class="params">x, groups</span>):</span><br><span class="line">    <span class="comment"># 获取输入张量的维度信息</span></span><br><span class="line">    batch_size, num_channels, height, width = x.size()</span><br><span class="line">    <span class="comment"># 计算每组的通道数</span></span><br><span class="line">    channels_per_group = num_channels // groups</span><br><span class="line">    <span class="comment"># 将输入张量重新排列为 (batch_size, groups, channels_per_group, height, width)</span></span><br><span class="line">    <span class="comment"># 这样每个组中的通道将被分隔开</span></span><br><span class="line">    x = x.view(batch_size, groups, channels_per_group, height, width)</span><br><span class="line">    <span class="comment"># 通过将原本属于同一组的通道分散到不同的 channels_per_group 维度上，实现通道间的混合。</span></span><br><span class="line">    x = torch.transpose(x, <span class="number">1</span>, <span class="number">2</span>).contiguous()</span><br><span class="line">    <span class="comment"># 将张量重新排列回 (batch_size, num_channels, height, width)</span></span><br><span class="line">    x = x.view(batch_size, -<span class="number">1</span>, height, width)</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/3dfc662c/" title="深度学习的学习笔记05">http://example.com/posts/3dfc662c/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/bda47da5/" rel="prev" title="Transformer学习笔记">
+                  <i class="fa fa-angle-left"></i> Transformer学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/b166227a/" rel="next" title="clipboard：自动删除剪切板的换行符">
+                  clipboard：自动删除剪切板的换行符 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/369bad86/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/369bad86/","path":"posts/369bad86/","title":"深度学习：算法到实战学习笔记02"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>深度学习：算法到实战学习笔记02 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/369bad86/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">卷积网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%AA%E8%AE%BA"><span class="nav-number">1.1.</span> <span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">卷积神经网络的基本应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.1.2.</span> <span class="nav-text">传统的神经网络与卷积神经网络的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%89%E9%83%A8%E6%9B%B2"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">深度学习三部曲</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">卷积神经网络的优点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.3.</span> <span class="nav-text">卷积神经网络的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%88%E5%A4%9A%E5%B1%82-%EF%BC%88Compositionality%EF%BC%89"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">很多层 （Compositionality）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E6%80%A7%E4%B8%8E%E5%9B%BE%E5%83%8F%E7%9A%84%E5%B9%B3%E7%A8%B3%E6%80%A7"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">局部性与图像的平稳性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%A0%E5%8C%96%EF%BC%88Invariance-of-Object-Class-to-Translations%EF%BC%89"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">池化（Invariance of Object Class to Translations）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">基本的组成结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E5%8D%B7%E7%A7%AF"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">一维卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">概念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%A0%E5%8C%96"><span class="nav-number">1.2.2.</span> <span class="nav-text">池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.2.3.</span> <span class="nav-text">全连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">全连接层</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%B8%E5%9E%8B%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">卷积神经网络典型结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AlexNet"><span class="nav-number">1.3.1.</span> <span class="nav-text">AlexNet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ReLU"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">ReLU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DropOut"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">DropOut</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">数据增强</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%B1%82%E8%A7%A3%E6%9E%90"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">分层解析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZFNet"><span class="nav-number">1.3.2.</span> <span class="nav-text">ZFNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VGG"><span class="nav-number">1.3.3.</span> <span class="nav-text">VGG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GoogleNet"><span class="nav-number">1.3.4.</span> <span class="nav-text">GoogleNet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Inception-%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">Inception 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inception-v-2-%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">Inception v 2 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inception-v-3-%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">Inception v 3 模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ResNet"><span class="nav-number">1.3.5.</span> <span class="nav-text">ResNet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AE%8B%E5%B7%AE"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">残差</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pytorch%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">使用pytorch编写代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pytorch-API-%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">Pytorch API 调用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">制作数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-%EF%BC%9A%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">方法一 ：从远程下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BB%8E%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9E%84%E5%BB%BA%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">方法二：从本地文件夹构建数据集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E9%9B%86%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.2.</span> <span class="nav-text">从数据集加载数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">2.1.3.</span> <span class="nav-text">编写神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E4%BC%9A%E4%BD%BF%E7%94%A8%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">主要会使用的网络层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%8A%A0%E8%BD%BD%E7%BB%8F%E8%BF%87%E9%A2%84%E8%AE%AD%E7%BB%83%E5%A4%84%E7%90%86%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">直接加载经过预训练处理的网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%BB%E7%BB%93%E7%BB%8F%E8%BF%87%E9%A2%84%E8%AE%AD%E7%BB%83%E7%9A%84%E7%BD%91%E7%BB%9C%E7%9A%84%E6%9F%90%E5%87%A0%E5%B1%82"><span class="nav-number">2.1.3.2.1.</span> <span class="nav-text">冻结经过预训练的网络的某几层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%BB%8F%E8%BF%87%E9%A2%84%E8%AE%AD%E7%BB%83%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.3.2.2.</span> <span class="nav-text">修改经过预训练的模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.1.4.</span> <span class="nav-text">数据的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#view-%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">view 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#view-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">2.1.4.1.1.</span> <span class="nav-text">view 的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%86%99%E6%B3%95"><span class="nav-number">2.1.4.1.2.</span> <span class="nav-text">常用写法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch-max"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">torch.max()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0-json-%E6%96%87%E4%BB%B6%E5%B9%B6%E8%B5%8B%E5%80%BC%E5%88%B0%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E4%B8%AD"><span class="nav-number">2.1.4.3.</span> <span class="nav-text">打开一个本地 json 文件并赋值到一个变量中</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E4%B8%8E%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.5.</span> <span class="nav-text">训练与评估模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">2.1.6.</span> <span class="nav-text">数据可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-pytorch-%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">使用 pytorch 编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C"><span class="nav-number">2.3.</span> <span class="nav-text">构建复杂网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%8B%E5%B7%AE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BC%96%E5%86%99"><span class="nav-number">2.3.1.</span> <span class="nav-text">残差神经网络编写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A"><span class="nav-number">3.</span> <span class="nav-text">课后作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BB%83%E4%B9%A0"><span class="nav-number">3.1.</span> <span class="nav-text">代码练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dataloader-%E2%BE%A5%E2%BE%AF-shuffle-%E5%8F%96%E4%B8%8D%E5%90%8C%E5%80%BC%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">3.2.1.</span> <span class="nav-text">dataloader ⾥⾯ shuffle 取不同值有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transform-%E2%BE%A5%EF%BC%8C%E5%8F%96%E4%BA%86%E4%B8%8D%E5%90%8C%E5%80%BC%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">3.2.2.</span> <span class="nav-text">transform ⾥，取了不同值，这个有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epoch-%E5%92%8C-batch-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">3.2.3.</span> <span class="nav-text">epoch 和 batch 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1x1%E7%9A%84%E5%8D%B7%E7%A7%AF%E5%92%8C-FC-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E4%B8%BB%E8%A6%81%E8%B5%B7%E4%BB%80%E4%B9%88%E4%BD%9C%E2%BD%A4%EF%BC%9F"><span class="nav-number">3.2.4.</span> <span class="nav-text">1x1的卷积和 FC 有什么区别？主要起什么作⽤？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#residual-leanring-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E5%A4%9F%E6%8F%90%E5%8D%87%E5%87%86%E7%A1%AE%E7%8E%87%EF%BC%9F"><span class="nav-number">3.2.5.</span> <span class="nav-text">residual leanring 为什么能够提升准确率？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BB%83%E4%B9%A0%E2%BC%86%E2%BE%A5%EF%BC%8C%E2%BD%B9%E7%BB%9C%E5%92%8C1989%E5%B9%B4-Lecun-%E6%8F%90%E5%87%BA%E7%9A%84-LeNet-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">3.2.6.</span> <span class="nav-text">代码练习⼆⾥，⽹络和1989年 Lecun 提出的 LeNet 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BB%83%E4%B9%A0%E2%BC%86%E2%BE%A5%EF%BC%8C%E5%8D%B7%E7%A7%AF%E4%BB%A5%E5%90%8Efeature-map-%E5%B0%BA%E2%BC%A8%E4%BC%9A%E5%8F%98%E2%BC%A9%EF%BC%8C%E5%A6%82%E4%BD%95%E5%BA%94%E2%BD%A4-Residual-Learning"><span class="nav-number">3.2.7.</span> <span class="nav-text">代码练习⼆⾥，卷积以后feature map 尺⼨会变⼩，如何应⽤ Residual Learning?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%BB%80%E4%B9%88%E2%BD%85%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%BF%9B%E2%BC%80%E6%AD%A5%E6%8F%90%E5%8D%87%E5%87%86%E7%A1%AE%E7%8E%87%EF%BC%9F"><span class="nav-number">3.2.8.</span> <span class="nav-text">有什么⽅法可以进⼀步提升准确率？</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/369bad86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="深度学习：算法到实战学习笔记02 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习：算法到实战学习笔记02
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-25 21:26:07" itemprop="dateCreated datePublished" datetime="2024-05-25T21:26:07+08:00">2024-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-04 14:04:32" itemprop="dateModified" datetime="2024-07-04T14:04:32+08:00">2024-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">深度学习学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本次主题是卷积神经网络的理论知识与pytorch实现过程<br>笔记内容来源：<a target="_blank" rel="noopener" href="https://study.163.com/course/courseMain.htm?share=1&shareId=1444565553&courseId=1006498024&_trace_c_p_k2_=b5206d8f967a4aaaa95264bda742ce2a">视频</a></p>
+<span id="more"></span>
+<h1 id="卷积网络"><a href="#卷积网络" class="headerlink" title="卷积网络"></a>卷积网络</h1><h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><h3 id="卷积神经网络的基本应用"><a href="#卷积神经网络的基本应用" class="headerlink" title="卷积神经网络的基本应用"></a>卷积神经网络的基本应用</h3><ul>
+<li>图像分类</li>
+<li>图像检测</li>
+<li>图像分割</li>
+<li>人脸识别</li>
+<li>人脸表情识别</li>
+<li>图像生成</li>
+<li>图像风格转化</li>
+<li>自动驾驭</li>
+</ul>
+<h3 id="传统的神经网络与卷积神经网络的区别"><a href="#传统的神经网络与卷积神经网络的区别" class="headerlink" title="传统的神经网络与卷积神经网络的区别"></a>传统的神经网络与卷积神经网络的区别</h3><h4 id="深度学习三部曲"><a href="#深度学习三部曲" class="headerlink" title="深度学习三部曲"></a>深度学习三部曲</h4><ol>
+<li>搭建神经网络结构</li>
+<li>找到一个合适的损失函数</li>
+<li>找到一个合适的优化函数，更新参数</li>
+</ol>
+<h5 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h5><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/1716516985694.png"></p>
+<p>W, b 为神经网络的参数，$x_{i}$ 为图像，$f(x_{i};W,b)$ 为图像经过模型计算后输出的结果。</p>
+<ul>
+<li>给定 W, b（神经网络的参数）</li>
+<li>损失函数是用来衡量吻合度的</li>
+<li>可以调整参数&#x2F;权重 W，使得映射的结果和实际类别吻合</li>
+<li>常用的分类损失：交叉熵损失，hinge loss</li>
+<li>常用的回归损失：均方误差，平均绝对值误差</li>
+</ul>
+<h4 id="卷积神经网络的优点"><a href="#卷积神经网络的优点" class="headerlink" title="卷积神经网络的优点"></a>卷积神经网络的优点</h4><p>全连接网络处理图像的问题：</p>
+<ul>
+<li>参数太多：权重矩阵的参数太多-&gt;过拟合（学习了太多的细节，比如只认识二哈，不认识金毛）</li>
+</ul>
+<p>卷积神经网络的解决方式：</p>
+<ul>
+<li>局部关联：使用卷积核提取特征，不会让模型过度关注细节。</li>
+<li>参数共享：卷积核在图像划动的过程中，其参数不会改变。<ul>
+<li>其训练的参数量就为：卷积核的 <code>长*宽</code> + 1，可以大大减少训练量。</li>
+</ul>
+</li>
+</ul>
+<p>相同之处：神经网络与卷积网络都是层级的结构。</p>
+<h3 id="卷积神经网络的特性"><a href="#卷积神经网络的特性" class="headerlink" title="卷积神经网络的特性"></a>卷积神经网络的特性</h3><h4 id="很多层-（Compositionality）"><a href="#很多层-（Compositionality）" class="headerlink" title="很多层 （Compositionality）"></a>很多层 （Compositionality）</h4><ul>
+<li>通过多个层次的特征组合，逐步构建出复杂的表示<ul>
+<li>每一层从前一层中提取特征，在最后的层中，可以提取出比较高级的主义特征。</li>
+</ul>
+</li>
+</ul>
+<h4 id="局部性与图像的平稳性"><a href="#局部性与图像的平稳性" class="headerlink" title="局部性与图像的平稳性"></a>局部性与图像的平稳性</h4><ul>
+<li>局部性：卷积核只在图像的局部区域上滑动并进行运算，每个神经元只处理输入图像的一个小区域<ul>
+<li>可以让网络捕捉局部特征，比如边缘，角和小的图案</li>
+</ul>
+</li>
+<li>图像的平稳性：图像的统计特性在空间上是平稳的，即不同位置的局部区域可能具有相似的特征<ul>
+<li>同一个卷积核可以在整个图像上共享，可以大大减小参数数量并提高了模型的训练效率</li>
+</ul>
+</li>
+</ul>
+<h4 id="池化（Invariance-of-Object-Class-to-Translations）"><a href="#池化（Invariance-of-Object-Class-to-Translations）" class="headerlink" title="池化（Invariance of Object Class to Translations）"></a>池化（Invariance of Object Class to Translations）</h4><ul>
+<li>通过对局部区域取最大值或平均值来缩小特征图的尺寸，这种操作可以减少特征图的空间分辨率，同时保留重要的特征。</li>
+<li>不变性：池化操作使得网络对输入图像的小幅平移具有不变性。即使图像中的物体稍微移动，池化后的特征图依然可以保持相对稳定。</li>
+<li>最大池化有助于提取最显著的特征，平均池化则可以平滑特征图</li>
+</ul>
+<p>典型使用的场景：在多个卷积层之后，通常会加一个池化层来逐渐减少特征图的尺寸。例如，在一个典型的卷积神经网络中，可能会有两到三个卷积层后接一个池化层的结构。</p>
+<h2 id="基本的组成结构"><a href="#基本的组成结构" class="headerlink" title="基本的组成结构"></a>基本的组成结构</h2><h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><h4 id="一维卷积"><a href="#一维卷积" class="headerlink" title="一维卷积"></a>一维卷积</h4><ul>
+<li>一维卷积经常用在信号处理中，用于计算信号的延迟累积。</li>
+</ul>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>卷积是对两个实变函数的一种数学操作。</p>
+<ul>
+<li><p>在图像处理中，图像是以二维矩阵的形式输入到神经网络的，因此需要使用二维卷积。</p>
+</li>
+<li><p>二维卷积的工作过程是，卷积核与图像对应的位置求内积。</p>
+<ul>
+<li>其公式为 $y&#x3D;WX+b$，W 为卷积核，X 为图像参数，b 为偏置项</li>
+</ul>
+</li>
+<li><p>如果输入的有三个 channel，则对应的卷积核的 channel 也会有三个，然后对应的做卷积，然后三个 channel 的值相加，再加上对应的偏移后即可得出特征图中对应位置的值。</p>
+<ul>
+<li>如果有两个卷积核，则特征图也会有两个，相互独立。</li>
+</ul>
+</li>
+</ul>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>输入：输入的二维矩阵</li>
+<li>卷积核&#x2F;滤波器：就是卷积核</li>
+<li>权重：卷积核中每一个单位的值</li>
+<li>感受野：卷积核在每次卷积时所使用输入的范围</li>
+<li>特征图：卷积后输出的图</li>
+<li>步长：卷积核在卷积完了一次后，移动的距离<ul>
+<li>如果步长无法正常匹配输入，则会用到 padding 来对图像进行填充，使其步长与输入可以匹配。</li>
+</ul>
+</li>
+<li>padding</li>
+<li>channel<ul>
+<li>是特征图的厚度，其大小于卷积核的个数保持一致</li>
+</ul>
+</li>
+<li>output</li>
+</ul>
+<p>输出的特征图的大小：</p>
+<p>无 padding：<br>$$<br>(N-F)&#x2F;stride+1<br>$$<br>N: 输入的图像的长度，F：卷积核的长度，stride：步长</p>
+<p>有 padding：<br>$$<br>(N+padding*2-F)&#x2F;stride+1<br>$$</p>
+<h3 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h3><ul>
+<li>保留了主要特征的同时减少参数和计算量，防止过拟合，提高了模型泛化能力。</li>
+<li>一般处于卷积层与卷积层之间，全连接层与全连接层之间</li>
+<li>不会改变 channel 的个数</li>
+<li>模型参数为 0，其相当于数据运算，不需要运算。</li>
+<li>池化层的步长一般为池化核的大小</li>
+</ul>
+<p>类型：</p>
+<ul>
+<li>Max pooling：最大值池化</li>
+<li>Average pooling：平均池化</li>
+</ul>
+<p>在分类的任务中，更加偏向于使用最大值池化。</p>
+<p>概念：</p>
+<ul>
+<li>filter：池化层的大小</li>
+<li>步长：每次移动的距离</li>
+</ul>
+<h3 id="全连接"><a href="#全连接" class="headerlink" title="全连接"></a>全连接</h3><h4 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h4><ul>
+<li>两层之间所有神经元都有权重链接</li>
+<li>通常全连接层在卷积神经网络尾部</li>
+<li>全连接层参数量通常最大</li>
+</ul>
+<h2 id="卷积神经网络典型结构"><a href="#卷积神经网络典型结构" class="headerlink" title="卷积神经网络典型结构"></a>卷积神经网络典型结构</h2><h3 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h3><p>其之所有可以成功，主要是因为：</p>
+<ol>
+<li>大数据训练：</li>
+<li>非线性激活函数：ReLU</li>
+<li>防止过拟合：Dropout, Data augmentation</li>
+</ol>
+<h4 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h4><p>优点：</p>
+<ul>
+<li>解决了梯度消失的问题（在正区间）</li>
+<li>计算速度特别快，只需要判断输入是否大于 0</li>
+<li>收敛速度远快于 <code>sigmoid</code></li>
+</ul>
+<h4 id="DropOut"><a href="#DropOut" class="headerlink" title="DropOut"></a>DropOut</h4><ul>
+<li>在训练时随机关闭部分神经元，测试时整合所有神经元</li>
+<li>可以用于防止过拟合</li>
+</ul>
+<h4 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h4><ul>
+<li>平移，翻转，对称<ul>
+<li>随机裁切</li>
+<li>水平翻转，相当于样本倍增</li>
+</ul>
+</li>
+<li>改变 RGB 通道强度<ul>
+<li>对 RGB 空间做一个高斯扰动</li>
+</ul>
+</li>
+</ul>
+<h4 id="分层解析"><a href="#分层解析" class="headerlink" title="分层解析"></a>分层解析</h4><ol>
+<li>第一次卷积：卷积，ReLU，池化</li>
+<li>第二次卷积：卷积，ReLU，池化</li>
+<li>第三次卷积：卷积，ReLU</li>
+</ol>
+<h3 id="ZFNet"><a href="#ZFNet" class="headerlink" title="ZFNet"></a>ZFNet</h3><ul>
+<li>网络结构与 AlexNet 相同</li>
+<li>将卷积层 1 中的感受野大小由 11 x 11 改成 7 x 7，步长由 4 改为 2</li>
+<li>卷积层 3，4，5 中的滤波器个数由 384，384，256 改为 512，512，1024</li>
+</ul>
+<h3 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h3><ul>
+<li>VGG 是一个更深的网络</li>
+<li>变成了 16 层-19 层</li>
+</ul>
+<p><img data-src="https://camo.githubusercontent.com/926f1811ffd9e261313911db6ee28ba455e47cb59212690ebe5647ff74f460dc/68747470733a2f2f67616f707572737569742e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f3230323030332f32303230303232393131313532312e6a7067"></p>
+<h3 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h3><ul>
+<li>网络总体结构：<ul>
+<li>网络包含 22 个带参数的层（如果考虑 pooling 就是 27 层），独立成块的层总共约有 100 个</li>
+<li>参数量大概是 AlexNet 的 1&#x2F;12</li>
+<li>没有 FC 层</li>
+</ul>
+</li>
+</ul>
+<h4 id="Inception-模型"><a href="#Inception-模型" class="headerlink" title="Inception 模型"></a>Inception 模型</h4><p>初衷：多卷积核增加特征多样性</p>
+<p>通过 pedding 技术，将不同的卷积核串的输出内容连起来。</p>
+<p>缺点：随机模型的加深，channel 的个数也会不断的变高，会使得计算量很大。</p>
+<h4 id="Inception-v-2-模型"><a href="#Inception-v-2-模型" class="headerlink" title="Inception v 2 模型"></a>Inception v 2 模型</h4><p>解决思路：通过插入 <code>1*1</code> 的卷积核来进行降维</p>
+<p><img data-src="https://camo.githubusercontent.com/f3631a866ab1f3da8734aef2fb54a55d83afbf0948e59e92f854cf0a267694ca/68747470733a2f2f67616f707572737569742e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f3230323030332f32303230303232393230343330312e6a7067"></p>
+<h4 id="Inception-v-3-模型"><a href="#Inception-v-3-模型" class="headerlink" title="Inception v 3 模型"></a>Inception v 3 模型</h4><ul>
+<li>进一步对 v 2 的参数数量进行降低</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>将一个 5 x 5 的卷积核用两个 3 x 3 的卷积核代替。（这两种方式所表示的感受野的大小一样）<br>好处：</li>
+<li>降低了参数量（<code>5*5+1</code> -&gt; <code>(3*3+1)*2</code>）</li>
+<li>增加了非线性激活函数：增加非纯属激活函数使网络产生更多独立特征，表征能力更强，训练理快。</li>
+</ul>
+<h3 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h3><ul>
+<li>残差学习网络</li>
+<li>深度有 152 层</li>
+</ul>
+<h4 id="残差"><a href="#残差" class="headerlink" title="残差"></a>残差</h4><p>目标：去掉相同的主体部分，从而突出微小的变化</p>
+<ul>
+<li>可以被用来训练非常深的网络</li>
+<li>不存在梯度消失的情况<ul>
+<li>即使在训练时，出现某层网络的输出为 0 的情况，训练依然可以进行下去 <code>-&gt;</code> 模型可以自动调节深度。</li>
+</ul>
+</li>
+</ul>
+<p>传统网络：</p>
+<p>数据经过网络处理后直接给了下一层。<br><code>x -&gt; conv -&gt; relu -&gt;conv -&gt; f(x)</code></p>
+<p>残差 block:</p>
+<p>数据经过网络处理后，会再加上输入的数据，再给下一层。<br><code>x -&gt; conv -&gt; relu -&gt;conv -&gt; f(x) + x</code>。</p>
+<h1 id="使用pytorch编写代码"><a href="#使用pytorch编写代码" class="headerlink" title="使用pytorch编写代码"></a>使用pytorch编写代码</h1><h2 id="Pytorch-API-调用方法"><a href="#Pytorch-API-调用方法" class="headerlink" title="Pytorch API 调用方法"></a>Pytorch API 调用方法</h2><h3 id="制作数据集"><a href="#制作数据集" class="headerlink" title="制作数据集"></a>制作数据集</h3><h4 id="方法一-：从远程下载"><a href="#方法一-：从远程下载" class="headerlink" title="方法一 ：从远程下载"></a>方法一 ：从远程下载</h4><p>pytorch 中有很多常见的数据集，可以调用 <code>torchvision.datasets</code> 把数据由远程下载到本地。</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torchvision.datasets.xxx(root, train=<span class="literal">True</span>, transform=<span class="literal">None</span>, target_transform=<span class="literal">None</span>, download=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<li>xxx：数据集的名字</li>
+<li>root：保存的目标文件夹</li>
+<li>train，如果设置为True，从training.pt创建数据集，否则从test.pt创建。</li>
+<li>transform：一种函数或变换，输入PIL图片，返回变换后的数据</li>
+<li>target_transform：一种函数或变换，输入目标，进行变换。</li>
+<li>download：设置为true时，如果数据集不存在，会自动下载。</li>
+</ul>
+<p>对于数据的预处理，可以使用<code>transforms.Compose()</code>将多个变换连接在一起。</p>
+<p>可以使用的变换有：</p>
+<ul>
+<li><code>transforms.ToTensor()</code>：将 PIL 图像或 numpy 数组转换为 PyTorch 的张量（Tensor）。同时，还会将图像的像素值自动的映射到 <code>[0, 1]</code>。<code>torchvision</code> 数据集输出的范围为 <code>[0, 1]</code> 之间的 <code>PILImage</code>。</li>
+<li><code>transforms.Normalize(mean, std)</code>：用于对图像数据进行标准化处理。标准化的目的是使每个通道的像素值具有零均值和单位标准差，这有助于加快模型训练速度和提高模型的收敛性。<ul>
+<li>mean：每个通道的均值</li>
+<li>std：每个通道的标准差</li>
+</ul>
+</li>
+<li><code>transforms.CenterCrop(x)</code>：从输入图像的中心裁剪出一个指定大小的图像。这样可以简化数据处理并使得网络架构的一些操作可以正确运行。</li>
+<li><code>transforms.RandomCrop(x, padding = y)</code>：先对图像填充 y，再对图像进行随机裁剪，裁剪后的大小为 <code>x * x</code>。</li>
+<li><code>transforms.RandomHorizontalFlip()</code>: 对图像进行随机水平翻转</li>
+</ul>
+<h4 id="方法二：从本地文件夹构建数据集"><a href="#方法二：从本地文件夹构建数据集" class="headerlink" title="方法二：从本地文件夹构建数据集"></a>方法二：从本地文件夹构建数据集</h4><p>使用 <code>ImageFolder</code> 函数完成构建。</p>
+<ul>
+<li><code>ImageFolder</code> 会递归地遍历指定目录中的所有子目录。每个子目录的名称将被视为一个类别标签。</li>
+</ul>
+<ul>
+<li><code>ImageFolder</code> 会自动为每个类别分配一个整数标签。例如，如果有两个子目录 <code>&#39;cats&#39;</code> 和 <code>&#39;dogs&#39;</code>，它们可能会被映射为 <code>0</code> 和 <code>1</code>。</li>
+<li>对于每个图像文件，<code>ImageFolder</code> 会使用 PIL 库加载图像，并应用指定的变换（transform）。</li>
+</ul>
+<p>用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torchvision.datasets.ImageFolder(root, transform=<span class="literal">None</span>, target_transform=<span class="literal">None</span>, loader=default_loader, is_valid_file=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>root: 数据集的根目录，该目标下应该包含按照类别组织的子目录，每个子目录包含该类别的图像。</li>
+<li>transform：一个函数或变换，应用于每个图像样本（输入）</li>
+<li>target_transform：一个函数或变换，应用于每个目标（标签）</li>
+<li>loader：一个函数，用于加载给定路径的图像。</li>
+<li>is_valid_file：一个函数，用于检查文件是否为有效文件。</li>
+</ul>
+<h3 id="从数据集加载数据"><a href="#从数据集加载数据" class="headerlink" title="从数据集加载数据"></a>从数据集加载数据</h3><p>使用 <code>torch.utils.data.DataLoader(dataset, batch_size, shuffle, ..)</code> 来加载一个数据</p>
+<p>参数：</p>
+<ul>
+<li>dataset: 使用的数据集，必须是 <code>Dataset</code> 的子类实例。</li>
+<li>batch_size：每个批次加载的数据量。默认为 1。</li>
+<li>shuffle: 是否在每个 epoch 开始时打乱数据。默认为 False。推荐为true。<br>其他可用的参数：</li>
+<li>sampler: 自定义采样策略。如果提供了这个参数，shuffle 参数将被忽略。</li>
+<li>num_workers: 用于数据加载的子进程数量。默认为 0，表示数据将在主进程中加载。增加这个值可以加快数据加载速度。</li>
+<li>collate_fn: 合并样本列表以形成一个 mini-batch 的函数。默认情况下，它会将样本堆叠成一个 mini-batch。</li>
+<li>pin_memory: 如果设置为 True，数据加载器会将张量复制到 CUDA 固定内存中。对于使用 GPU 的情况，可以加快数据转移速度。</li>
+<li>drop_last: 如果数据集大小不能被 batch_size 整除，是否丢弃最后一个不完整的批次。默认为 False。</li>
+<li>timeout: 从数据加载中获取批次的超时时间（以秒为单位）。默认为 0，表示没有超时。</li>
+</ul>
+<h3 id="编写神经网络"><a href="#编写神经网络" class="headerlink" title="编写神经网络"></a>编写神经网络</h3><p>在 pytorch 中，可以通过自定义一个神经网络来实现非线性的神经网络模型。</p>
+<p>定义一个神经网络的框架如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">XXX</span>(nn.Module):</span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, ...</span>):</span><br><span class="line">		<span class="built_in">super</span>(XXXm <span class="variable language_">self</span>).__init__()</span><br><span class="line">		<span class="comment"># 在这里可以定义该模型中可能会使用到的网络层</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">		<span class="comment"># 在这里写模型中各层的连接方式，数据的流向等</span></span><br><span class="line">		</span><br></pre></td></tr></table></figure>
+
+<h4 id="主要会使用的网络层"><a href="#主要会使用的网络层" class="headerlink" title="主要会使用的网络层"></a>主要会使用的网络层</h4><ul>
+<li>卷积层（<code>Conv2d</code>）<ul>
+<li>是一个卷积核</li>
+</ul>
+</li>
+<li>批归一化层（<code>BatchNorm2d</code>）<ul>
+<li>用于标准化卷积层的输出，使其加速训练，保持输入分布稳定，有正则化的效果</li>
+</ul>
+</li>
+<li>池化层（<code>MaxPool2d</code> 或 <code>AvgPool2d</code>）<ul>
+<li>减少特征图的尺寸，同时保留重要的特征，降低计算复杂度，减少过拟合。</li>
+</ul>
+</li>
+</ul>
+<p>组合方式：<strong>卷积层 + 批量归一化层 + 激活函数 + 池化层</strong></p>
+<p>卷积的用法：</p>
+<ul>
+<li>可以使用 <code>1*1</code> 的卷积核来改变通道数，从而控制模型的复杂度</li>
+<li>可以将一个 <code>n*n</code> 的卷积拆成 <code>1*n</code> 后接 <code>n*1</code> 的两个小卷积，计算时间复杂度会由 <code>o(n^2)</code> 变成 <code>o(2n)</code></li>
+</ul>
+<h4 id="直接加载经过预训练处理的网络模型"><a href="#直接加载经过预训练处理的网络模型" class="headerlink" title="直接加载经过预训练处理的网络模型"></a>直接加载经过预训练处理的网络模型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torchvision.models.xxx(pretrained=xxx)</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><code>pretrained</code>：这个参数指定预训练的权重。如果设置为 <code>True</code>，则模型会加载训练好的权重，而不是随机初始化权重。这使得模型可以直接用于迁移学习或作为特征提取器。</li>
+</ul>
+<p>可以使用的模型有：<code>VGG</code> 系列，<code>ResNet</code> 系列，<code>DenseNet</code> 系列等。</p>
+<h5 id="冻结经过预训练的网络的某几层"><a href="#冻结经过预训练的网络的某几层" class="headerlink" title="冻结经过预训练的网络的某几层"></a>冻结经过预训练的网络的某几层</h5><p>可以通过 <code>requires_grad = False</code> 的方式来冻结网络层，从而达到不训练的目的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假设当前有模型model_vgg，要将其所有的层都冻结，只需要</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> param <span class="keyword">in</span> model_vgg.parameters():</span><br><span class="line">	param.required_grad = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p><code>param</code> 代表 <code>model_vgg</code> 模型中的一个参数。一个模型通常包含多个参数，这些参数是模型的权重和偏置。</p>
+<h5 id="修改经过预训练的模型"><a href="#修改经过预训练的模型" class="headerlink" title="修改经过预训练的模型"></a>修改经过预训练的模型</h5><p>例：修改 vgg 模型的分类器的第 6 层与第 7 层：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改第6层，将 nn.Linear(4096, 1000)改成 nn.Linear(4096, 2)</span></span><br><span class="line">model_vgg_new.classifier._modules[<span class="string">&#x27;6&#x27;</span>] = nn.Linear(<span class="number">4096</span>, <span class="number">2</span>)</span><br><span class="line">model_vgg_new.classifier._modules[<span class="string">&#x27;7&#x27;</span>] = torch.nn.LogSoftmax(dim = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="数据的处理"><a href="#数据的处理" class="headerlink" title="数据的处理"></a>数据的处理</h3><h4 id="view-操作"><a href="#view-操作" class="headerlink" title="view 操作"></a><code>view</code> 操作</h4><p><code>view</code> 操作一般出现在 model 类的 <code>forward</code> 函数中，可以改变输入或输出的形状。</p>
+<p>用法： <code>view(batch_size, feature_size)</code>。<br>参数：</p>
+<ul>
+<li><code>batch_size</code>：一批的大小</li>
+<li><code>feature_size</code>：特征数</li>
+</ul>
+<p>一般来说，只要一写入一边的参数，另一边写 <code>-1</code>，计算机会自动计算该值。</p>
+<h5 id="view-的作用"><a href="#view-的作用" class="headerlink" title="view 的作用"></a><code>view</code> 的作用</h5><p>卷积层的输出通常是一个多维张量（即具有多个通道、高度和宽度）。然而，全连接层（线性层）期望输入是一个二维张量，其中一个维度是批量大小，另一个维度是特征数。因此，在输入全连接层之前，需要将卷积层的输出展平。</p>
+<h5 id="常用写法"><a href="#常用写法" class="headerlink" title="常用写法"></a>常用写法</h5><p><code>out.view(out.size(0), -1)</code></p>
+<p>可以将任意批量的多维数据展开成二维数据。</p>
+<h4 id="torch-max"><a href="#torch-max" class="headerlink" title="torch.max()"></a><code>torch.max()</code></h4><p><code>torch.max(tensor, dim)</code> 可以返回传入 tensor 的最大值，dim 表示在指定维度上的最大值。如果指定了 dim，则返回会有两个数值，一个是最大值，一个是最大值的索引。</p>
+<p>因此，可以通过该函数知道最大值的位置。通过该函数，则可以很轻松的知道使用 <code>softmax</code> 或 <code>log_softmax</code> 作为分类器的模型的判别结果。</p>
+<h4 id="打开一个本地-json-文件并赋值到一个变量中"><a href="#打开一个本地-json-文件并赋值到一个变量中" class="headerlink" title="打开一个本地 json 文件并赋值到一个变量中"></a>打开一个本地 json 文件并赋值到一个变量中</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;文件路径&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    class_dict = json.load(f)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="训练与评估模型"><a href="#训练与评估模型" class="headerlink" title="训练与评估模型"></a>训练与评估模型</h3><p>一般来说，训练模型与检测模型的代码会封装成一个函数。</p>
+<p>模型在训练时，需要将模型设置为训练模式，因为有些层在不同模式下的表现不同：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.train()</span><br></pre></td></tr></table></figure>
+
+<p>常见的训练函数的框架有：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">model</span>):</span><br><span class="line">	<span class="comment"># 设置训练10轮</span></span><br><span class="line">	epochs = <span class="number">10</span></span><br><span class="line">    <span class="comment"># 将模型设置为训练模式，因为有些层在不同模式下的表现不同</span></span><br><span class="line">    model.train()</span><br><span class="line">    <span class="comment"># 主里从train_loader里，64个样本一个batch为单位提取样本进行训练</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(epochs):</span><br><span class="line">	    <span class="keyword">for</span> batch_idx, (data, target) <span class="keyword">in</span> <span class="built_in">enumerate</span>(train_loader):</span><br><span class="line">	        <span class="comment"># 把数据送到GPU中</span></span><br><span class="line">	        data, target = data.to(device), target.to(device)</span><br><span class="line">	        optimizer.zero_grad()</span><br><span class="line">	        output = model(data)</span><br><span class="line">	        <span class="comment"># 计算损失。如果模型不是将log_softmax作为分类器，则可以使用其他的损失函数</span></span><br><span class="line">	        loss = F.nll_loss(output, target)</span><br><span class="line">	        <span class="comment"># 进行反向传播，计算梯度。</span></span><br><span class="line">	        loss.backward()</span><br><span class="line">	        <span class="comment"># 使用优化器（如 SGD）更新模型参数。</span></span><br><span class="line">	        optimizer.step()</span><br><span class="line">	        <span class="comment"># 输出参数</span></span><br><span class="line">	        <span class="comment"># ....</span></span><br></pre></td></tr></table></figure>
+
+<p>模型在评估时，要设置成评估模式，当模型设置为评估模式时，会禁用 dropout 层等。</p>
+<p>常见的模式有：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">model</span>):</span><br><span class="line">    <span class="comment"># 将模型设置为评估模式，此时会禁用dropout层</span></span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line">    correct = <span class="number">0</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> data <span class="keyword">in</span> testloader:</span><br><span class="line">	    images, labels = data</span><br><span class="line">	    images, labels = images.to(device), labels.to(device)</span><br><span class="line">	    outputs = net(images)</span><br><span class="line">	    _, predicted = torch.<span class="built_in">max</span>(outputs.data, <span class="number">1</span>)</span><br><span class="line">	    total += labels.size(<span class="number">0</span>)</span><br><span class="line">	    correct += (predicted == labels).<span class="built_in">sum</span>().item()</span><br><span class="line">	    <span class="built_in">print</span>(<span class="string">&#x27;Accuracy of the network on the 10000 test images: %d %%&#x27;</span> % (<span class="number">100</span> * correct / total))</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h3><p><code>torchvision.utils.make_grid()</code> 可以将多张图像组合成一张网络网。</p>
+<p>如果一个图片经过了预处理（翻转，归一化等操作），则需要进行反预处理。</p>
+<p>以下是几个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">imshow</span>(<span class="params">img</span>):</span><br><span class="line">	<span class="comment"># 创建一个新的图像的显示窗口</span></span><br><span class="line">    plt.figure(figsize=(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    <span class="comment"># 将图像的值设置成[0, 1]之间</span></span><br><span class="line">    img = img / <span class="number">2</span> + <span class="number">0.5</span>     <span class="comment"># 转换到 [0,1] 之间</span></span><br><span class="line">    <span class="comment"># 将图像转化成numpy数组</span></span><br><span class="line">    npimg = img.numpy()</span><br><span class="line">    <span class="comment"># 将图像的维度从(C, H, W)（通道数、高度、宽度）转换为(H, W, C)（高度、宽度、通道数），这是Matplotlib所需要的格式。</span></span><br><span class="line">    plt.imshow(np.transpose(npimg, (<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>)))</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从训练器中得到一组图像</span></span><br><span class="line">images, labels = <span class="built_in">iter</span>(trainloader).<span class="built_in">next</span>()</span><br><span class="line"><span class="comment"># 展示图像</span></span><br><span class="line">imshow(torchvision.utils.make_grid(images))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">imshow</span>(<span class="params">inp, title=<span class="literal">None</span></span>):</span><br><span class="line">	<span class="comment"># Imshow for Tensor.</span></span><br><span class="line">	<span class="comment">#张量转换为 NumPy 数组并调整轴顺序</span></span><br><span class="line">	inp = inp.numpy().transpose((<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>))</span><br><span class="line">	<span class="comment"># 反归一化图像数据并裁剪值范围</span></span><br><span class="line">	mean = np.array([<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>])</span><br><span class="line">	std = np.array([<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line">	inp = np.clip(std * inp + mean, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">	<span class="comment"># 显示图片</span></span><br><span class="line">	plt.imshow(inp)</span><br><span class="line">	<span class="keyword">if</span> title <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">	    plt.title(title)</span><br><span class="line">	plt.pause(<span class="number">0.001</span>)  <span class="comment"># pause a bit so that plots are updated</span></span><br></pre></td></tr></table></figure>
+
+<p>输出预测正确的图像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单次可视化显示的图片个数</span></span><br><span class="line">n_view = <span class="number">8</span></span><br><span class="line"><span class="comment"># 返回一个数组，包含所有正确分类样本的索引</span></span><br><span class="line"><span class="comment"># predictions表示测试集的预测结果，all_classes表示测试集的实际结果。均是数组，每个元素代表每个数据的值</span></span><br><span class="line">correct = np.where(predictions==all_classes)[<span class="number">0</span>] <span class="comment"># 如果将== 改成 != 即可显示不正确的图片</span></span><br><span class="line"><span class="keyword">from</span> numpy.random <span class="keyword">import</span> random, permutation</span><br><span class="line"><span class="comment"># 对正确分类的样本的索引进行随机排列，然后取前n_view个索引</span></span><br><span class="line">idx = permutation(correct)[:n_view]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;random correct idx: &#x27;</span>, idx)</span><br><span class="line">  </span><br><span class="line">loader_correct = torch.utils.data.DataLoader([dsets[<span class="string">&#x27;valid&#x27;</span>][x] <span class="keyword">for</span> x <span class="keyword">in</span> idx],</span><br><span class="line">                  batch_size = n_view,shuffle=<span class="literal">True</span>)</span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> loader_correct:</span><br><span class="line">    inputs_cor,labels_cor = data</span><br><span class="line"><span class="comment"># Make a grid from batch</span></span><br><span class="line">out = torchvision.utils.make_grid(inputs_cor)</span><br><span class="line">imshow(out, title=[l.item() <span class="keyword">for</span> l <span class="keyword">in</span> labels_cor])</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-pytorch-编写代码"><a href="#使用-pytorch-编写代码" class="headerlink" title="使用 pytorch 编写代码"></a>使用 pytorch 编写代码</h2><h2 id="构建复杂网络"><a href="#构建复杂网络" class="headerlink" title="构建复杂网络"></a>构建复杂网络</h2><p>以编写 <code>Inception A 模块</code>为例：</p>
+<p><img data-src="https://camo.githubusercontent.com/f3631a866ab1f3da8734aef2fb54a55d83afbf0948e59e92f854cf0a267694ca/68747470733a2f2f67616f707572737569742e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f3230323030332f32303230303232393230343330312e6a7067"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">InceptionA</span>(nn.Module):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_channels, pool_features</span>):</span><br><span class="line">        <span class="built_in">super</span>(InceptionA, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="comment"># 最左侧的路径</span></span><br><span class="line">        <span class="variable language_">self</span>.branch1x1 = BasicConv2d(in_channels, <span class="number">64</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 第2条路径</span></span><br><span class="line">        <span class="variable language_">self</span>.branch5x5_1 = BasicConv2d(in_channels, <span class="number">48</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.branch5x5_2 = BasicConv2d(<span class="number">48</span>, <span class="number">64</span>, kernel_size=<span class="number">5</span>, padding=<span class="number">2</span>)</span><br><span class="line">		<span class="comment"># 第3条路径 </span></span><br><span class="line">        <span class="variable language_">self</span>.branch3x3dbl_1 = BasicConv2d(in_channels, <span class="number">64</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.branch3x3dbl_2 = BasicConv2d(<span class="number">64</span>, <span class="number">96</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.branch3x3dbl_3 = BasicConv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 最右侧路径</span></span><br><span class="line">        <span class="variable language_">self</span>.branch_pool = BasicConv2d(in_channels, pool_features, kernel_size=<span class="number">1</span>)</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># 以x形状的数据</span></span><br><span class="line">        branch1x1 = <span class="variable language_">self</span>.branch1x1(x)</span><br><span class="line">        <span class="comment"># 以x形状的数据</span></span><br><span class="line">        branch5x5 = <span class="variable language_">self</span>.branch5x5_1(x)</span><br><span class="line">        branch5x5 = <span class="variable language_">self</span>.branch5x5_2(branch5x5)</span><br><span class="line">        <span class="comment"># 以x形状的数据</span></span><br><span class="line">        branch3x3dbl = <span class="variable language_">self</span>.branch3x3dbl_1(x)</span><br><span class="line">        branch3x3dbl = <span class="variable language_">self</span>.branch3x3dbl_2(branch3x3dbl)</span><br><span class="line">        branch3x3dbl = <span class="variable language_">self</span>.branch3x3dbl_3(branch3x3dbl)</span><br><span class="line">        <span class="comment"># 以x形状的数据</span></span><br><span class="line">        branch_pool = F.avg_pool2d(x, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>)</span><br><span class="line">        branch_pool = <span class="variable language_">self</span>.branch_pool(branch_pool)</span><br><span class="line">        <span class="comment"># 将数据拼接起来</span></span><br><span class="line">        outputs = [branch1x1, branch5x5, branch3x3dbl, branch_pool]</span><br><span class="line">        <span class="comment"># 在通道要拼接</span></span><br><span class="line">        <span class="keyword">return</span> torch.cat(outputs, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在构建卷积网络时，一定要关注输入图片的尺寸与输出图片的尺寸。上一层的输出的尺寸一定要与下一层输入的尺寸一致。尺寸的计算方法可以在上文找到。</p>
+<h3 id="残差神经网络编写"><a href="#残差神经网络编写" class="headerlink" title="残差神经网络编写"></a>残差神经网络编写</h3><p>残差神经网络的编写方法和其他网络没有什么不同，唯一需要注意的是：残差神经网络的输出结果是经过 <code>网络层计算后的结果+输入的结果</code>。而网络层可能会改变输出的通道数，因此，需要使用<code>shortcut()</code> 来调整输入数据的通道数（其本质是一个<code>1*1</code>的卷积网络），使其与网络层的输出的通道数一致。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BasicBlock</span>(nn.Module):</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_planes, planes, stride=<span class="number">1</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(BasicBlock, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = nn.Conv2d(in_planes, planes, kernel_size=<span class="number">3</span>, stride=stride, padding=<span class="number">1</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.bn1 = nn.BatchNorm2d(planes)</span><br><span class="line">        <span class="variable language_">self</span>.conv2 = nn.Conv2d(planes, planes, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.bn2 = nn.BatchNorm2d(planes)</span><br><span class="line">  </span><br><span class="line">        <span class="variable language_">self</span>.shortcut = nn.Sequential()</span><br><span class="line">        <span class="comment"># 通过一个1*1大小的卷积核来调整通道</span></span><br><span class="line">        <span class="keyword">if</span> stride != <span class="number">1</span> <span class="keyword">or</span> in_planes != planes:</span><br><span class="line">            <span class="variable language_">self</span>.shortcut = nn.Sequential(</span><br><span class="line">                nn.Conv2d(in_planes, planes, kernel_size=<span class="number">1</span>, stride=stride, bias=<span class="literal">False</span>),</span><br><span class="line">                nn.BatchNorm2d(planes)</span><br><span class="line">            )</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        out = F.relu(<span class="variable language_">self</span>.bn1(<span class="variable language_">self</span>.conv1(x)))</span><br><span class="line">        out = <span class="variable language_">self</span>.bn2(<span class="variable language_">self</span>.conv2(out))</span><br><span class="line">        out += <span class="variable language_">self</span>.shortcut(x)</span><br><span class="line">        out = F.relu(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="课后作业"><a href="#课后作业" class="headerlink" title="课后作业"></a>课后作业</h1><h2 id="代码练习"><a href="#代码练习" class="headerlink" title="代码练习"></a>代码练习</h2><ul>
+<li>使用卷积网络来识别mnist手写数字</li>
+</ul>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240527161411.png"></p>
+<p>图像经过卷积以后，其大小会发生变化，比如图像的尺寸，图像的通道数等。上层网络在连接下层网络时，要确保这些数据都一样。否则代码在运行的过程中会报错。如果要改变通道数，只需要改变<code>out_channels</code>的值即可。而尺寸的改变则是因为卷积操作本身。其计算公式为：</p>
+<ul>
+<li><p>无填充：$y&#x3D;(x-z)&#x2F;stride+1$。$y$为输出图像的尺寸的边长，$x$为输入图像的尺寸的边长，$z$为卷积核的大小</p>
+</li>
+<li><p>有填充：$y&#x3D;(x+padding*2-z)&#x2F;stride+1$。</p>
+</li>
+<li><p>使用CNN分类CIFAR10</p>
+</li>
+</ul>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240527162954.png"></p>
+<ul>
+<li><p>这里模型的变化和上面没有太大的差别。唯一的区别是：原来输入的图像的通道是1，表示灰度，而这次输入的图像是3，表示红，绿，蓝。因此，在代码中的区别体现在：分类mnist数据集时，第一层的通道数为1；而分类CIFAR10数据集时，第一层的通道数为3。</p>
+</li>
+<li><p>训练卷积网络与训练线性网络的训练部分的代码一样，都是先计算损失，然后反向传播，再用优化器进行优化。</p>
+</li>
+<li><p>使用VGG分类CIFAR10</p>
+</li>
+</ul>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240527163538.png"></p>
+<ul>
+<li>这里的构建网络的过程与上方差不多，唯一的区别就是使用到了循环来构建一个网络，因此我认为这个代码的重点是对于图像的预处理部分。</li>
+<li>这里的图像的预处理使用到了<ul>
+<li><code>RandomCrop</code>：随机裁剪，同时为了保证在裁剪后大小与原图像一致，这里进行了先对图像填充至40*40的大小。</li>
+<li><code>RandomHorizontalFlip</code>：随机翻转，对于计算机来说，一个图像经过翻转后就是一个全新的图像。因此通过使用这个预处理，让数据集的数量翻倍。</li>
+<li><code>ToTensor</code>：将 PIL 图像或 numpy 数组转换为 PyTorch 的张量（Tensor）</li>
+<li><code>Normalize</code>：将图像进行标准化处理，可以加速训练，加速收敛。这个值是经过别人计算后得出来的，直接写就可以了。</li>
+</ul>
+</li>
+<li>此外，在加载数据时还用到了<code>shuffle</code>：这个可以打乱图片的加载顺序，可以防止模型产生对图片出现顺序的依赖。</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="dataloader-⾥⾯-shuffle-取不同值有什么区别？"><a href="#dataloader-⾥⾯-shuffle-取不同值有什么区别？" class="headerlink" title="dataloader ⾥⾯ shuffle 取不同值有什么区别？"></a>dataloader ⾥⾯ shuffle 取不同值有什么区别？</h3><p>当<code>shuffle</code>的值设置为<code>true</code>时，数据加载器会在每个训练周期开始前随机打乱数据集，而设置为<code>false</code>时，则不会打乱数据集。通过打乱数据集，模型在每个周期内看到的数据顺序都是不同的，可以帮助模型更好的泛化没见过的数据。还可以防止模型产生对图片出现顺序的依赖，防止模型过拟合。</p>
+<h3 id="transform-⾥，取了不同值，这个有什么区别？"><a href="#transform-⾥，取了不同值，这个有什么区别？" class="headerlink" title="transform ⾥，取了不同值，这个有什么区别？"></a>transform ⾥，取了不同值，这个有什么区别？</h3><p>transform是对图片的一个转换操作，transform可以取得不同的值来完成对图片的不同操作，比如<code>CenterCrop</code>，<code>RandomCrop</code>，<code>RandomHorizontalFlip</code>，<code>ToTensor</code>，<code>Normalize</code>。其中，<code>ToTensor</code>是必需要有的，这个用于将PIL图像（使用<code>datasets</code>下载的数据集都是PIL图像）变成<code>pytorch</code>可以处理的数据类型。其他的几个变换都是为了提高模型的泛化能力，提高模型的训练速度，防止模型过拟合（一个图像只要经过翻转，裁剪，平移等操作后，对于计算机来说都是一个全新的图像）。</p>
+<h3 id="epoch-和-batch-的区别？"><a href="#epoch-和-batch-的区别？" class="headerlink" title="epoch 和 batch 的区别？"></a>epoch 和 batch 的区别？</h3><p>一个<code>epoch</code>对应使用一个数据集完整的训练过一个模型一次。而数据集太大时，比如500000个图像，那么计算机中没有足够的空间来一次性存放这么多的数据。此时可以将一个大的数据集分解成为若干小组，一个小组称为一个<code>batch</code>，多个<code>batch</code>组合成一个完整的数据集。</p>
+<h3 id="1x1的卷积和-FC-有什么区别？主要起什么作⽤？"><a href="#1x1的卷积和-FC-有什么区别？主要起什么作⽤？" class="headerlink" title="1x1的卷积和 FC 有什么区别？主要起什么作⽤？"></a>1x1的卷积和 FC 有什么区别？主要起什么作⽤？</h3><p>1x1的卷积是卷积核大小为1的卷积层，主要的作用是对于数据的升维或降维（调整通道数）。</p>
+<p>FC是全连接层，主要的作用是对信息的整合，常用于分类（如果用于分类，则最后一层的结点数等于类别的数量）。FC中的每个结点都会连接上一层的所有的结点。如果上一层有n个结点，这一层有m个结点，那么会有n*m个连接。一个卷积网络的连接数量大多在全连接层上。</p>
+<h3 id="residual-leanring-为什么能够提升准确率？"><a href="#residual-leanring-为什么能够提升准确率？" class="headerlink" title="residual leanring 为什么能够提升准确率？"></a>residual leanring 为什么能够提升准确率？</h3><p>残差神经网络的特点是，输出的数据等于输入的数据加经过网络处理的数据。因此，即使当网络处理的数据为0时，输出依然有效（相当于数据跳过了当前的一层网络）。使用这种方式可以连接更深层次的网络结构，防止出现性能下降的问题。此外，通过跳跃连接，梯度可以反向传递到更前面的层，缓解了梯度消息的问题。</p>
+<h3 id="代码练习⼆⾥，⽹络和1989年-Lecun-提出的-LeNet-有什么区别？"><a href="#代码练习⼆⾥，⽹络和1989年-Lecun-提出的-LeNet-有什么区别？" class="headerlink" title="代码练习⼆⾥，⽹络和1989年 Lecun 提出的 LeNet 有什么区别？"></a>代码练习⼆⾥，⽹络和1989年 Lecun 提出的 LeNet 有什么区别？</h3><p>LeNet模型参考：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/LeNet">wiki</a></p>
+<p>LeNet的结构与代码练习二的网络结构基本一致。区别是：</p>
+<ul>
+<li>LeNet使用平均池化层，而代码练习二使用的是最大池化层</li>
+<li>LeNet使用<code>sigmoid</code>作为激活函数，而代码练习二使用<code>ReLU</code>作为激活函数</li>
+</ul>
+<h3 id="代码练习⼆⾥，卷积以后feature-map-尺⼨会变⼩，如何应⽤-Residual-Learning"><a href="#代码练习⼆⾥，卷积以后feature-map-尺⼨会变⼩，如何应⽤-Residual-Learning" class="headerlink" title="代码练习⼆⾥，卷积以后feature map 尺⼨会变⼩，如何应⽤ Residual Learning?"></a>代码练习⼆⾥，卷积以后feature map 尺⼨会变⼩，如何应⽤ Residual Learning?</h3><p>可以使用<code>1*1</code>的卷积网络，将feature map的尺寸调整到与输入数据一样的大小后再相加得到输出结果。</p>
+<h3 id="有什么⽅法可以进⼀步提升准确率？"><a href="#有什么⽅法可以进⼀步提升准确率？" class="headerlink" title="有什么⽅法可以进⼀步提升准确率？"></a>有什么⽅法可以进⼀步提升准确率？</h3><ol>
+<li>可以使用迁移学习，比如vgg16网络的迁移学习：将除了最后一层外的所有网络层全冻结，然后修改最后一层使其符合要求</li>
+<li>在每个卷积层下都加上批量归一化层：可以加速训练，标准化卷积层的输出</li>
+<li>增加数据集：数据增强：图像翻转，平移，旋转等</li>
+<li>增加训练的epoch</li>
+<li>构建更加复杂的网络模型</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/369bad86/" title="深度学习：算法到实战学习笔记02">http://example.com/posts/369bad86/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/af92fc3c/" rel="prev" title="深度学习：算法到实战学习笔记01">
+                  <i class="fa fa-angle-left"></i> 深度学习：算法到实战学习笔记01
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/419c9d10/" rel="next" title="深度学习：算法到实战学习笔记03">
+                  深度学习：算法到实战学习笔记03 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

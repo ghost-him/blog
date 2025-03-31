@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/3f6d21e4/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/3f6d21e4/","path":"posts/3f6d21e4/","title":"Wavelet-Driven Spatiotemporal Predictive Learning--  Bridging Frequency and Time Variations"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Wavelet-Driven Spatiotemporal Predictive Learning--  Bridging Frequency and Time Variations | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/3f6d21e4/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E7%A9%BA%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.1.</span> <span class="nav-text">时空预测学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">基于循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.1.2.</span> <span class="nav-text">无循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E8%80%85%E7%9A%84%E7%BD%91%E7%BB%9C%E7%89%B9%E5%BE%81"><span class="nav-number">2.1.3.</span> <span class="nav-text">作者的网络特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">创新点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E4%BD%9C%E5%8A%A8%E6%9C%BA"><span class="nav-number">2.3.</span> <span class="nav-text">创作动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="nav-number">2.4.</span> <span class="nav-text">问题定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">2.5.</span> <span class="nav-text">小波变换的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">2.6.</span> <span class="nav-text">网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%A2%91%E6%84%9F%E7%9F%A5%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="nav-number">2.6.1.</span> <span class="nav-text">时频感知转换器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E7%8E%87%E6%B7%B7%E5%90%88%E5%99%A8"><span class="nav-number">2.6.2.</span> <span class="nav-text">频率混合器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%B7%B7%E5%90%88%E5%99%A8"><span class="nav-number">2.6.3.</span> <span class="nav-text">时间混合器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-D-%E5%B0%8F%E6%B3%A2%E5%B5%8C%E5%85%A5%E5%92%8C%E9%87%8D%E6%9E%84"><span class="nav-number">2.6.4.</span> <span class="nav-text">3 D 小波嵌入和重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-D-%E5%B0%8F%E6%B3%A2%E5%B5%8C%E5%85%A5"><span class="nav-number">2.6.5.</span> <span class="nav-text">3 D 小波嵌入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-D-%E5%B0%8F%E6%B3%A2%E9%87%8D%E6%9E%84"><span class="nav-number">2.6.6.</span> <span class="nav-text">3 D 小波重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%B3%A2%E7%93%B6%E9%A2%88"><span class="nav-number">2.6.7.</span> <span class="nav-text">小波瓶颈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%B3%A2%E5%9F%9F%E9%AB%98%E9%A2%91%E7%84%A6%E7%82%B9%E6%8D%9F%E5%A4%B1"><span class="nav-number">2.6.8.</span> <span class="nav-text">小波域高频焦点损失</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A"><span class="nav-number">3.</span> <span class="nav-text">解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2"><span class="nav-number">3.1.</span> <span class="nav-text">计算机视觉中的小波变换</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/3f6d21e4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Wavelet-Driven Spatiotemporal Predictive Learning--  Bridging Frequency and Time Variations | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Wavelet-Driven Spatiotemporal Predictive Learning--  Bridging Frequency and Time Variations
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-08-21 15:27:19 / 修改时间：15:29:04" itemprop="dateCreated datePublished" datetime="2024-08-21T15:27:19+08:00">2024-08-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://ojs.aaai.org/index.php/AAAI/article/view/28230">aaai</a></p>
+<span id="more"></span>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>时空预测是指：使模型通过以无监督的方式从过去的帧预测未来的帧。实现时空预测通常使用循环单元来捕捉长期依赖关系，但是这些单元往往有很高的计算成本，并且在真实场景中性能有限。</p>
+<p>而该论文通过基于小波的时空（WaST）框架，该框架通过 3 D 离散小波变换在图像和特征层面提取并自适应地控制低频和高频分量，以实现更快的处理，同时保持高质量的预测。</p>
+<p>提出了两点设计：</p>
+<ol>
+<li>时频感知转换器（Time-Frequency Aware Translator），它被独特地设计用于通过分别建模空间频率和时间变化来高效地学习短程和长程时空信息。</li>
+<li>小波域高频焦点损失（wavelet-domain High-Frequency Focal Loss），有效地监督高频变化。</li>
+</ol>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="时空预测学习"><a href="#时空预测学习" class="headerlink" title="时空预测学习"></a>时空预测学习</h2><p>通常有两种方法来建模：基于循环与无循环框架。</p>
+<p>以上两种方式如下图所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240821111157.png"></p>
+<h3 id="基于循环"><a href="#基于循环" class="headerlink" title="基于循环"></a>基于循环</h3><p>左图为基于循环的模型的一般框架，其主要由两个部分组成：</p>
+<ol>
+<li>将各种 LSTM 变体，称为 MetaLSTM</li>
+<li>不同循环单元之间的信息流模式</li>
+</ol>
+<p>虽然这种框架在长期预测方面有优势，但是其计算量很大，限制了其发展。</p>
+<h3 id="无循环"><a href="#无循环" class="headerlink" title="无循环"></a>无循环</h3><p>最近，具有并行化执行的无循环方法被提出并用于时空学习。<code>a</code> 图为代码 <code>SimVP</code> 各种变体的无循环框架，它也是由两个部分组成：</p>
+<ol>
+<li>空间 2 D 编码器-解码器</li>
+<li>潜在特征时空转换器</li>
+</ol>
+<p>这个框架的计算效率更高，但是由于单尺度构，2 D 操作与不稳定的时空转换器，这个方法也有着性能的差距</p>
+<h3 id="作者的网络特征"><a href="#作者的网络特征" class="headerlink" title="作者的网络特征"></a>作者的网络特征</h3><p>作者提出了一种新颖的基于小波的时空 (WaST) 预测方案来解决现有的性能差距。他们的解决方案依赖于多级 3 D 离散小波变换 (3 D-DWT)，它将数据分解为低频和高频小波子带。</p>
+<ul>
+<li>作者引入了 3 D 小波嵌入和重建模块，分别用于嵌入小波先验和执行细节导向的重建。</li>
+<li>为了学习复杂的频率特征和时间动态，作者提出了一个时频感知转换器 (TF-Aware Translator)，通过频率混合器和时间混合器来提取和自适应控制多级小波空间中的低频和高频分量。</li>
+<li>作者引入了一个小波域高频焦点损失 (HFFL)，它还能捕捉小波域中连续和静态帧之间的快速变化。作者认为传统的均方误差损失难以关注细节特征。</li>
+</ul>
+<h2 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h2><ul>
+<li>提出了一种开创性的基于小波的时空（WaST）预测茄，通过高频分量提高计算效率，同时确保高质量预测</li>
+<li>设计了一个时频感知转换器 (TF-Aware Translator)，通过分别建模空间频率和时间变化，有效地学习现实世界的时空依赖关系。</li>
+<li>我们提出了一个小波域高频焦点损失 (HFFL) 来监督高频变化。</li>
+</ul>
+<h2 id="创作动机"><a href="#创作动机" class="headerlink" title="创作动机"></a>创作动机</h2><p>虽然当前的无循环模型（TAT，SimVP，TAU，DMVFN）等在多方面有了很大的进展，但是大多数工作没能考虑真实世界动态场景中的依赖性，从而导致预测细节的缺失。</p>
+<p>所以作者使用 3 D 小波框架和时频感知转换器来解决这些问题。</p>
+<p>此外，虽然小波变换已经有了很多的使用，但是作者认为其还有很大潜力，所以提出了一种新颖的基于 3 D 小波的方案，以实现更好的时空学习。</p>
+<h2 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h2><p>时空预测是指在给定的过去帧 $X_{in}$ 进行建模，来预测未来帧 $X_{out}$，可以将时空序列表示为四维的张量，即：$X_{in}^{t:T} \in R^{C<em>T</em>H<em>W}$ 与 $X_{out}^{T+1:T+T’} \in R^{C</em>T’<em>H</em>W}$，其中，$C,T,H,W$ 分别为通道，时间，高度，宽度。通过具有可学习参数 $\theta$ 的模型通过探索时空依赖关系来学习映射 $F_{\theta}: X_{in}^{t: T} -&gt; X_{out}^{T + 1:T + T’}$。作者使用随机梯度下降法来学习映射 $F_{\theta}$ 并找到一组参数 $\theta^{<em>}$，并以最小化预测未来帧与真实帧之间的差异，最优的参数 $\theta^{</em>}$ 为：</p>
+<p>$$<br>\theta^* &#x3D; \arg \min_{\theta} L(F_{\theta}(X^{t:T}<em>{\text{in}}), X^{T+1:T+T’}</em>{\text{out}})<br>$$<br>其中，$L$ 表示损失函数。</p>
+<p>在配方中，将视频佟大为一个典型的实验领域，观察到的数据是具有三个通道的 RGB 图像，在其他领域中，观察到的数据是多通道张量。</p>
+<h2 id="小波变换的选择"><a href="#小波变换的选择" class="headerlink" title="小波变换的选择"></a>小波变换的选择</h2><p>小波变换是一个传统技术，可以从原始数据中分离出低频与高频细节。一般来说，小波变换处理输入信号涉及两种操作：离散小波变换（DWT）与逆离散小波变换（IDWT）。由于其简单性，作者在本文中使用了 Haar 小波，利用 $F_L&#x3D;\frac{1}{\sqrt{2}}[1 \ 1 \ 1]$ 与 $F_H&#x3D;\frac{1}{\sqrt{2}}[-1 \ 1 \ 1]$ 作为 <code>3D-DWT</code> 的低能与高通过滤器。使用 $F_L$ 与 $F_H$ 构建八个步幅为 2 的核：$F_{LLL},F_{LLH},F_{LHL},F_{LHH},F_{HLL},F_{HLH},F_{HHL},F_{HHH}$。多级 <code>3D-DWT</code> 进一步以递归的方式细化这些子带分量。为了将小波技术引入时空预测学习，作者提出了一个 3 D 小波框架和小波域高频焦点损失（HFFL）。</p>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240821141119.png"></p>
+<p>以 1 级离散小波变换为例，以上是其整体架构。</p>
+<p>时频感知转换器（<code>TF-Aware Translator</code>）被实现用来学习多级小波空间频率的时间变化。</p>
+<p>3 D 小波嵌入和重构模块（<code>3D-Wavelet Embed &amp; Recon</code>）利用小波固有的多尺度架构来嵌入和重构复杂的时空特征。</p>
+<p>小波瓶颈块（Wavelet Bottleneck）专注于中间低频表示，同时保留高频细节。</p>
+<h3 id="时频感知转换器"><a href="#时频感知转换器" class="headerlink" title="时频感知转换器"></a>时频感知转换器</h3><p>时频感知转换器（TF-Aware Translator）通过频率混合器（FM）与时间混合器（TM）分离帧内频率与帧间时间动态的建模。其结构如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240821141721.png"></p>
+<p>这个模块合并了通道与时间维度。将输入的序列 $X \in R^{B<em>C</em>T<em>H</em>W}$ 重塑为 $B*(C*T)<em>H</em>W$。</p>
+<p>转换器的可以表述如下：</p>
+<p>$$<br>X’<em>l &#x3D; X_l + \text{diag}(\lambda</em>{l,1}, \ldots, \lambda_{l,d}) \times FM(\eta(X_l))<br>$$</p>
+<p>$$<br>X_{l+1} &#x3D; X’<em>l + \text{diag}(\lambda’</em>{l,1}, \ldots, \lambda’_{l,d}) \times TM(\eta(X’_l))<br>$$</p>
+<p>其中，$\lambda_{l}$ 与 $\lambda’_{l}$ 是可学习的参数，$\eta$ 为预归一化。</p>
+<h3 id="频率混合器"><a href="#频率混合器" class="headerlink" title="频率混合器"></a>频率混合器</h3><p>频率混合器由两个关键元素组成：频率特征提取器与频率注意力。</p>
+<p>作者使用非对称卷积来拟合超大卷积核（如 <code>51*51</code>）来建模低频特征，并使用并行小卷积核（如 <code>5*5</code>）来建模高频特征。</p>
+<p>为增强小波中水平与垂直细节的表示，作者提出了频率注意力机制。</p>
+<p>为了自适应地增强不同频率的小波特征（如水平与垂直细节系数），频率注意力被划分为水平与垂直分量，通过挤压-激励范式进行细化，并通过权重共享的 <code>1*1</code> 卷积促进交互，其可以被表示为：</p>
+<p>$$<br>A_H &#x3D; W_{1 \times 1} * (W^*_{1 \times 1} * HAP(X))<br>$$</p>
+<p>$$<br>A_V &#x3D; W_{1 \times 1} * (W^*_{1 \times 1} * VAP(X))<br>$$</p>
+<p>$$<br>X’ &#x3D; A_H \otimes A_V \odot X<br>$$<br>其中，$<em>$ 为卷积操作。HAP 与 VAP 表示水平与垂直平均池化（AP）。$A_H \in R^{B</em>(C<em>T)<em>H</em>1}$ 与 $A_V \in R^{B</em>(C*T)<em>1</em>W}$ 表示水平与垂直注意力交互的权重共享。$\otimes$ 与 $\odot$ 分别表示 Kronecker 积和 Hadamard 积。</p>
+<p><code>C*T*H*1</code> 与 <code>C*T*1*W</code> 的矩阵经过 Kronecker 积后，其形状为 <code>C*T*H*W</code>。（C，T 维度不会变：两个矩阵在这两个维度下是对齐的，所以相当于元素级乘法）</p>
+<h3 id="时间混合器"><a href="#时间混合器" class="headerlink" title="时间混合器"></a>时间混合器</h3><p>时间混合器通过结合前馈网络（FFN）和时间注意力来建模长期依赖性。FFN 包含两个 <code>1*1</code> 卷积和一个深度可分离卷积（DWConv）。时间注意力以挤压-激励的方式为帧间动态建模通道与时间维度。其过程可以定义如下：</p>
+<p>$$<br>A_T &#x3D; W_{1 \times 1} * GAP(X)<br>$$</p>
+<p>$$<br>X’ &#x3D; A_T \otimes X<br>$$<br>GAP 为全局平均池化。</p>
+<h3 id="3-D-小波嵌入和重构"><a href="#3-D-小波嵌入和重构" class="headerlink" title="3 D 小波嵌入和重构"></a>3 D 小波嵌入和重构</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240821150604.png"></p>
+<p>3 D 小波嵌入模块将小波先验集成到特征图中，而重构模块从高频系数恢复细节。小波瓶颈块强调低频表示，同时保留高频细节。</p>
+<h3 id="3-D-小波嵌入"><a href="#3-D-小波嵌入" class="headerlink" title="3 D 小波嵌入"></a>3 D 小波嵌入</h3><p>利用小波变换的固有属性和可学习的 3 D 卷积来实现更好的下采样。</p>
+<p>设计了两个并行分支，一个分支通过 3 D-DWT 和 3 D Conv 将图像特征 X_emb 嵌入到输出特征 X_out 中，另一个分支完成输入特征图 X_in 的空间下采样。在下采样过程中，我们连接 X_LLL 和 X_LLH，将剩余系数 C_detail（例如 X_LHL、X_LHH、X_HLL、X_HLH、X_HHL 和 X_HHH）输入到重构模块以进行细节重构。</p>
+<h3 id="3-D-小波重构"><a href="#3-D-小波重构" class="headerlink" title="3 D 小波重构"></a>3 D 小波重构</h3><p>在上采样过程中，使用空间低频特征 X_LLL 和 X_LLH，以及来自嵌入模块的细节系数 C_detail，通过 3 D-IDWT 和可学习的 3 D Conv 重构细节。</p>
+<h3 id="小波瓶颈"><a href="#小波瓶颈" class="headerlink" title="小波瓶颈"></a>小波瓶颈</h3><p>通过转换器和小波变换实现。每个小波瓶颈块首先将特征图 X_in 分解为近似系数 C_a 和细节系数 C_d。然后将 C_a 作为输入传递给转换器进行更深层次的处理。处理后的 C_a 和原始细节子带 C_d 通过 3 D-IDWT 变换回原始空间，这允许聚焦低频特征同时保留高频细节。</p>
+<h3 id="小波域高频焦点损失"><a href="#小波域高频焦点损失" class="headerlink" title="小波域高频焦点损失"></a>小波域高频焦点损失</h3><p>传统的均方误差 (MSE) 损失对每个像素同等对待，这使得它更强调低频监督。为了弥补 MSE 中高频监督的不足，作者提出了小波域高频焦点损失 (HFFL) 来监督高频变化。</p>
+<p>焦点频率损失 (FFL) 旨在减少真实图像和生成图像之间的频率距离。它可以定义为：</p>
+<p>$$<br>L_{FFL} &#x3D; \frac{1}{HW} \sum_{u&#x3D;0}^{W-1} \sum_{v&#x3D;0}^{H-1} w(u, v) \left| F_r(u, v) - F_f(u, v) \right|^2<br>$$</p>
+<p>$$<br>\text{其中} \quad w(u, v) &#x3D; \left| F_r(u, v) - F_f(u, v) \right|^\alpha<br>$$<br>权重矩阵 w (u, v) 由频率特定的训练损失引导。</p>
+<p>然而，由于大的动态频率范围，这种方法不能充分反映高频差异。因此，我们通过对高频带引入对数绝对值|log (w (u, v))|来细化 FFL 的权重矩阵，同时通过预定义阈值τ将低频权重设置为零。我们进一步以多尺度方式细化频域损失，采用小波变换将信号分解为多级子带，小波域高频焦点损失可以定义为：</p>
+<p>$$<br>L_{HFFL} &#x3D; \frac{1}{H_k W_k} \sum_{u&#x3D;0}^{H_k-1} \sum_{v&#x3D;0}^{W_k-1} w(u, v) \left| F_r(u, v) - F_f(u, v) \right|^2<br>$$</p>
+<p>$$<br>\text{其中} \quad w(u, v) &#x3D; \left| \log \left( \left| F_r(u, v) - F_f(u, v) \right| \right) \right|^\alpha<br>$$<br>其中 k 表示 k 级小波分解。模型通过结合每帧的空间域和小波域损失的目标函数进行端到端训练：</p>
+<p>$$<br>L &#x3D; L_{MSE}+\lambda L_{HFFL}<br>$$</p>
+<h1 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h1><h2 id="计算机视觉中的小波变换"><a href="#计算机视觉中的小波变换" class="headerlink" title="计算机视觉中的小波变换"></a>计算机视觉中的小波变换</h2><p>小波变换是时频分析的重要工具，增强了基于 CNN 的视觉任务的性能。</p>
+<p>小波变换是一种将信号分解为不同尺度和位置的基本波形（称为小波）的线性变换。这些小波是由一个称为母小波的基本函数通过平移和缩放得到的。</p>
+<p>其特点：（<strong>局部，多尺度</strong>）</p>
+<ul>
+<li>多分辨率分析：小波变换可以在不同的尺度上分析信号，提供多分辨率的时频表示。</li>
+<li>局部化：小波在时间和频率域都具有良好的局部化特性，可以捕捉信号的局部特征。</li>
+<li>灵活性：通过选择不同的母小波函数，可以适应不同类型的信号分析需求。</li>
+</ul>
+<p>与傅里叶的对比：</p>
+<ol>
+<li>信号类型<ol>
+<li>对于平稳信号，傅里叶变换通常足够。</li>
+<li>对于非平稳信号或需要时频联合分析的场景，小波变换更适合。</li>
+</ol>
+</li>
+<li>分辨率<ol>
+<li>傅里叶适合固定的分辨率</li>
+<li>小波适合多分辨率，低频时有好的频率分辨率，高频时有好的时间分辨率</li>
+</ol>
+</li>
+<li>应用<ol>
+<li>傅里叶适合周期性模式的特征提取</li>
+<li>小波变换在数据分析，图像处理任务中更加灵活</li>
+</ol>
+</li>
+</ol>
+<p>其种类有以下两类：</p>
+<ul>
+<li>连续小波变换（CWT）：适用于连续信号的分析。</li>
+<li>离散小波变换（DWT）：适用于离散信号，计算效率更高。</li>
+</ul>
+<p>应用：可以作为神经网络的预处理步骤，提供多尺度特征。</p>
+<p>小波变换的强大之处在于它能够提供信号的时频局部化表示，这使得它在处理非平稳信号和捕捉信号局部特征方面具有显著优势。在计算机视觉和人工智能领域，小波变换为复杂的时空数据分析提供了有力的工具，特别是在需要同时考虑时间和频率信息的应用场景中。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/3f6d21e4/" title="Wavelet-Driven Spatiotemporal Predictive Learning--  Bridging Frequency and Time Variations">http://example.com/posts/3f6d21e4/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/59d0f86a/" rel="prev" title="C++20三向比较运算符详解">
+                  <i class="fa fa-angle-left"></i> C++20三向比较运算符详解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/bf216496/" rel="next" title="使用 OpenSTL完成模型训练与评估">
+                  使用 OpenSTL完成模型训练与评估 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

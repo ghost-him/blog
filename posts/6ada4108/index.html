@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/6ada4108/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/6ada4108/","path":"posts/6ada4108/","title":"Rust高级"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Rust高级 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/6ada4108/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#borrowing-%E5%80%9F%E7%94%A8%E4%B8%8Elifetime%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">borrowing 借用与lifetime生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#borrowing%EF%BC%88%E5%BC%95%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E5%91%BD%E5%90%8D%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">borrowing（引用的函数式命名）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#borrow-checker%E7%9A%84%E8%A7%84%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">borrow checker的规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E6%8C%87%E5%AE%9Alifetime"><span class="nav-number">1.3.</span> <span class="nav-text">手动指定lifetime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E4%BD%95%E5%BC%95%E7%94%A8%E9%83%BD%E6%98%AF%E6%9C%89%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.4.</span> <span class="nav-text">任何引用都是有生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">生命周期与函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8"><span class="nav-number">1.6.</span> <span class="nav-text">结构体中的引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">泛型的应用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">泛型与函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Trait"><span class="nav-number">3.</span> <span class="nav-text">Trait</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trait-object"><span class="nav-number">3.2.</span> <span class="nav-text">trait object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dyn%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.3.</span> <span class="nav-text">dyn关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rust%E4%B8%AD%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E7%9A%84%E4%B8%89%E7%A7%8D%E5%BD%A2%E5%BC%8F"><span class="nav-number">3.4.</span> <span class="nav-text">rust中数据传输的三种形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E8%B4%A8%E4%B8%8EBox"><span class="nav-number">3.5.</span> <span class="nav-text">特质与Box</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E4%B8%8Eimpl%E4%B8%8D%E5%90%8C%E7%9A%84%E5%86%99%E6%B3%95"><span class="nav-number">3.6.</span> <span class="nav-text">泛型与impl不同的写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Trait-Bounds"><span class="nav-number">3.7.</span> <span class="nav-text">Multiple Trait Bounds</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rust%E9%87%8D%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.8.</span> <span class="nav-text">Rust重载操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rust%E4%B8%8D%E6%94%AF%E6%8C%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.9.</span> <span class="nav-text">rust不支持面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">3.10.</span> <span class="nav-text">多态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF"><span class="nav-number">4.1.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3"><span class="nav-number">4.2.</span> <span class="nav-text">迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">4.3.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IntoIterator"><span class="nav-number">4.4.</span> <span class="nav-text">IntoIterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator"><span class="nav-number">4.5.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95iter-%EF%BC%8Citer-mut-%EF%BC%8CInto-iter"><span class="nav-number">4.6.</span> <span class="nav-text">获取迭代器的三种方法iter()，iter_mut()，Into_iter()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iter-%E6%96%B9%E6%B3%95"><span class="nav-number">4.6.1.</span> <span class="nav-text">iter()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iter-mut%E6%96%B9%E6%B3%95"><span class="nav-number">4.6.2.</span> <span class="nav-text">iter_mut方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#into-iter-%E6%96%B9%E6%B3%95"><span class="nav-number">4.6.3.</span> <span class="nav-text">into_iter()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#closures%E9%97%AD%E5%8C%85"><span class="nav-number">5.</span> <span class="nav-text">closures闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">5.1.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E9%97%AD%E5%8C%85"><span class="nav-number">5.2.</span> <span class="nav-text">定义一个闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%A4%96%E9%83%A8%E5%8F%82%E6%95%B0"><span class="nav-number">5.3.</span> <span class="nav-text">获取外部参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E6%9D%83%E8%BD%AC%E7%A7%BBMove"><span class="nav-number">5.4.</span> <span class="nav-text">所有权转移Move</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-number">5.5.</span> <span class="nav-text">闭包的工作方式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/6ada4108/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Rust高级 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Rust高级
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-01 15:22:09" itemprop="dateCreated datePublished" datetime="2024-07-01T15:22:09+08:00">2024-07-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-04 14:04:49" itemprop="dateModified" datetime="2024-07-04T14:04:49+08:00">2024-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">编程语言学习</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Rust/" itemprop="url" rel="index"><span itemprop="name">Rust</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>无代码，只作知识点记住，详细可查官方wiki:<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/">doc</a></p>
+<span id="more"></span>
+
+
+<h1 id="borrowing-借用与lifetime生命周期"><a href="#borrowing-借用与lifetime生命周期" class="headerlink" title="borrowing 借用与lifetime生命周期"></a>borrowing 借用与lifetime生命周期</h1><h2 id="borrowing（引用的函数式命名）"><a href="#borrowing（引用的函数式命名）" class="headerlink" title="borrowing（引用的函数式命名）"></a>borrowing（引用的函数式命名）</h2><ul>
+<li>引用:<ul>
+<li>引用是一种变量的别名，通过&amp;符号来创建。（非所有权）</li>
+<li>引用可以是不可变的(&amp;T)或可变的(&amp;mut T)</li>
+<li>引用允许在不传递所有权的情况下访问数据，它们是安全且低开销的。</li>
+</ul>
+</li>
+<li>借用：<ul>
+<li>借用是通过引用来借用数据，从而在一段时间内访问数据而不拥有它。</li>
+<li>借用分为可变借用与不可变借用。可变借用(&amp;mut)允许修改数据，但在生命周期内只能有一个可变借用。不可变借用(&amp;)允许多个同时存在，但不允许修改数据。</li>
+</ul>
+</li>
+</ul>
+<h2 id="borrow-checker的规则"><a href="#borrow-checker的规则" class="headerlink" title="borrow checker的规则"></a>borrow checker的规则</h2><ol>
+<li>不可变引用规则：<ol>
+<li>在任何给定的时间，要么有一个可变引用，要么有多个不可变引用，但不能同时存在可变引用与不可变引用。这确保了在同一时间只有一个地方对数据进行修改，或者有多个地方同时读取数据。</li>
+</ol>
+</li>
+<li>可变引用规则：<ol>
+<li>在任何给定的时间，只能有一个可变引用来访问数据。这防止了并发修改相同数据的问题，从而防止数据竞争。</li>
+</ol>
+</li>
+</ol>
+<p>生命周期规则：</p>
+<ol>
+<li>引用的生命周期必须在被引用的数据有效的时间范围内。这防止了悬垂引用，即引用的数据已经被销毁，但引用仍然存在。</li>
+<li>可变引用与不可变引用不互斥：<ol>
+<li>可以同时存在多个不可变引用，因为不可变引用不会修改数据，不会影响到其他引用。但不可变引用与可变引用之间是互斥的。</li>
+</ol>
+</li>
+</ol>
+<h2 id="手动指定lifetime"><a href="#手动指定lifetime" class="headerlink" title="手动指定lifetime"></a>手动指定lifetime</h2><p>生命周期参数在函数&#x2F;结构体签名中指定：</p>
+<ol>
+<li>一般情况下borrow checker会自行推断</li>
+<li>在函数&#x2F;结构体中使用生命周期参数允许函数声明引用的有效范围。</li>
+</ol>
+<h2 id="任何引用都是有生命周期"><a href="#任何引用都是有生命周期" class="headerlink" title="任何引用都是有生命周期"></a>任何引用都是有生命周期</h2><p>大多数情况下，生命周期是隐藏且被推断的</p>
+<p>生命周期的主要目的是防止悬垂引用</p>
+<h2 id="生命周期与函数"><a href="#生命周期与函数" class="headerlink" title="生命周期与函数"></a>生命周期与函数</h2><p>编译器在没有显式注解的情况下，使用三个规则来推断这些生命周期</p>
+<ol>
+<li>第一个规则是每个作为引用的参数都会得到它自己的生命周期参数。</li>
+<li>第二个规则是，如果只有一个输入生命周期参数，那么该生命周期将被分配给所有输出生命周期参数（该生命周期将分配给返回值）。</li>
+<li>第三个规则是，如果有多个输入生命周期参数，但其中一个是对self或不可变self的引用时。因为在这种情况下它是一个方法，所以self是生命周期被分配给所有输出生命周期参数</li>
+</ol>
+<h2 id="结构体中的引用"><a href="#结构体中的引用" class="headerlink" title="结构体中的引用"></a>结构体中的引用</h2><p>在结构体中的引用需要标注生命周期</p>
+<p>结构体的方法(&amp;self等)不需要标注生命周期</p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型是一种编译语言的特性，它允许在代码中使用参数化类型，以便在不同地方使用相同的代码逻辑处理多种数据类型，而无需为每种类型编写单独的代码。</p>
+<p>作用：</p>
+<ol>
+<li>提高代码的重用性</li>
+<li>提高代码的可读性</li>
+<li>提高代码的抽象度</li>
+</ol>
+<h2 id="泛型的应用类型"><a href="#泛型的应用类型" class="headerlink" title="泛型的应用类型"></a>泛型的应用类型</h2><ol>
+<li>泛型定义结构体\枚举</li>
+<li>泛型定义函数</li>
+<li>泛型与特质</li>
+</ol>
+<h2 id="泛型与函数"><a href="#泛型与函数" class="headerlink" title="泛型与函数"></a>泛型与函数</h2><p>在rust中，泛型也可以用于函数，使得函数能够处理多种类型的参数，提高代码的重用性与灵活性。</p>
+<ol>
+<li>泛型与函数</li>
+<li>泛型与结构体中的方法</li>
+</ol>
+<h1 id="Trait"><a href="#Trait" class="headerlink" title="Trait"></a>Trait</h1><p>在rust中，特质（trait）是一种定义方法签名的机制</p>
+<p>特质允许定义一组方法的签名，但可以不提供具体的实现（也可以提供）。这些方法签名可以包括参数和返回类型，但可以不包括方法的实现代码。</p>
+<p>任何类型都可以实现特质，只要它们提供了特质中宝的的所有方法。这使得你可以为不同类型提供相同的行为。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>内置常量：特质可以内置常量，特质中定义的常量在程序的整个生命周期内都是有效的。</li>
+<li>默认实现：特质可以提供默认的方法实现。如果类型没有为特质中的某个方法提供自定义实现，将会使用默认实现。</li>
+<li>多重实现：割开可以实现多个特质，这允许你将不同的行为组合在一起</li>
+<li>特质边界：在泛型代码中，可以使用特质作为类型约束。这被称为特质边界，它限制了泛型类型必须实现的特质。</li>
+<li>Trait Alias：rust还支持trait alias，允许为复杂的trait组合创建简洁的别名，以便在代码中更轻松地引用。</li>
+</ol>
+<h2 id="trait-object"><a href="#trait-object" class="headerlink" title="trait object"></a>trait object</h2><ol>
+<li>在运行时动态分配的对象<ol>
+<li>运行时泛型</li>
+<li>比泛型要灵活的多</li>
+</ol>
+</li>
+<li>可以在集合中混入不同的类型对象<ol>
+<li>更容易处理相似的数据</li>
+</ol>
+</li>
+<li>有一些小小的性能损耗</li>
+</ol>
+<h2 id="dyn关键字"><a href="#dyn关键字" class="headerlink" title="dyn关键字"></a>dyn关键字</h2><p>dyn是rust中的关键字，用于声明特质对象的类型。特质对象是实现了特定特质的类型的实例，但其具体类型在编译时是未知的。因此，为了让编译器知道我们正在处理的是特质对象，我们需要在特质名称前面加上dyn 关键字。</p>
+<p>dyn关键字的作用是指示编译器处理特质对象。</p>
+<h2 id="rust中数据传输的三种形式"><a href="#rust中数据传输的三种形式" class="headerlink" title="rust中数据传输的三种形式"></a>rust中数据传输的三种形式</h2><ol>
+<li>不可变引用<code>&amp;dyn Trait</code></li>
+<li>可变引用<code>&amp;mut dyn Trait</code></li>
+<li>move语义所有权转移：特质需要用Box<dyn Trait>&#96;实现move，如果需要在函数调用之间传递特质的所有权，并用希望避免在栈上分配大量的内存，可以使用</li>
+</ol>
+<h2 id="特质与Box"><a href="#特质与Box" class="headerlink" title="特质与Box"></a>特质与Box</h2><p>创建trait object的三种方式</p>
+<p>第一种</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">o</span> = Object&#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> <span class="variable">o_obj</span>: &amp;<span class="keyword">dyn</span> Object = &amp;o;</span><br></pre></td></tr></table></figure>
+
+<p>第二种</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">o_obj</span>: &amp;<span class="keyword">dyn</span> Object = &amp;Object&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>第三种</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">o_obj</span>: <span class="type">Box</span>&lt;<span class="keyword">dyn</span> Object&gt; = <span class="type">Box</span>::<span class="title function_ invoke__">new</span>(Object&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>第一种与第二种都是创建不可变引用</p>
+<p>第三种最常用也最灵活，一般来说会使用Box和特质来组成集合元素</p>
+<h2 id="泛型与impl不同的写法"><a href="#泛型与impl不同的写法" class="headerlink" title="泛型与impl不同的写法"></a>泛型与impl不同的写法</h2><ul>
+<li><code>fn call(item1: &amp;impl Trait, item2: &amp;ipmpl Trait);</code>可以是不同的类型</li>
+<li><code>fn call_generic&lt;T: Trait&gt;(item1: &amp;T, item2: &amp;T);</code>可以是相同类型</li>
+</ul>
+<h2 id="Multiple-Trait-Bounds"><a href="#Multiple-Trait-Bounds" class="headerlink" title="Multiple Trait Bounds"></a>Multiple Trait Bounds</h2><ul>
+<li><code>fn call(item1: &amp;(impl Trait+ AnotherTrait));</code></li>
+<li><code>fn call_generic&lt;T: Trait+ AnotherTrait&gt;(item1: &amp;T);</code></li>
+</ul>
+<h2 id="Rust重载操作符"><a href="#Rust重载操作符" class="headerlink" title="Rust重载操作符"></a>Rust重载操作符</h2><p>只需要实现相应的特质</p>
+<p>为结构体实现一个加号的例子</p>
+<h2 id="rust不支持面向对象"><a href="#rust不支持面向对象" class="headerlink" title="rust不支持面向对象"></a>rust不支持面向对象</h2><p>rust不支持传统的继承的概念，倡可以在特质中通过层级化来完成你的需求</p>
+<p>rust选择了一种函数式的编程范式，即“组合和委托”而非“继承”</p>
+<p>编程语言的大势也是组合优于继承</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>rust中多态无处不在。</p>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>定义：循环是一种控制流结构，它会反复执行一组语句，直到满足某个条件。</p>
+<p>控制条件：循环通常包含一个条件表达式，只有在条件为真时，循环体中的语句才会执行。</p>
+<p>退出条件：循环执行直到条件不再满足，或者通过<code>break</code>语句旷工中断循环。</p>
+<p>使用场景：适用于需要反复执行某个操作直到满足某个条件的情况。</p>
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>定义：迭代是对序列中的元素进行逐个访问的过程。</p>
+<p>控制条件：迭代通常使用迭代器来实现，迭代器提供了对序列元素的访问和操作。</p>
+<p>退出条件：通常不需要显式的退出条件，迭代器会在处理完所有元素后自动停止。</p>
+<p>使用场景：适用于需要遍历数据结构中的元素的情况，如数组，切片，集合等。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>循环是一种控制流结构，它反复执行一组语句。</li>
+<li>迭代是对序列中的元素进行逐个访问的过程，通常使用迭代器实现。</li>
+<li>循环可以是有限的或无限的</li>
+<li>迭代器提供了一种更抽象的方式来处理序列，使得代码更具可读性与灵活性</li>
+</ol>
+<p>在rust中，循环与迭代性能的差距可能会取决于具体的使用情况与编译器的优化。绝大多数情况下，rust的代码器是经过优化的，可以达到或接近手动编写循环的性能水平。</p>
+<h2 id="IntoIterator"><a href="#IntoIterator" class="headerlink" title="IntoIterator"></a>IntoIterator</h2><p>IntoIterator是一个rust 特质，它定义了一种将类型转换为迭代器的能力。</p>
+<p>该特质包含一个方法 <code>into_iter</code>，该方法返回了一个实现了Iterator Trait的迭代器。</p>
+<p>通常，当有一个类型，希望能够对其进行迭代时，会实现 <code>IntoIterator</code>特质来提供将该类型转换为迭代器的方法。</p>
+<h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>Iterator是rust标准库中的特质，定义了一种访问序列元素的方式。</p>
+<p>包含了一系列方法，如<code>next</code>，<code>map</code>，<code>filter</code>，<code>sum</code>等，用于对序列进行不同类型的操作。</p>
+<p>通过实现<code>Iterator</code>特质，可以创建自定义的迭代器，以定义如何迭代你的类型中的元素。</p>
+<h2 id="获取迭代器的三种方法iter-，iter-mut-，Into-iter"><a href="#获取迭代器的三种方法iter-，iter-mut-，Into-iter" class="headerlink" title="获取迭代器的三种方法iter()，iter_mut()，Into_iter()"></a>获取迭代器的三种方法<code>iter()</code>，<code>iter_mut()</code>，<code>Into_iter()</code></h2><h3 id="iter-方法"><a href="#iter-方法" class="headerlink" title="iter()方法"></a>iter()方法</h3><p>该方法返回一个不可变引用的迭代器，用于只读访问集合的元素。</p>
+<p>该方法适用于在希望不修改集合的情况下迭代元素的场景。</p>
+<h3 id="iter-mut方法"><a href="#iter-mut方法" class="headerlink" title="iter_mut方法"></a>iter_mut方法</h3><p>返回一个可变引用的迭代器，用于允许修改集合中的元素。</p>
+<p>该方法适用于希望在迭代过程中修改集合元素的场景。</p>
+<p>该方法性能非常差，尽量要避免。</p>
+<h3 id="into-iter-方法"><a href="#into-iter-方法" class="headerlink" title="into_iter()方法"></a>into_iter()方法</h3><p>该方法返回一个拥有所有权的迭代器，该迭代器会消耗集合本身，将所有权转移到迭代器。</p>
+<p>该方法适用于希望在迭代过程中拥有集合的所有权，以便进行消耗性的操作，如移除元素。</p>
+<h1 id="closures闭包"><a href="#closures闭包" class="headerlink" title="closures闭包"></a>closures闭包</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包是一种可以捕获其环境中变量的匿名函数</p>
+<p>闭包的简洁灵活，同时也具有强大的功能。闭包在rust中被广泛用于函数式编程，并发编程以及简化代码等方面。</p>
+<h2 id="定义一个闭包"><a href="#定义一个闭包" class="headerlink" title="定义一个闭包"></a>定义一个闭包</h2><ul>
+<li>定义闭包的语法类似<ul>
+<li>在<code>||</code>内定义参数</li>
+<li>可选地指定参数，返回类型</li>
+<li>在<code>&#123;&#125;</code>内定义闭包体</li>
+</ul>
+</li>
+</ul>
+<p>可以将闭包分配给一个变量</p>
+<p>然后使用该变量，就像它是一个函数名，来调用闭包。</p>
+<h2 id="获取外部参数"><a href="#获取外部参数" class="headerlink" title="获取外部参数"></a>获取外部参数</h2><p>由rust编译器决定哪种方式获取外部参数</p>
+<ol>
+<li>不可变引用Fn</li>
+<li>可变引用FnMut</li>
+<li>转移所有权（move）FnOnce</li>
+</ol>
+<h2 id="所有权转移Move"><a href="#所有权转移Move" class="headerlink" title="所有权转移Move"></a>所有权转移Move</h2><p>Rust 编译器判断capures by value，比如在闭包手动drop该参数</p>
+<p>move关键字强制将所有权转移到闭包</p>
+<h2 id="闭包的工作方式"><a href="#闭包的工作方式" class="headerlink" title="闭包的工作方式"></a>闭包的工作方式</h2><ol>
+<li>Rust编译器将闭包放入一个结构体</li>
+<li>结构体会声明一个call function，而闭包就是函数，call function会包含闭包的所有代码。</li>
+<li>结构体会生产一些属性去捕获闭包外的参数</li>
+<li>结构体会实现一些特质</li>
+</ol>
+<p>FnOnce，FnMut，Fn的关系：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Fn : FnMut : FnOnce</span><br><span class="line"></span><br><span class="line">FnOnce实现move所有权转移</span><br><span class="line">FnMut实现可变引用，实现了FnOnce和FnMut</span><br><span class="line">Fn实现不可变引用</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/6ada4108/" title="Rust高级">http://example.com/posts/6ada4108/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/4fbe8671/" rel="prev" title="Rust基础">
+                  <i class="fa fa-angle-left"></i> Rust基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/afd03ab8/" rel="next" title="FourierMamba- Fourier Learning Integration with  State Space Models for Image Deraining">
+                  FourierMamba- Fourier Learning Integration with  State Space Models for Image Deraining <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

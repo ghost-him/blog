@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/1f913444/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/1f913444/","path":"posts/1f913444/","title":"Context-Guided Spatial Feature Reconstruction  for Efficient Semantic Segmentation"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Context-Guided Spatial Feature Reconstruction  for Efficient Semantic Segmentation | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/1f913444/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">创新点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E5%89%8D%E9%9A%BE%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">当前难点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2"><span class="nav-number">2.3.</span> <span class="nav-text">高效语义分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E4%B8%8A%E4%B8%8B%E6%96%87%E6%8F%90%E5%8F%96%E6%A8%A1%E5%9D%97"><span class="nav-number">2.4.</span> <span class="nav-text">高效上下文提取模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E5%A4%B4"><span class="nav-number">2.4.1.</span> <span class="nav-text">分割头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CGRSeg"><span class="nav-number">2.5.</span> <span class="nav-text">CGRSeg</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%91%E5%AD%97%E5%A1%94%E4%B8%8A%E4%B8%8B%E6%96%87%E6%8F%90%E5%8F%96"><span class="nav-number">2.5.1.</span> <span class="nav-text">金字塔上下文提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E7%89%B9%E5%BE%81%E9%87%8D%E5%BB%BA"><span class="nav-number">2.5.2.</span> <span class="nav-text">空间特征重建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%8E%9F%E5%9E%8B%E5%BC%95%E5%AF%BC%E5%A4%B4%E9%83%A8"><span class="nav-number">2.5.3.</span> <span class="nav-text">动态原型引导头部</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E5%BD%A2%E8%87%AA%E6%A0%A1%E5%87%86%E6%A8%A1%E5%9D%97"><span class="nav-number">2.6.</span> <span class="nav-text">矩形自校准模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%8E%9F%E5%9E%8B%E5%BC%95%E5%AF%BC%E5%A4%B4"><span class="nav-number">2.7.</span> <span class="nav-text">动态原型引导头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">2.8.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-ADE-20-K-%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="nav-number">2.8.1.</span> <span class="nav-text">在 ADE 20 K 的结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#COCO-Stuff-%E7%BB%93%E6%9E%9C"><span class="nav-number">2.8.2.</span> <span class="nav-text">COCO-Stuff 结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pascal-Context-%E4%B8%8A%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="nav-number">2.8.3.</span> <span class="nav-text">Pascal Context 上的结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.9.</span> <span class="nav-text">消融实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81-RCM-%E5%92%8C-DPG-%E5%A4%B4%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.9.1.</span> <span class="nav-text">验证 RCM 和 DPG 头的有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DPG-%E4%B8%8E%E5%85%B6%E4%BB%96%E5%A4%B4%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.9.2.</span> <span class="nav-text">DPG 与其他头的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCA-%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.9.3.</span> <span class="nav-text">RCA 的有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E4%B8%BB%E5%B9%B2%E7%BD%91%E7%BB%9C%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.9.4.</span> <span class="nav-text">与其他主干网络的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCA-%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%8A%A0%E6%B3%95%E4%B8%8E%E4%B9%98%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.9.5.</span> <span class="nav-text">RCA 中使用加法与乘法的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E7%8A%B6%E8%87%AA%E6%A0%A1%E5%87%86%E5%87%BD%E6%95%B0%E4%B8%AD%E5%8D%B7%E7%A7%AF%E6%A0%B8%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.9.6.</span> <span class="nav-text">形状自校准函数中卷积核大小的有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCA-%E4%B8%AD%E8%9E%8D%E5%90%88%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%B7%E7%A7%AF%E6%A0%B8%E9%80%89%E6%8B%A9"><span class="nav-number">2.9.7.</span> <span class="nav-text">RCA 中融合函数的卷积核选择</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/1f913444/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Context-Guided Spatial Feature Reconstruction  for Efficient Semantic Segmentation | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Context-Guided Spatial Feature Reconstruction  for Efficient Semantic Segmentation
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-04 13:28:14 / 修改时间：14:03:53" itemprop="dateCreated datePublished" datetime="2024-07-04T13:28:14+08:00">2024-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2405.06228">arxiv</a></p>
+<span id="more"></span>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>语义分割是许多应用中的重要任务，但是在有限计算成本下实现高级性能仍然相当困难。</p>
+<h2 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h2><p>提出了 CGRSeg，这是一种基于上下文引导的空间特征重建的高效且竞争力强的分割框架。</p>
+<p>设计了一个矩形自校准模块用于空间特征重建和金字塔上下文提取。它在水平方向和垂直方向上捕捉全局上下文，并获取轴向全局上下文以显式建模矩形关键区域。一个形状自校准功能被设计用来使关键区域更接近前景对象。此外，还提出了一种轻量级的动态原型引导头，通过显式类嵌入来改善前景对象的分类。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="当前难点"><a href="#当前难点" class="headerlink" title="当前难点"></a>当前难点</h2><p>尽管现在已经有网络取得了不错的进展，但是如何使轻量级模型具有更高的分割准确性仍需探索。由于特征表示能力有限，轻量级模型难以对前景对象的边界和类别进行建模，这可能导致边界分割不准确和分类错误等问题。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>为了解决这些问题，设计了</p>
+<ol>
+<li>矩形自校准模块（RCM），以改善前景对象的位置建模。</li>
+<li>动态原型引导（DPG）头，以嵌入类别信息，从而提高前景对象的类别区分能力。</li>
+<li>上下文引导的空间特征重建网络（CGRSeg），进一步引入金字塔上下文以改善特征表示。该网络包括金字塔上下文提取、空间特征重建和轻量级头。</li>
+</ol>
+<p>矩形自核准模型：提高定位前景对象与提取金字塔上下文的能力。矩形自校准注意力是 RCM 的核心组件。使用水平池化与垂直池化来捕捉轴向全局上下文，并生成两个轴向向量。这两个轴向向量相加来建模矩形注意力区域。还设计了一个形状自校准函数来高速矩形注意力的形状，使其更接近前景特征，该函数包括大核条带卷积。还设计了一个融合函数来融合注意力特征并增加局部细节。通过这种方式，RCM 可以使模型在空间特征重建中更加关注前景，并可以捕捉轴向全局上下文来进行金字塔上下文提取。</p>
+<p>动态原型引导头旨在通过显式类别嵌入来提高前景对象的分类能力。具体来说，首先将特征投影到类别特征空间。然后，类别空间中的特征和像素空间中的特征相乘以获得动态原型。动态原型可以反映每张图像上所有类别的特征分布。为了进一步嵌入类别信息，动态原型被压缩以获得类别嵌入向量。最后，将类别嵌入向量投影到像素特征空间，并对像素特征进行加权，以增强不同类别之间的区分能力。通过这种方式，DPG 头可以更好地区分不同类别的特征，并提高分类性能。</p>
+<h2 id="高效语义分割"><a href="#高效语义分割" class="headerlink" title="高效语义分割"></a>高效语义分割</h2><p>实现语义分割有基于 CNN 的轻量级语义分割方法，也有基于 Transformer 的方法。在基于 Tranformer 的方法中也有很多改进与优化，而作者采用了金字塔上下文引导的空间特征重建来提高对前景对象的建模能力。</p>
+<h2 id="高效上下文提取模块"><a href="#高效上下文提取模块" class="headerlink" title="高效上下文提取模块"></a>高效上下文提取模块</h2><p>注意力机制常用于上下文提取，如坐标注意力与 Gather-Excite。坐标注意力通过水平与垂直池化捕捉轴向全局上下文，并提取坐标关系以增强位置感知。Gather-Exite 高道地聚合来自大空间范围的特征响应，并将池化信息重新分配给局部特征。</p>
+<p>而论文中提出的 RCM（关键区域模块）使用加法来建模关键区域，闪设计了形状自核准来校准矩形注意力，使模型更加关注前景特征。</p>
+<h3 id="分割头"><a href="#分割头" class="headerlink" title="分割头"></a>分割头</h3><p>分割头通常设计用于提高分割网络的性能。</p>
+<h2 id="CGRSeg"><a href="#CGRSeg" class="headerlink" title="CGRSeg"></a>CGRSeg</h2><p>从前文可知，前景对象建模与金字塔上下文提取对分割很重要。所以设计了一个上下文引导的空间特征重建网络（CGRSeg）。其架构如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704101417.png"></p>
+<p>CGRSeg 由三个关键的部分组成：金字塔上下文提取，空间特征重建和一个轻量级头部。为了使模型聚集于前景特征，提出了一个矩形自校准模块（RCM）。它捕捉了用于金字塔上下文提取的轴向全局上下文。提出了一个动态原型引导（DPG）, 通过显式类嵌入来提高前景对象的分类。</p>
+<h3 id="金字塔上下文提取"><a href="#金字塔上下文提取" class="headerlink" title="金字塔上下文提取"></a>金字塔上下文提取</h3><p>RCM 用于提取金字塔上下文，它通过水平和垂直池化来捕捉两个方向的轴向上下文。此外，而使用多层感知器（MLP）进一步增强特征表示。</p>
+<p>提出的模型使用了逐步下采样编码器。编码器生成不同尺度的特征，如 $[F1, F2, F3, F4]$，它们的分辨率分别为 $[\frac{H}{4} \times \frac{W}{4}, \frac{H}{8} \times \frac{W}{8}, \frac{H}{16} \times \frac{W}{16}, \frac{H}{32} \times \frac{W}{32}]$。然后，将较低尺度的特征 F 2, F 3 和 F 4 通过平均池化下采样到 $\frac{H}{64} \times \frac{W}{64}$ 的大小，并将它们拼接在一起生成金字塔特征 F 5。F 5 被输入多个堆叠的 RCM 中进行金字塔特征交互并提取具有尺度感知的语义特征。最后，在金字塔特征提取后，特征被分割并上采样到原始尺度。这个过程可以表示为：<br>$$<br>P &#x3D; RCM(AP(F_2, 8), AP(F_3, 4), AP(F_4, 2))<br>$$<br>其中，AP (F, x) 表示将特征 F 按因子 x 进行平均池化下采样的操作。P 是具有金字塔上下文的特征。</p>
+<h3 id="空间特征重建"><a href="#空间特征重建" class="headerlink" title="空间特征重建"></a>空间特征重建</h3><p>为了使解码器特征更集中于前景，RCM 用于重建空间特征。CGRSeg 将来自编码器的低级空间特征与解码器中相应尺度的高级特征融合。融合后的特征通过使用 RCM 进行重建。RCM 捕捉轴向全局上下文来建模矩形关键区域，然后使用形状自校准功能调整注意区域以聚集前景。金字塔特征用于引导空间特征重建，使重建后的特征能够感知多尺度信息。</p>
+<h3 id="动态原型引导头部"><a href="#动态原型引导头部" class="headerlink" title="动态原型引导头部"></a>动态原型引导头部</h3><p>分割头部生成动态原型以嵌入类信息。类嵌入有助于增强不同类别之间的区别，并提高分类准确性。该模块可以提高前景对象的分类。</p>
+<h2 id="矩形自校准模块"><a href="#矩形自校准模块" class="headerlink" title="矩形自校准模块"></a>矩形自校准模块</h2><p>可以使模型专注于前景特征。它可捕获轴向全局上下文，用于金字塔上下文提取。该模块包括矩形自校准注意力、批量归一化和多层感知机（MLP）。</p>
+<p>矩形自校准注意力采用水平池化和垂直池化来捕获两个方向的轴向全局上下文，并使用广播加法来建模关注的矩形区域。然后，设计了一个形状自校准函数来校准关注区域，使其更接近前景对象。这里，使用了两个大核条形卷积来分别校准水平和垂直方向的注意力图。</p>
+<p>首先，使用水平条形卷积来校准水平方向的形状，这调整每一行的元素，使水平形状更接近前景对象。然后，特征通过批量归一化（BN）进行归一化，并通过 ReLU 增加非线性。形状也通过在垂直方向使用垂直条形卷积进行校准。这样，两个方向的卷积可以解耦，能够适应任何形状。</p>
+<p>条形卷积的权重是可学习的，从下图可知：高亮区域的形状通过两个具有不同权重的条形卷积进行改变。通过训练，该功能可以学习适当的权重来调整矩形区域到前景对象。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704110648.png"></p>
+<p>从架构图的可视化结果中也可以看到，矩形自校准注意力确实有效的建模了矩形关键区域，并通过形状自校准函数调整特征，使其更专注于前景。形状自校准函数可以表示如下：<br>$$<br>\xi_C(\bar{y}) &#x3D; \delta(\psi_{k \times 1}(\phi(\psi_{1 \times k}(\bar{y}))))<br>$$<br>其中，$\psi$ 表示大核条形卷积，k 表示条形卷积的核长度，$\phi$ 表示批量归一化后跟 ReLU 函数，$\delta$ 表示 Sigmoid 函数。</p>
+<p>同时，还设计了一个特征融合函数来融合注意力特征与输入特征：使用 3×3 深度可分离卷积进一步提取输入特征的局部细节，并通过 Hadamard 积将校准后的注意力特征加权到特征上。其公式如下：<br>$$<br>\xi_F(x, y) &#x3D; \psi_{3 \times 3}(x) \odot y<br>$$<br>其中，$\psi$ 表示 <code>3*3</code> 的深度可分离卷积，y 是在前一步骤中获得的注意力特征。$\odot$ 表示 Hadamard 积。</p>
+<p>此外，还将矩形自校准注意力与 MetaNeXt 结构结合：在矩形自校准注意力之后添加批量归一化和 MLP 来细化特征。最后，采用残差连接进一步增强特征重用。可以在架构图中看到 RCM 的结构，它可以被描述为：<br>$$<br>F_{out} &#x3D; \rho(\xi_F(x, \xi_C(H_P(x) \oplus V_P(x)))) + F_{in}<br>$$<br>$\oplus$ 表示广播加法（broadcast addition），$H_P$ 和 $V_P$ 分别表示水平池化和垂直池化。$\rho$ 指的是批量归一化和 MLP。</p>
+<h2 id="动态原型引导头"><a href="#动态原型引导头" class="headerlink" title="动态原型引导头"></a>动态原型引导头</h2><p>为了改进前景对象的分类，提出了动态原型引导头（DPG 头）。DPG 头生成动态原型以嵌入类别信息。类别嵌入特征被投影到像素特征空间，并通过加权像素特征来增强不同类别之间的区分度。其架构如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704114145.png"></p>
+<p>首先，将特征投影到类别特征空间。然后，类别空间中的特征和像素空间中的特征相乘以获得动态原型。动态原型能够反映每张图像中不同类别的特征分布，并遵循输入的动态变化。生成动态原型的过程可以表示为：<br>$$<br>F_p &#x3D; \delta_{D \to C}(F_x) \otimes F_x<br>$$<br>其中，$\otimes$ 表示矩阵乘法操作，$F_P$ 表示原型。</p>
+<p>接着，DPG 头进一步嵌入类别信息以增强不同类别之间的区分度。应用一个全连接层将原型压缩到 C×1 维度以嵌入类别信息并生成类别嵌入向量，并使用 Softmax 函数将值约束在 0 和 1 之间。类别嵌入向量 1×C 表示每个类别的全局信息。为了将类别嵌入向量投影到像素特征空间，我们将类别嵌入向量与转置的原型相乘。通过类别嵌入增强，新的注意力向量具有更强的区分类别的能力。然后，使用两个全连接层来捕捉注意力向量中的上下文。在两层之间使用层归一化（Layer Normalization）来归一化特征。其过程可以用以下公式表示：<br>$$<br>F_{gp} &#x3D; \text{Softmax}(\delta_{D \to 1}(F_p))<br>$$<br>其中，$delta$ 表示全连接层。</p>
+<p>最后，注意力向量被加权到像素特征以强调重要特征并增强特征表示。其过程为：<br>$$<br>F_o &#x3D; \delta(\text{ReLU}(\text{LN}(\delta(F_p \cdot F_{gp})))) \odot F_x<br>$$<br>其中 LN 和 ReLU 分别是层归一化和 ReLU 激活函数。δ 表示全连接层。$\odot$ 表示广播哈达玛积。计算得到的特征 $F_o$ 随后被送入分类卷积。</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><h3 id="在-ADE-20-K-的结果"><a href="#在-ADE-20-K-的结果" class="headerlink" title="在 ADE 20 K 的结果"></a>在 ADE 20 K 的结果</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704130620.png"></p>
+<p>可以得出结论，所提出的 CGRSeg 在相同的实验设置下，可以以更少的计算成本实现更高的性能。</p>
+<h3 id="COCO-Stuff-结果"><a href="#COCO-Stuff-结果" class="headerlink" title="COCO-Stuff 结果"></a>COCO-Stuff 结果</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704130651.png"></p>
+<p>模型性能在计算成本较低的情况下超过了之前最好的方法 SegNeXt</p>
+<h3 id="Pascal-Context-上的结果"><a href="#Pascal-Context-上的结果" class="headerlink" title="Pascal Context 上的结果"></a>Pascal Context 上的结果</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704130737.png"></p>
+<p>在性能上超过了所有其他对比方法。</p>
+<h2 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h2><h3 id="验证-RCM-和-DPG-头的有效性"><a href="#验证-RCM-和-DPG-头的有效性" class="headerlink" title="验证 RCM 和 DPG 头的有效性"></a>验证 RCM 和 DPG 头的有效性</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704131040.png"></p>
+<p>RCM 验证了上下文提取（PCE）与空间特征重建（SFR）的有效性。可以看到，该性能是有效的。</p>
+<h3 id="DPG-与其他头的对比"><a href="#DPG-与其他头的对比" class="headerlink" title="DPG 与其他头的对比"></a>DPG 与其他头的对比</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704131223.png"></p>
+<p>可以看到，DPG 的效果是最好的。</p>
+<h3 id="RCA-的有效性"><a href="#RCA-的有效性" class="headerlink" title="RCA 的有效性"></a>RCA 的有效性</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704131318.png"></p>
+<p>使用其他块替换 RCM，测试出来的准确率均降低了。</p>
+<h3 id="与其他主干网络的比较"><a href="#与其他主干网络的比较" class="headerlink" title="与其他主干网络的比较"></a>与其他主干网络的比较</h3><p>将主干网络替换为其他的网络后，CGRSeg 仍然可以提高，表明该框架是高效的，可以适应不同的主干网络。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704131742.png"></p>
+<h3 id="RCA-中使用加法与乘法的对比"><a href="#RCA-中使用加法与乘法的对比" class="headerlink" title="RCA 中使用加法与乘法的对比"></a>RCA 中使用加法与乘法的对比</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704131422.png"></p>
+<p>可以看到对关键区域的显式建模可以有效提高分割性能。此外，加法的性能比乘法高</p>
+<h3 id="形状自校准函数中卷积核大小的有效性"><a href="#形状自校准函数中卷积核大小的有效性" class="headerlink" title="形状自校准函数中卷积核大小的有效性"></a>形状自校准函数中卷积核大小的有效性</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704132053.png"></p>
+<p>对比不同卷积核的大小，可以看到，当核的大小增加时，精度也会增加。但是当增加大小时，FLOPs 也会增加，所以只加到 <code>1*11</code> 和 <code>11*1</code>。</p>
+<h3 id="RCA-中融合函数的卷积核选择"><a href="#RCA-中融合函数的卷积核选择" class="headerlink" title="RCA 中融合函数的卷积核选择"></a>RCA 中融合函数的卷积核选择</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240704132433.png"></p>
+<p>可以看到当大小为 <code>3*3</code> 时，性能最好。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/1f913444/" title="Context-Guided Spatial Feature Reconstruction  for Efficient Semantic Segmentation">http://example.com/posts/1f913444/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/54455e7f/" rel="prev" title="Vim-F- Visual State Space Model Benefiting from Learning in the Frequency Domain">
+                  <i class="fa fa-angle-left"></i> Vim-F- Visual State Space Model Benefiting from Learning in the Frequency Domain
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/34e96b3d/" rel="next" title="Rewrite the Stars">
+                  Rewrite the Stars <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

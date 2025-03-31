@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/148bf6df/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/148bf6df/","path":"posts/148bf6df/","title":"C 语言指针详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C 语言指针详解 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/148bf6df/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">指针的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%85%B6%E4%BB%96%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">指针和其他变量的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">指针的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">指针与函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">易混淆点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E4%B8%80"><span class="nav-number">4.1.</span> <span class="nav-text">例一</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/148bf6df/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C 语言指针详解 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C 语言指针详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-13 00:12:00" itemprop="dateCreated datePublished" datetime="2023-03-13T00:12:00+08:00">2023-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-03-17 10:40:26" itemprop="dateModified" datetime="2023-03-17T10:40:26+08:00">2023-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">编程语言学习</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>指针是 C 语言的灵魂，同时，指针也是 C 语言里最难搞的内容，初学者很容易就被绕进去。因此，出这个文章来详细解答一下 C 语言中指针的应用。同时，也会举一些常见的用法和易错点。</p>
+<span id="more"></span>
+
+<h2 id="指针的定义"><a href="#指针的定义" class="headerlink" title="指针的定义"></a>指针的定义</h2><p>指针是什么？指针是一个变量。什么是变量？可以改变的数叫做变量。就像其他的数据类型一样，指针也可以被改变。它存的是其他变量的地址。</p>
+<p>指针在计算机中占用的空间与计算机的位数有关。如果计算机是 32 位的，那么指针占用 4 个字节；如果计算机是 64 位的，那么指针占用 8 个字节。为什么是这个样子的呢？</p>
+<p>以 64 位计算机为例。首先，我们先来了解一下计算机寻址。计算机是在一块内存空间上运行的，那么为了可以精确的表示这个内存空间。计算机需要给不同的地址赋予唯一的标记。而计算机是二进制的，因此可以<strong>通过位的不同来表示不同的地址空间</strong>。而对于计算机来说，最小的地址空间是字节，因此，对于 64 位的计算机，它可以表示的空间为 $0\sim2^{64}-1$ 字节的空间。那么为了可以存储这个占用 64 位的信息，就需要 $64&#x2F;8&#x3D;8$ 个字节的空间了。因此，64 位的计算机的指针是 8 位。同时，这也是指针这个类型被开发出来的原因。</p>
+<p>在 C 语言中，定义一个指针的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[类型] *[变量名];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>类型：要定义的目标类型。</li>
+<li>变量名：当前定义出来的指针的名字。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>定义一个 int 类型的指针，他的名字是 <code>pMyPointer</code> ：<code> int *pMyPointer;</code></li>
+<li>定义一个 int* 类型的指针，他的名字是 <code>ppMyPointer</code>： <code>int* *ppMyPointer;</code></li>
+<li>定义一个 <code>struct myStruct</code> 类型的指针，他的名字是 <code>pMyStruct</code>：<code>struct myStruct *pMyStruct;</code></li>
+</ul>
+<p>通过上面的例子，我们可以知道：</p>
+<ol>
+<li>定义一个指针的语法是<strong>严格遵守</strong>上述格式的。</li>
+<li>指针的类型可以是<strong>任意类型</strong>。可以是内置数据类型，也可以是自定义数据类型。</li>
+</ol>
+<h2 id="指针和其他变量的区别"><a href="#指针和其他变量的区别" class="headerlink" title="指针和其他变量的区别"></a>指针和其他变量的区别</h2><p>既然指针和其他类型一样，都是变量，那么他们之间的区别是什么呢？答案是：<strong>没有区别</strong>。</p>
+<p>指针也会占用地址空间，指针也可以被改变，指针也可以被复制，指针也可以被相加… 总之，没有什么操作是指针所特有的。</p>
+<h2 id="指针的使用"><a href="#指针的使用" class="headerlink" title="指针的使用"></a>指针的使用</h2><p>在 C 语言中，如何使用一个指针呢？这里介绍两个操作符。</p>
+<ul>
+<li><code>&amp;</code>  ：取地址符。它的作用是获取一个变量的地址。可以通过这个操作符来获取一个变量的地址，从而来给指针赋值。</li>
+<li><code>*</code>  ：解引用。它的作用是获取一个指针所指向的内容。</li>
+</ul>
+<p>以一段代码来看</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">	<span class="comment">// 定义一个int类型的指针</span></span><br><span class="line">	<span class="type">int</span> *pMyPointer;</span><br><span class="line">	<span class="comment">// 定义一个int类型的变量</span></span><br><span class="line">	<span class="type">int</span> val;</span><br><span class="line">	<span class="comment">// 给变量赋值</span></span><br><span class="line">	val = <span class="number">5</span>;</span><br><span class="line">	<span class="comment">// 给指针赋值</span></span><br><span class="line">	pMyPointer = &amp;val;</span><br><span class="line">	<span class="comment">// 分别输出 变量的值 以及 指针的值</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;val: %d, pMyPointer: %x&quot;</span>, val, pMyPointer);</span><br><span class="line">	<span class="comment">// 输出指针指向的值</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;pMyPointer point to: %d&quot;</span>, *pMyPointer);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从这个代码片段的运行结果来看，我们可以得出以下的结论：</p>
+<ol>
+<li>指针存放的是一个变量的地址</li>
+<li>可以通过 <code>&amp;</code> 来获取一个变量的地址，通过 <code>*</code> 来获取一个地址所指向的内存的值。</li>
+</ol>
+<p>为了加深理解，我画了如下的图：</p>
+<img data-src="http://kodo.ghost-him.com/c-pointer.png" alt="c-pointer" style="zoom:80%" />
+
+<h3 id="指针与函数"><a href="#指针与函数" class="headerlink" title="指针与函数"></a>指针与函数</h3><p>在 C 语言里，我们经常会写一系列函数来辅助我们完成一些我们想要的功能。</p>
+<p>我们知道，函数在定义的时候，可以传入变量。但是当我们需要通过函数来改变外部的变量的时候，会发现当我们直接传入的变量是无法被改变的。因为函数在调用的时候，程序会自动复制一份相同的变量，此时，程序中存在两个完全一样的变量，他们之间相互独立，互不干扰。函数在执行的时候会使用复制出来的这个变量，而不会使用传入的变量。</p>
+<p>那么，如何让函数可以改变外部的变量呢？</p>
+<p>函数在定义的时候，可以在它的形参的位置传入指针。通过操作指针所指向的地址来间接的修改函数外部的变量。为什么可以通过指针来改变变量的值呢？当函数在调用的时候，虽然程序中是存在两个相同的变量的，但是它们的值是一样的。因此这两个指针都是<strong>指向同一个地址</strong>的。而这个地址上的变量代表的值就是这个变量的值，所以可以通过修改这个地址上的值来间接改变这个地址上的变量代表的值。</p>
+<p>好，在我们知道了这个知识点了以后，我们再来看看这个函数本身。不知道看这个文章的各位有没有想过，一个函数只能传入变量嘛，可不可以传入一个函数呢？答案是可以的。</p>
+<p>我们这里先讲一个知识点：<strong>函数指针</strong>和<strong>指针函数</strong>。</p>
+<p>指针函数：返回值是一个指针的<strong>函数</strong>。<br>函数指针：一个指向函数的<strong>指针</strong>。</p>
+<p>这里分别举一个例子：<br>指针函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *<span class="title function_">func</span><span class="params">(<span class="type">int</span> x)</span> &#123; <span class="comment">//定义一个返回值类型为int *的函数</span></span><br><span class="line">  <span class="type">int</span> *p = (<span class="type">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>)); <span class="comment">//动态分配内存空间</span></span><br><span class="line">  *p = x; <span class="comment">//给指针所指向的变量赋值</span></span><br><span class="line">  <span class="keyword">return</span> p; <span class="comment">//返回指针</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数指针：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123; <span class="comment">//定义一个求最大值的函数</span></span><br><span class="line">  <span class="keyword">return</span> x &gt; y ? x : y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="type">int</span> (*p)(<span class="type">int</span>, <span class="type">int</span>) = &amp;max; <span class="comment">//定义一个指向max函数的指针变量p，&amp;可以省略</span></span><br><span class="line">  <span class="type">int</span> a, b, c;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;请输入两个数字:\n&quot;</span>);</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">  c = p(a, b); <span class="comment">//通过指针变量p调用max函数，等价于c = max(a, b);</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;最大的数字是: %d\n&quot;</span>, c);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看清楚这两个的区别了嘛？接下来我来讲一个函数指针。</p>
+<p>一个函数的声明由函数的返回值类型，函数名和函数的参数列表组成。函数名是一个指向函数的运行入口的常量。因为是常量，所以它不可以被改变，但是可以被读取，即，可以把这个常量赋值给其他的一个变量。这个变量就是函数指针。</p>
+<p>函数指针是一个指向函数的指针变量，它可以用来调用函数或作为回调函数的参数。注意，这是一个指针。</p>
+<p>一个函数指针的定义方式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数返回值类型 (* 指针变量的名字)(函数的形参)</span><br></pre></td></tr></table></figure>
+
+<p>例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 被指函数：一个返回最大值的函数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">max</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个函数指针，它指向的是max函数</span></span><br><span class="line"><span class="type">int</span> (* my_func_pointer)(<span class="type">int</span>, <span class="type">int</span>); </span><br><span class="line"></span><br><span class="line">my_func_pointer = max;</span><br></pre></td></tr></table></figure>
+
+<h2 id="易混淆点"><a href="#易混淆点" class="headerlink" title="易混淆点"></a>易混淆点</h2><h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><p>我们来看下面的这个程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> *p, <span class="type">int</span> *q)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">	<span class="type">int</span> m = <span class="number">1</span>, n = <span class="number">2</span>;</span><br><span class="line">	<span class="type">int</span> *r = &amp;m;</span><br><span class="line">	</span><br><span class="line">	f(r, &amp;n);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d,%d&quot;</span>, m, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> *p, <span class="type">int</span> *q)</span> &#123;</span><br><span class="line">	p = p + <span class="number">1</span>;</span><br><span class="line">	*q = *q + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以注意到，这里的 f 函数给我们挖了一个坑。我们先来看这个 f 的参数：f 函数传入两个参数，两个参数的都是 <code>int</code> 类型的<strong>指针</strong>。</p>
+<p>我们知道，在 C 语言，函数传值的方式只有一种，就是拷贝传入。什么是拷贝传入呢？拷贝传入是在函数调用的时候，程序会把被传入的变量复制出一个一模一样的变量。这样，程序里就会有两个一模一样的变量，一个在函数外，一个在函数内，两个变量相互独立，互不干扰。函数在执行的时候使用的是函数内的那个变量，而不是函数外的那个变量。因此，不论函数内对这个变量有什么操作，函数的外的那个变量<strong>始终不变</strong>。这也是为什么函数在处理一个传入的变量的时候，不论函数内部怎么变，函数外的那个变量没有任何改变。</p>
+<p>知道了上述原理以后，我们来看 f 的第一个参数。第一个参数传入的是 r，因此，在执行这个函数的过程中，程序里有两个 r，一个位于函数的外部，即 main 函数内的那个，一个位于 f 内部。函数使用的是函数内部的那个变量 r，而不是函数外部的那个变量 r，因此，函数内部对 r + 1，对于函数外部的变量 r 是没有任何影响的。</p>
+<p>我们再来看 f 传入的第二个参数。第二个函数传入的是 n 变量的地址。因此，函数 f 在执行的时候，形参 q 存储的是变量 n 的地址。F 函数在获取了这个地址的值以后加 1 ，然后再将结果赋值给这到这个地址上，由于 <code>这个地址</code> 的地址指的是函数外部变量 n 所在地址，所以变量 n 被改变了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/148bf6df/" title="C 语言指针详解">http://example.com/posts/148bf6df/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"># C语言</a>
+              <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"># 指针</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/1065d207/" rel="prev" title="二合一电脑调教指南">
+                  <i class="fa fa-angle-left"></i> 二合一电脑调教指南
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/f3404829/" rel="next" title="碎碎念">
+                  碎碎念 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

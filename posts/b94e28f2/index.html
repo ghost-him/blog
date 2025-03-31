@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/b94e28f2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/b94e28f2/","path":"posts/b94e28f2/","title":"求次小生成树算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>求次小生成树算法 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/b94e28f2/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">求的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%95%E4%B8%80"><span class="nav-number">2.1.</span> <span class="nav-text">法一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="nav-number">2.1.1.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E9%99%90"><span class="nav-number">2.1.2.</span> <span class="nav-text">局限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%95%E4%BA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">法二</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B-%EF%BC%9A"><span class="nav-number">2.2.2.</span> <span class="nav-text">算法流程 ：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">题目</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/b94e28f2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="求次小生成树算法 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          求次小生成树算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-05-24 14:07:00 / 修改时间：14:12:12" itemprop="dateCreated datePublished" datetime="2023-05-24T14:07:00+08:00">2023-05-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">算法学习</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E7%89%88%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">模版算法</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E7%89%88%E7%AE%97%E6%B3%95/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>给一个带权的图，把图的所有生成树按权值从小到大排序，第二小的称为次小生成树。</p>
+<p>有两种定义方式：第一种是排名在第二位的生成树：次小生成树的权值可以等于最小生成树。第二种是在数值上严格大于最小生成树的权值（严格次小生成树）。</p>
+<span id="more"></span>
+
+<h2 id="求的方法"><a href="#求的方法" class="headerlink" title="求的方法"></a>求的方法</h2><h3 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h3><p>先求最小生成树，再枚举删去最小生成树中的边求解（删去以后在剩余的边中再求一次最小生成树）</p>
+<p>如果使用 kruskal 算法，则时间复杂度是 $O(mlog_{2}(m) + nm)$。m 为边数，n 为点数。</p>
+<h4 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h4><p>可以从集合的角度考虑，如果有 n 条边，那么可以将集合分成 n-1 类，第 1 类是不包含最小生成树的第 1 条边 … 第 k 类是不包含最小生成树的第 j 条边。不同的集合之间可能有交集，但是并集一定是会覆盖所有的边。所以只要求一下每个集合的最小值，再取一个 min，就可以得出总的最小值。</p>
+<h4 id="局限"><a href="#局限" class="headerlink" title="局限"></a>局限</h4><p>只可以求出非严格次小生成树，无法求出严格次小生成树。</p>
+<h3 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h3><p>先求最小生成树，然后依次枚举非树边，然后将该边加入树中，同时从树中去掉一条边，使得最终的图仍是一棵树。则一定可以求出次小生成树。</p>
+<p>如果最小生成树的权值是 sum，则加上新边的权重是 $w_{新}$ ，去掉一个树边 $w_{树}$，则操作一次以后的权重为 $sum + w_{新} - w_{树}$。如果要让这个值最小，则应该去的值尽可能的大。如果新加的边的两端是 a 和 b，则应该去的值是 a 和 b 这个环上的最大值。</p>
+<p>这个操作可以抽象为<strong>求树上任意两点之间的极值</strong>。可以使用 lca，动态树等方法来做。</p>
+<p>暴力的方法：记录一下从根节点到当前结点的最大的边权即可。可以使用 $O(n)$ 的做法求出每个点到任意一个点的最大的距离。然后任意两个点，求出它们之间的最大的值，这个值就是 $w_{树}$ 的值。时间复杂度为 $O(n^{2})$ 。所以使用这个方法的总的时候复杂度为  $O(m + n^{2} + mlog_{2}(m))$ （枚举非树边 + 预处理+ 求最小生成树（kruskal 算法））</p>
+<p>非严格次小生成树的解法：由于每个最小生成树都一定会存在次小生成树。所以要枚举每个非树边（在次小生成树中存在，在最小生成树中不存在的边），然后并这个边加入到树中以后，一定会形成一个环，所以要在环上去一个边。所以要去环上最大的边，这样可以使得次小生成树的权值最小。</p>
+<p>严格次小生成树解法：和非严格次小生成树的区别：如果当前的值无法替换环上的最大的边权（当前的值与最大边权相等），则可以替换次大边权。所以在预处理的时候要处理最大边权和次大边权。</p>
+<h4 id="正确性-1"><a href="#正确性-1" class="headerlink" title="正确性"></a>正确性</h4><p>定义一个操作：设 T 为图 G 的一个生成树，对于非树边 a 和非树边 b，插入边 a，并删除边 b 的操作为（+a，-b）。<br>如果 T+a-b 之后，仍然是一棵生成树，则称（+a，-b）是 T 的一个可行交换。<br>称由 T 进行一次可行变换所得到的新生成树集合称为 T 的<strong>邻集</strong>。</p>
+<p>定理：次小生成树一定在最小生成树的邻集中。即：一定存在一个次小生成树，使得它与最小生成树只有一个边不同。</p>
+<p>不论是严格次小还是非严格次小都成立。</p>
+<p>证明：反证法。假设存在一个次小生成树，使得它与最小生成树有两条边不同。</p>
+<ul>
+<li>非严格次小生成树：将次小生成树的所有边从小到大的排序，然后遍历，找到第一个不在最小生成树中的边。此时这个边的两个端点所在的集合一定是存在某些边使之相连。同时，由于是从小到大的遍历，所以那些边的权值一定是大于当前遍历到的边。因此，将当前遍历的边加上，将那个权值大的边去掉以后，我们依然可以得到一个生成树，并且这个生成树的权值要小于之前的那个生成树。由于有两个边不同，所以把这个边改了以后，依然最小生成树不同，但权值更小了。所以把这个边换了以后，这个生成树依然与最小生成树不同，且最小生成树的值没有变大。所以只要生成树与最小生成树的边的差别大于 1 条，就一直可以做这个操作，直到只与最小生成树的差别只有一条。</li>
+<li>严格次小生成树：将次小生成树的所有边从小到大的排序，然后遍历，找到第一个不在最小生成树中的边。此时这个边的两个端点所在的集合一定是存在某些边使之相连。同时，由于是从小到大的遍历，所以那些边的权值一定是<strong>大于或等于</strong>当前遍历到的边。如果两个边相等，则，替换了以后，权值不变，次小生成树和最小生成树中不同的边少了一条；如果边大于当前的边，则将其替换以后，边权会严格降低。因此，可以通过非严格最小生成树的方法来构造一个和最小生成树只有 1 边之差的次小生成树。</li>
+</ul>
+<h4 id="算法流程-："><a href="#算法流程-：" class="headerlink" title="算法流程 ："></a>算法流程 ：</h4><ol>
+<li>读边</li>
+<li>使用 kruskal 算法求出最小生成树</li>
+<li>对最小生成树建图</li>
+<li>对最小生成树预处理</li>
+<li>从小到大遍历每一个非树边，然后使用 lca 求出 a 和 b 之间的最大边权和次大边权。</li>
+<li>输出结果</li>
+</ol>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>链接：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1150/">AcWing 1148. 秘密的牛奶运输</a></p>
+<p>这里使用倍增法优化求 a 和 b 之间的最大值与次大值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>, M = <span class="number">300010</span>, INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span> &#123;</span><br><span class="line">	<span class="type">int</span> a, b, w;</span><br><span class="line">	<span class="comment">// 表示当前的边是不是树上的点 </span></span><br><span class="line">	<span class="type">bool</span> used;</span><br><span class="line">	<span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> Edge&amp; t) <span class="type">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> w &lt; t.w;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;edge[M];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> p[N];</span><br><span class="line"><span class="type">int</span> h[N], e[M], ne[M], w[M], idx;</span><br><span class="line"><span class="comment">// 当前点的深度，向上跳2^j步的结点，向上跳2^j步中最大值和次大值 </span></span><br><span class="line"><span class="type">int</span> depth[N], fa[N][<span class="number">17</span>], d1[N][<span class="number">17</span>], d2[N][<span class="number">17</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span> </span>&#123;</span><br><span class="line">	e[idx] = b, ne[idx] = h[a], w[idx] = c, h[a] = idx ++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p[x] != x) p[x] = <span class="built_in">find</span>(p[x]);</span><br><span class="line">	<span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用kruskal算法求最小生成树 </span></span><br><span class="line"><span class="function">LL <span class="title">kruskal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">		p[i] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">sort</span>(edge, edge + m );</span><br><span class="line">	LL res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i ++) &#123;</span><br><span class="line">		<span class="type">int</span> a = <span class="built_in">find</span>(edge[i].a);</span><br><span class="line">		<span class="type">int</span> b = <span class="built_in">find</span>(edge[i].b);</span><br><span class="line">		<span class="type">int</span> w = edge[i].w;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (a != b) &#123;</span><br><span class="line">			p[a] = b;</span><br><span class="line">			res += w;</span><br><span class="line">			edge[i].used = <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建最小生成树的图 </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i ++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (edge[i].used) &#123;</span><br><span class="line">			<span class="type">int</span> a = edge[i].a, b = edge[i].b, w = edge[i].w;</span><br><span class="line">			<span class="comment">// 无向图 </span></span><br><span class="line">			<span class="built_in">add</span>(a, b, w), <span class="built_in">add</span>(b, a, w);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对最小生成树预处理 </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(depth, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> depth);</span><br><span class="line">	depth[<span class="number">0</span>] = <span class="number">0</span>, depth[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">	<span class="comment">// 设1为根 </span></span><br><span class="line">	q.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span> (q.<span class="built_in">size</span>()) &#123;</span><br><span class="line">		<span class="type">int</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">		q.<span class="built_in">pop</span>();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = h[t]; ~i; i = ne[i]) &#123;</span><br><span class="line">			<span class="type">int</span> j = e[i];</span><br><span class="line">			<span class="comment">// 如果当前的点没有遍历过 </span></span><br><span class="line">			<span class="keyword">if</span> (depth[j] &gt; depth[t] + <span class="number">1</span>) &#123;</span><br><span class="line">				depth[j] = depth[t] + <span class="number">1</span>;</span><br><span class="line">				q.<span class="built_in">push</span>(j);</span><br><span class="line">				<span class="comment">// j的父结点是t </span></span><br><span class="line">				fa[j][<span class="number">0</span>] = t;</span><br><span class="line">				<span class="comment">// 只有一个边，所以最大的边是当前的边，不存在次大边 </span></span><br><span class="line">				d1[j][<span class="number">0</span>] = w[i], d2[j][<span class="number">0</span>] = -INF;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= <span class="number">16</span>; k ++) &#123;</span><br><span class="line">					<span class="type">int</span> anc = fa[j][k - <span class="number">1</span>];</span><br><span class="line">					fa[j][k] = fa[fa[j][k - <span class="number">1</span>]][k - <span class="number">1</span>];</span><br><span class="line">					<span class="type">int</span> distance[<span class="number">4</span>] = &#123;d1[j][k - <span class="number">1</span>], d2[j][k - <span class="number">1</span>], d1[anc][k - <span class="number">1</span>], d2[anc][k - <span class="number">1</span>]&#125;;</span><br><span class="line">					d1[j][k] = d2[j][k] = -INF;</span><br><span class="line">					<span class="keyword">for</span> (<span class="type">int</span> u = <span class="number">0</span>; u &lt; <span class="number">4</span>; u ++) &#123;</span><br><span class="line">						<span class="type">int</span> d = distance[u];</span><br><span class="line">						<span class="comment">// 更新一下跳2^k步的最大值和次大值 </span></span><br><span class="line">						<span class="keyword">if</span> (d &gt; d1[j][k]) d2[j][k] = d1[j][k], d1[j][k] = d;</span><br><span class="line">						<span class="keyword">else</span> <span class="keyword">if</span> (d != d1[j][k] &amp;&amp; d &gt; d2[j][k]) d2[j][k] = d;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回加上一个边，减去一个边的值 </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lca</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> w)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 存放a和b之间所有的最大值和次大值的边权 </span></span><br><span class="line">	<span class="type">static</span> <span class="type">int</span> distance[N * <span class="number">2</span>];</span><br><span class="line">	<span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (depth[a] &lt; depth[b]) &#123;</span><br><span class="line">		<span class="built_in">swap</span>(a, b);</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">16</span>; k &gt;= <span class="number">0</span>; k --) &#123;</span><br><span class="line">		<span class="comment">// 如果a跳2^k步以后的深度比b大，则a就跳，直到a和b的深度一样 </span></span><br><span class="line">		<span class="keyword">if</span> (depth[fa[a][k]] &gt;= depth[b]) &#123;</span><br><span class="line">			<span class="comment">// 将跳之前的最大值和次大值存起来</span></span><br><span class="line">			distance[cnt ++] = d1[a][k];</span><br><span class="line">			distance[cnt ++] = d2[a][k]; </span><br><span class="line">			a = fa[a][k];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 如果a和b在同一个深度，但是不是同一个点的时候 </span></span><br><span class="line">	<span class="keyword">if</span> (a != b) &#123;</span><br><span class="line">		<span class="comment">// a和b一起跳 </span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">16</span>; k &gt;= <span class="number">0</span>; k --) &#123;</span><br><span class="line">			<span class="keyword">if</span> (fa[a][k] != fa[b][k]) &#123;</span><br><span class="line">				distance[cnt ++] = d1[a][k];</span><br><span class="line">				distance[cnt ++] = d2[a][k];</span><br><span class="line">				distance[cnt ++] = d1[b][k];</span><br><span class="line">				distance[cnt ++] = d2[b][k];</span><br><span class="line">				a = fa[a][k];</span><br><span class="line">				b = fa[b][k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 此时a和b到lca下同一层，所以还要各跳1步 </span></span><br><span class="line">		distance[cnt ++] = d1[a][<span class="number">0</span>];</span><br><span class="line">		distance[cnt ++] = d1[b][<span class="number">0</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 求a和b之间的最大值和次大值 </span></span><br><span class="line">	<span class="type">int</span> dist1 = -INF, dist2 = -INF;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; cnt; i ++) &#123;</span><br><span class="line">		<span class="type">int</span> d = distance[i];</span><br><span class="line">		<span class="keyword">if</span> (d &gt; dist1) dist2 = dist1, dist1 = d;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (d != dist1 &amp;&amp; d &gt; dist2) &#123;</span><br><span class="line">			dist2 = d;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 当w大于最大值，则替换最大值 </span></span><br><span class="line">	<span class="keyword">if</span> (w &gt; dist1) <span class="keyword">return</span> w - dist1;</span><br><span class="line">	<span class="comment">// 当w等于最大值，则替换次大值 </span></span><br><span class="line">	<span class="keyword">if</span> (w &gt; dist2) <span class="keyword">return</span> w - dist2;</span><br><span class="line">	<span class="comment">// 否则不可以替换 </span></span><br><span class="line">	<span class="keyword">return</span> INF;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i ++) &#123;</span><br><span class="line">		<span class="type">int</span> a, b, c;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">		edge[i] = &#123;a, b, c&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	LL sum = <span class="built_in">kruskal</span>();</span><br><span class="line">	<span class="built_in">build</span>();</span><br><span class="line">	<span class="built_in">bfs</span>();</span><br><span class="line">	</span><br><span class="line">	LL res = <span class="number">1e18</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i ++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!edge[i].used) &#123;</span><br><span class="line">			<span class="type">int</span> a = edge[i].a, b = edge[i].b, w = edge[i].w;</span><br><span class="line">			res = <span class="built_in">min</span>(res, sum + <span class="built_in">lca</span>(a, b, w));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/b94e28f2/" title="求次小生成树算法">http://example.com/posts/b94e28f2/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"># 图论</a>
+              <a href="/tags/%E6%AC%A1%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag"># 次小生成树</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3d32d5db/" rel="prev" title="C++高精度计算模版">
+                  <i class="fa fa-angle-left"></i> C++高精度计算模版
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/8388e74a/" rel="next" title="linux 网络编程（1） --- 网络基础">
+                  linux 网络编程（1） --- 网络基础 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

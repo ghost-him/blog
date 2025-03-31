@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/f6e46598/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/f6e46598/","path":"posts/f6e46598/","title":"(cvpr2024) Modality-agnostic Domain Generalizable Medical Image Segmentation by Multi-Frequency in Multi-Scale Attention"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>(cvpr2024) Modality-agnostic Domain Generalizable Medical Image Segmentation by Multi-Frequency in Multi-Scale Attention | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/f6e46598/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">改进的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E6%96%B0"><span class="nav-number">3.</span> <span class="nav-text">创新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MFMSA-%E6%A8%A1%E5%9D%97"><span class="nav-number">3.1.</span> <span class="nav-text">MFMSA 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-SDM-%E6%A8%A1%E5%9D%97"><span class="nav-number">3.2.</span> <span class="nav-text">E-SDM 模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">网络架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-number">4.1.</span> <span class="nav-text">特征提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MFMSA-%E5%A4%84%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">MFMSA 处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E6%A8%A1%E5%88%86%E8%A7%A3"><span class="nav-number">4.2.1.</span> <span class="nav-text">规模分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MFCA"><span class="nav-number">4.2.2.</span> <span class="nav-text">MFCA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MSSA"><span class="nav-number">4.2.3.</span> <span class="nav-text">MSSA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-SDM-%E6%A8%A1%E5%9D%97-1"><span class="nav-number">4.3.</span> <span class="nav-text">E-SDM 模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text">性能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E-MFMSA-%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7%E7%A0%94%E7%A9%B6"><span class="nav-number">5.1.</span> <span class="nav-text">对于 MFMSA 的有效性研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E-E-SDM-%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7%E7%A0%94%E7%A9%B6"><span class="nav-number">5.2.</span> <span class="nav-text">对于 E-SDM 的有效性研究</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/f6e46598/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="(cvpr2024) Modality-agnostic Domain Generalizable Medical Image Segmentation by Multi-Frequency in Multi-Scale Attention | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          (cvpr2024) Modality-agnostic Domain Generalizable Medical Image Segmentation by Multi-Frequency in Multi-Scale Attention
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-12 14:29:19" itemprop="dateCreated datePublished" datetime="2024-06-12T14:29:19+08:00">2024-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-13 12:38:10" itemprop="dateModified" datetime="2024-06-13T12:38:10+08:00">2024-06-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2405.06284">arxiv</a></p>
+<span id="more"></span>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>提出了一种模型：<code>MADGNet</code>，它由多频度多尺度注意模块（MFMSA）与集合子解码模块（ESDM）构成。前者通过结合多频率和多尺度特征，完善了空间特征提取过程，尤其是在捕捉边界特征方面，从而为组织轮廓和解剖结构提供了信息线索；而后者则减少了深度监督下的多任务学习中的信息丢失问题，尤其是在从低分辨率大幅上采样时。</p>
+<p>论文的理论：频率方差是实现模型的模式无关性和领域通用性的关键因素。而各种模型都没有考虑到其重要性；各种模型都没有考虑到深度监督下的多任务学习可能造成的潜在信息损失。</p>
+<h1 id="改进的过程"><a href="#改进的过程" class="headerlink" title="改进的过程"></a>改进的过程</h1><p>在绘制比例和频率分布图的时候发现，医学图像在两个维度上呈现出不同的分布。并且发现：多频率与多尺度之间有相互依存的关系的同时，多频率自身也有很大的差异（最直接的证据是：频率方差高于比例方差）。（独立性与互补性）。模型不但要考虑相互依存的关系，也要考虑每个维度所能提供的信息。</p>
+<h1 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h1><h2 id="MFMSA-模块"><a href="#MFMSA-模块" class="headerlink" title="MFMSA 模块"></a>MFMSA 模块</h2><p>该模块采用多频率信道注意（MFCA）与二维离散余弦变换（2 D DCT），通过提取频率统计信息生成信道注意图。然后使用多尺度空间注意力（MSSA）来提取具有区分性的边界特征，并从每个尺度中将其汇总。</p>
+<p>MFMSA 可以全面捕捉广泛信息的核心：通过 MFCA 使用顺序注意法来抑制噪声信道的影响，然后使用 MSSA 提取不同尺度边界的判别特征图。（使用多频分析提取不同频段的各种特征，使用多尺度分析，捕捉复杂的细节与更广泛的结构信息）</p>
+<h2 id="E-SDM-模块"><a href="#E-SDM-模块" class="headerlink" title="E-SDM 模块"></a>E-SDM 模块</h2><p>作用：可以防止在深度监督的多任务学习过程中因大幅提高采样率而造成信息丢失的问题。</p>
+<h1 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h1><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240611184804.png"></p>
+<h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><p>图像在传入时，会经由 <code>ResNeSt</code> 网络的 <code>split-attention</code> 残差块进行特征图提取。上图中 $Block_{i}$ 就是由其组成。当特征图从 $Block_{i}$ 输出后，为了让网络的复杂度降低，会经过一个 <code>1*1</code> 的卷积层进行降维处理。之后再与下一阶段的经过上采样，MFMSA 模块处理后的特征图进行拼接后再传入这一阶段的 MFMSA Block 进行处理。当为第 5 阶段（初始阶段），则无须拼接，可直接上采样到第 4 阶段使用，无需经过 MFMSA 模块处理。</p>
+<h2 id="MFMSA-处理"><a href="#MFMSA-处理" class="headerlink" title="MFMSA 处理"></a>MFMSA 处理</h2><p>MFMSA 模块结构图</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240611182421.png"></p>
+<h3 id="规模分解"><a href="#规模分解" class="headerlink" title="规模分解"></a>规模分解</h3><p>该部分的作用是加快网络训练，并且通过不同尺度的特征图学习更加广泛的数据。</p>
+<p>对于输入 $X_{i}$，为了提高计算效率，将会使用缩减比为 $\gamma$ 的倍率来减小输入的通道数，使用下采样来降低图像的分辨率。输入的 $X_{i}$ 会分为 3 个分支：$X_{i}^{j},j&#x3D;1,2,3$，不同的 j 对应着不同卷积核大小的二维卷积。卷积核大小为 $2j+1$。当 j&#x3D;1 时，不会进行下采样。下采样的参数为 $Down_{s} &#x3D; 2^{s - 1}$，若输入的宽与高为 $W$, $H$，则通过下采样后的大小为 $\frac{W}{2^{s-1}}$ 与 $\frac{H}{2^{s-1}}$。同时，对于图片的宽，高，通道数，均有一个最小值，确保传入 MFCA 模块之前的特征图有足够的特征。</p>
+<h3 id="MFCA"><a href="#MFCA" class="headerlink" title="MFCA"></a>MFCA</h3><p>该模块的作用是通过在频域中进行特征提取来增强图像的通道信息表示，从而减少噪声对医学图像的影响。可以生成通道注意力图。</p>
+<p>对于 $X_{i}^{j}$ 都有一个对应的 MFCA模块进入处理。特征图传入 MFCA 后，会先经过二维 DCT 将图像表示为由在不同频率上振荡的余弦函数产生的基图像的加权和。之后将其结果使用全局平均池化，全局最大池化，全局最小池化进行处理，将数据压缩成 $Z_{avg}$，$Z_{max}$，$Z_{min}$。然后使用两个全连接层（$C_{s} * \frac{C_{s}}{r}$ 与 $\frac{C_{s}}{r}*C_{s}$ ，其中，$C_{s}$ 为输入的通道数，$r$ 为压缩比）将这些输出聚合起来（先分别经过全连接层，再相加得到结果）。得到结果后，使用 <code>sigmoid</code> 函数将权值变为 0 到 1 的区间，再用该值进行特征重标定。</p>
+<h3 id="MSSA"><a href="#MSSA" class="headerlink" title="MSSA"></a>MSSA</h3><p>该模块的作用是生成对各种尺度和噪声具有鲁棒性的边界线索特征图。由于在转入 MSSA 模块之前就已经经过了 MFCA 的处理，因此通过双重处理过程可以使模型理解各种模式之间的微妙的解剖学差异，和嘈杂医学图像中不规则病变的复杂特征。</p>
+<p>具体的处理过程如上图所示，其中要注意的是：</p>
+<ul>
+<li>前景注意力图 $F_{i}^{s}$ 为 $sigmoid(Conv2D_{1}(\hat{X_{i}^{s}}))$，而背景注意力图 $B_{i}^{s}$ 为 $1-F_{i}^{s}$</li>
+<li>对于上面两条分支，由于在传输 MFCA 时经过了下采样处理，因此，在 MFCA 中进行汇总时，需要通过上采样处理，使分辨率匹配</li>
+<li>$\alpha_{s}^{i}$ 与 $\beta_{s}^{i}$ 为可学习的参数</li>
+</ul>
+<h2 id="E-SDM-模块-1"><a href="#E-SDM-模块-1" class="headerlink" title="E-SDM 模块"></a>E-SDM 模块</h2><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240611182451.png"></p>
+<p>使用的原因：带有深度监督的多任务学习可以增强模型的表示能力并防止梯度消失的问题，而当低分辨率的特征图上采样到高分辨率时，会在预测细节边界和结构时造成信息损失。</p>
+<p>创新：E-SDM 通过级联地补充信息损失，将子任务的预测结果整合到核心任务的预测中，从而改进核心任务的预测精度。</p>
+<p>该模块的伪代码如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240612131823.png"></p>
+<ul>
+<li>返回的结果是多个预测的集合</li>
+</ul>
+<p>其损失函数与并行方式是相同的，公式如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240612131624.png"></p>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><p>经过对比其他的医学图像分割模型，该模型在各个领域上均获取到了第一或第二的成绩。在医学图像分析中，该模型也可以成功描绘给出的所有模式的详细边界。</p>
+<h2 id="对于-MFMSA-的有效性研究"><a href="#对于-MFMSA-的有效性研究" class="headerlink" title="对于 MFMSA 的有效性研究"></a>对于 MFMSA 的有效性研究</h2><p>通过使用单尺度单频率网络，单尺度多频率网络，多尺度单频率网络，证明了多尺度，多频率网络的有效性：多尺度，多频率可显著提高特征表示能力，并提取出增强的边界特征。</p>
+<h2 id="对于-E-SDM-的有效性研究"><a href="#对于-E-SDM-的有效性研究" class="headerlink" title="对于 E-SDM 的有效性研究"></a>对于 E-SDM 的有效性研究</h2><p>通过使用并行方式进行多任务学习和深度监督实验，可以发现性能下降的问题。通过研究前向和后向流对分割性能的影响，可以发现后向流对于保持整体输出质量至关重要，因为它弥补了上采样导致的信息丢失。相比之下，前向流仅识别需要强调的区域，而后向流则保留了关键信息。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>MADGNet 的有效性可以归纳为三个方面：</p>
+<ol>
+<li>在医学图像分割设计中，多尺度和多频率特性被证明是至关重要的。</li>
+<li>MFCA 擅长从嘈杂的医学图像特征图中提取辨别特征，通过 MSSA 获取更复杂的边界线索。</li>
+<li>E-SDM 在通过任务集合进行深度监督的多任务学习时，能补偿因大幅提高采样率而造成的信息损失。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/f6e46598/" title="(cvpr2024) Modality-agnostic Domain Generalizable Medical Image Segmentation by Multi-Frequency in Multi-Scale Attention">http://example.com/posts/f6e46598/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/b166227a/" rel="prev" title="clipboard：自动删除剪切板的换行符">
+                  <i class="fa fa-angle-left"></i> clipboard：自动删除剪切板的换行符
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/cc65e582/" rel="next" title="LeMeViT- Efficient Vision Transformer with Learnable Meta Tokens for Remote  Sensing Image Interpretation">
+                  LeMeViT- Efficient Vision Transformer with Learnable Meta Tokens for Remote  Sensing Image Interpretation <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

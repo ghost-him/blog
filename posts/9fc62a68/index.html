@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/9fc62a68/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/9fc62a68/","path":"posts/9fc62a68/","title":"Efficient Visual State Space Model  for Image Deblurring"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Efficient Visual State Space Model  for Image Deblurring | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/9fc62a68/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-number">1.3.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E6%96%B0"><span class="nav-number">1.4.</span> <span class="nav-text">创新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-1"><span class="nav-number">2.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">创新点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE%E7%82%B9"><span class="nav-number">2.3.</span> <span class="nav-text">贡献点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87-1"><span class="nav-number">2.4.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EVSSM-%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-number">2.4.1.</span> <span class="nav-text">EVSSM 总体架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.5.</span> <span class="nav-text">状态空间模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EVS-%E5%9D%97"><span class="nav-number">2.5.1.</span> <span class="nav-text">EVS 块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EDFFN"><span class="nav-number">2.5.2.</span> <span class="nav-text">EDFFN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">2.6.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Realword-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.6.1.</span> <span class="nav-text">Realword 数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HIDE-%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8A"><span class="nav-number">2.6.2.</span> <span class="nav-text">HIDE 数据集上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GoPro-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.6.3.</span> <span class="nav-text">GoPro 数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.6.4.</span> <span class="nav-text">其他数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.7.</span> <span class="nav-text">消融实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EVS-%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.7.1.</span> <span class="nav-text">EVS 的有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.7.2.</span> <span class="nav-text">几何变换的有效性</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/9fc62a68/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Efficient Visual State Space Model  for Image Deblurring | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Efficient Visual State Space Model  for Image Deblurring
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-17 14:44:18" itemprop="dateCreated datePublished" datetime="2024-06-17T14:44:18+08:00">2024-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-04 14:03:53" itemprop="dateModified" datetime="2024-07-04T14:03:53+08:00">2024-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>项目地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2405.14343">arxiv</a></p>
+<span id="more"></span>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>CNNs 与 ViTs 在图像修复中的任务表现很出色，并且 ViTs 通常比 CNNs 表现要好，因为它们可以够捕捉到图像中的长距离依赖关系和输入依赖特性。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>ViTs 的计算复杂度随着图像分辨率的增加而呈现二次增长。因此，在处理高分辨率图像时，ViTs 的计算开销很大。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>提出了 EVSSM 用于图像的去模糊，利用了状态空间模型（SSMs）对视觉数据的优势。</p>
+<h2 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h2><p>开发了一种高效的视觉扫描模块，该模块在每个基于 SSM 的模块之前应用各种几何变换，捕捉有用的非局部信息并保持高效性。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>卷积网络的局限性：其在空间上是平移不变和局部的，不能有效地建模全局和空间变异信息，这限制了其在图像恢复中取得更好效果的能力。</p>
+<p>Transformer 中的自注意机制的局限性：自注意机制（即缩放点积注意力）在处理高分辨率图像时，涉及到关于令牌数量的平方空间和时间复杂度，这变得难以接受。尽管已经有优化效率的方法了，但是这些方法会牺牲了最终的质量。同时，还仍然难以有效地表征长距离依赖关系和非局部信息。</p>
+<p>状态空间模型（SSMs）的优点：可以在线性时间复杂度下建模长距离依赖。改进的 SSM，比如 Mamba，其缺点有：会将图像展平为 1 D，这会破坏空间结构，无法捕捉到局部信息。此外，如果将 SSMs 应用于视觉任务，通常采用了多方向扫描的方法，这会增加计算成本。</p>
+<h2 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h2><ul>
+<li>只在一个方向上扫描图像特征</li>
+<li>在每次扫描前，使用简单的任何亦称来调整图像，可以更高效的捕捉到有用的信息，同时还可以保持计算成本的最低增加。</li>
+</ul>
+<h2 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h2><ul>
+<li>提出了简单而高效的视觉状态空间模型 EVSSM，可以高效地恢复高质量图像</li>
+<li>开发了一种有效且高效的扫描策略，可捕捉非局部空间信息</li>
+</ul>
+<h2 id="正文-1"><a href="#正文-1" class="headerlink" title="正文"></a>正文</h2><h3 id="EVSSM-总体架构"><a href="#EVSSM-总体架构" class="headerlink" title="EVSSM 总体架构"></a>EVSSM 总体架构</h3><p>该模型基于层次化的编码器-解码器框架。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240617105427.png"></p>
+<ol>
+<li>通过 <code>3*3</code> 的卷积层提取浅层特征</li>
+<li>浅层特征被输入到一个具有 3 层对称的编码器-解码器网络中。每层的编码器和解码器由若干高效视觉状态空间（EVSS）模块组成</li>
+<li>在每一层中，输入特征通过 EVSS 模块逐步处理，生成中间特征。通过双线性插值和 1×1 卷积实现上采样和下采样，并在编码器和解码器之间添加跳跃连接。</li>
+<li>通过一个 3 × 3 的卷积层生成残差图像。</li>
+<li>复原图像通过将残差图像与原始模糊图像相加获得。</li>
+<li>模型通过最小化一个包含图像像素差异和傅里叶变换域差异的损失函数进行训练，权重参数 $\gamma$ 设定为 0.1。</li>
+</ol>
+<h2 id="状态空间模型"><a href="#状态空间模型" class="headerlink" title="状态空间模型"></a>状态空间模型</h2><p>状态空间模型可以使用一组一阶差分或微分方程来表示：<br>$$<br>h’(t)&#x3D;Ah(t)+Bx(t),\ y(t)&#x3D;Ch(t)+Dx(t)<br>$$<br>输入信号为 $x(t)$，隐藏状态为 $h(t)$，输出响应为 $y(t)$。$A,B,C,D$ 为可学习的权重矩阵。</p>
+<p>状态方程可以使用零阶保持（ZOH）技术离散化：</p>
+<p>$$<br>h_{t}&#x3D;\bar{A}h_{t-1} +\bar{B}x_{t}, \ y(t)&#x3D;Ch_{t}+Dx_{t},<br>$$<br>$$<br>\bar{A} &#x3D; e^{\Delta A},\bar{B}&#x3D;(\Delta A)^{-1}(e^{\Delta A}-I) \cdot \Delta B.<br>$$<br>因此，Mamba 提出了选择性扫描 （s 6）机制，以同时实现输入依赖的权重和线性计算复杂度。当其运用在视觉任务时，有显著的挑战：视觉数据本质上是非顺序的，并且包含局部纹理和全局结构等空间信息。此外，S 6 是一个递归过程，在处理当前时间步   ??  T 的输入时，它只能利用前面时间步的信息，而不能考虑未来时间步的信息。</p>
+<h3 id="EVS-块"><a href="#EVS-块" class="headerlink" title="EVS 块"></a>EVS 块</h3><p>该块只会在一个方向上扫描，并在每次扫描前对输入进行一次任何变换（翻转和转置）。由于卷积的平移不变性，几何变换不会影响卷积本身，而只会影响选择性扫描的过程。</p>
+<p>在本篇论文中，如果 EVS 块在整个网络的第 i 个 EVSS 中，则会对输入 $F_{in}$ 进行以下处理：<br>$$<br>\left{\begin{align*} Transpose(F_{in}) \ if i % 2 &#x3D; 0, \   Flip(F_{in}) \ if i % 2 &#x3D; 1.\end{align*}\right.<br>$$<br>通过以步公式可以发现，图像特征将在每 4 个 EVSS 模块后自动恢复到原始空间结构。如果 EVSS 模块总数不能被 4 整除，则会通过逆变换来恢复原始空间结构。</p>
+<p>可以将选择性扫描进行公式化，其公式如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240617133120.png"></p>
+<p>其中，$Conv_{1*1}()$ 是一个卷积核大小为 <code>1*1</code> 的卷积。<code>DConv_&#123;3*3&#125;()</code> 是一个卷积核大小为 3 的 DW 卷积。$L$ 为归一化层。<code>split()</code> 表示在通道维度上分割图像特征。$\sigma$ 表示 GeLU 激活函数。S 6 表示选择性扫描机制。</p>
+<h3 id="EDFFN"><a href="#EDFFN" class="headerlink" title="EDFFN"></a>EDFFN</h3><p>其主要目的是提高从 EVSS 模块提取特征的效率和效果。FFN 是深度学习模型中的关键部分，负责重建清晰的潜在图像。</p>
+<p>EDFFN 会在 FFN 网络的最后阶段进行频域筛选，从而来降低计算复杂度。</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><h3 id="Realword-数据集"><a href="#Realword-数据集" class="headerlink" title="Realword 数据集"></a>Realword 数据集</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240617135039.png"></p>
+<h3 id="HIDE-数据集上"><a href="#HIDE-数据集上" class="headerlink" title="HIDE 数据集上"></a>HIDE 数据集上</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240617135201.png"></p>
+<h3 id="GoPro-数据集"><a href="#GoPro-数据集" class="headerlink" title="GoPro 数据集"></a>GoPro 数据集</h3><p>效果最好</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240617135742.png"></p>
+<h3 id="其他数据集"><a href="#其他数据集" class="headerlink" title="其他数据集"></a>其他数据集</h3><p>评估去雨和去雾任务中的图像恢复效果</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240617140558.png"></p>
+<h2 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h2><h3 id="EVS-的有效性"><a href="#EVS-的有效性" class="headerlink" title="EVS 的有效性"></a>EVS 的有效性</h3><p>移除任何变换（单向扫描）后发现 PSNR 低了 0.14 dB。使用双向扫描或四向扫描，可以发现虽然可以缓解状态空间模型在处理视觉数据时的限制，但是会导致网络参数数量和计算复杂度的增加，双向扫描增加了 38%的时间，四向扫描增加了 105%的时间。</p>
+<h3 id="几何变换的有效性"><a href="#几何变换的有效性" class="headerlink" title="几何变换的有效性"></a>几何变换的有效性</h3><p>分别去掉了翻转变换（简称 w&#x2F;o F）、转置变换（简称 w&#x2F;o T）以及同时去掉翻转和转置变换（简称 w&#x2F;o F&amp;T）后，其结果如下</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240617143059.png"></p>
+<p>结果表明，应用翻转或转置变换可以取得更好的效果，将 PSNR 提高至少 0.04 dB。同时，还不会显著增加计算成本或运行时间。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/9fc62a68/" title="Efficient Visual State Space Model  for Image Deblurring">http://example.com/posts/9fc62a68/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/6bf4cd79/" rel="prev" title="Multi-Scale VMamba- Hierarchy in Hierarchy Visual State Space Model">
+                  <i class="fa fa-angle-left"></i> Multi-Scale VMamba- Hierarchy in Hierarchy Visual State Space Model
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/caff6c56/" rel="next" title="Efficient Real-world Image Super-Resolution Via Adaptive Directional Gradient Convolution">
+                  Efficient Real-world Image Super-Resolution Via Adaptive Directional Gradient Convolution <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/4afb56ba/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/4afb56ba/","path":"posts/4afb56ba/","title":"深度学习的学习笔记04"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>深度学习的学习笔记04 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/4afb56ba/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B8%8E%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">论文阅读与视频学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Residual-Learning-for-Image-Recognition%EF%BC%8CCVPR2016"><span class="nav-number">1.1.</span> <span class="nav-text">Deep Residual Learning for Image Recognition，CVPR2016</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%AE%8B%E5%B7%AE%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.1.1.</span> <span class="nav-text">深度残差学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AE%8B%E5%B7%AE%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">残差学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Shortcut-%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Shortcut 的种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">网络结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.2.</span> <span class="nav-text">实验对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNet%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.2.</span> <span class="nav-text">ResNet视频学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ResNet%E7%BD%91%E7%BB%9C%E7%AE%80%E4%BB%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">ResNet网络简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">普通网络中存在的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ResNet-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">ResNet 的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BasicBlock"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">BasicBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bottleneck-Block"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">Bottleneck Block</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch-Normalization"><span class="nav-number">1.2.2.</span> <span class="nav-text">Batch Normalization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-BN-%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">使用 BN 时需要注意的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">迁移学习简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aggregated-Residual-Transformations-for-Deep-Neural-Networks%EF%BC%8C-CVPR-2017"><span class="nav-number">1.3.</span> <span class="nav-text">Aggregated Residual Transformations for Deep Neural Networks， CVPR 2017</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A"><span class="nav-number">2.</span> <span class="nav-text">课后作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BD%9C%E4%B8%9A"><span class="nav-number">2.1.</span> <span class="nav-text">代码作业</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeNet%E7%BD%91%E7%BB%9C"><span class="nav-number">2.1.1.</span> <span class="nav-text">LeNet网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ResNet%E7%BD%91%E7%BB%9C"><span class="nav-number">2.1.2.</span> <span class="nav-text">ResNet网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">思考题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Residual-learning-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-number">2.2.1.</span> <span class="nav-text">Residual learning 的基本原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch-Normalization-%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%8C%E6%80%9D%E8%80%83-BN%E3%80%81LN%E3%80%81IN-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%E3%80%82"><span class="nav-number">2.2.2.</span> <span class="nav-text">Batch Normalization 的原理，思考 BN、LN、IN 的主要区别。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%88%86%E7%BB%84%E5%8D%B7%E7%A7%AF%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87%E5%87%86%E7%A1%AE%E7%8E%87%EF%BC%9F%E6%97%A2%E7%84%B6%E5%88%86%E7%BB%84%E5%8D%B7%E7%A7%AF%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87%E5%87%86%E7%A1%AE%E7%8E%87%EF%BC%8C%E5%90%8C%E6%97%B6%E8%BF%98%E8%83%BD%E9%99%8D%E4%BD%8E%E8%AE%A1%E7%AE%97%E9%87%8F%EF%BC%8C%E5%88%86%E7%BB%84%E6%95%B0%E9%87%8F%E5%B0%BD%E9%87%8F%E5%A4%9A%E4%B8%8D%E8%A1%8C%E5%90%97%EF%BC%9F"><span class="nav-number">2.2.3.</span> <span class="nav-text">为什么分组卷积可以提升准确率？既然分组卷积可以提升准确率，同时还能降低计算量，分组数量尽量多不行吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%8A%A0%E9%A2%98"><span class="nav-number">2.3.</span> <span class="nav-text">附加题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Res2Net"><span class="nav-number">2.3.1.</span> <span class="nav-text">Res2Net</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%94%B9%E8%BF%9B"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">模型改进</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83-multi-head-%E5%92%8C-%E5%88%86%E7%BB%84%E5%8D%B7%E7%A7%AF-%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB"><span class="nav-number">2.3.2.</span> <span class="nav-text">比较 multi-head 和 分组卷积 的区别与联系</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/4afb56ba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="深度学习的学习笔记04 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习的学习笔记04
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-03 15:24:52" itemprop="dateCreated datePublished" datetime="2024-06-03T15:24:52+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-04 14:04:32" itemprop="dateModified" datetime="2024-07-04T14:04:32+08:00">2024-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">深度学习学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本次的主题是<code>ResNet+ResNeXt</code></p>
+<p>视频来源：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1T7411T7wa/">bilibili</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ap4y1p71v/">bilibili</a></p>
+<span id="more"></span>
+
+<h1 id="论文阅读与视频学习"><a href="#论文阅读与视频学习" class="headerlink" title="论文阅读与视频学习"></a>论文阅读与视频学习</h1><h2 id="Deep-Residual-Learning-for-Image-Recognition，CVPR2016"><a href="#Deep-Residual-Learning-for-Image-Recognition，CVPR2016" class="headerlink" title="Deep Residual Learning for Image Recognition，CVPR2016"></a><code>Deep Residual Learning for Image Recognition，CVPR2016</code></h2><p>神经网络的深度非常重要，很多模型都已经达到了很深的深度。但是过深的神经网络会带来 </p>
+<ol>
+<li>梯度消失，梯度爆炸的问题。可以通过归一化神经化与中间归一化层来解决。</li>
+<li>退化问题：随着网络深度的增加，准确度变得饱和，然后迅速退化。这种过拟合不是由过拟合引起的，添加更多的层会导致更高的训练误差。</li>
+</ol>
+<p>为了解决退化的问题，引入了残差学习框架。</p>
+<p>残差神经网络的特点：</p>
+<ol>
+<li>即使当网络很深时，也可以很容易的被优化。（普通的网络会在深度增加时，训练误差也会增加）</li>
+<li>残差神经网络可以很轻松的从深度增加中得到准确率，从而效果比浅层的更好。</li>
+</ol>
+<p>准备工作：</p>
+<ol>
+<li>残差表示：VLAD 是一种由残差向量相对于字典进行编码的表示，而 Fisher Vector 可以表述为 VLAD 的概率版本。已经被证明比编码原始向量更有效。此外，使用预处理也可以更好的简化优化。</li>
+<li>Shortcut 连接：一个 <code>inception</code> 层由一个 <code>shortcut</code> 与一些更深的网络层构成。在训练时，即使当网络层的输出接近于 0，下一个 <code>inception</code> 层依然可以通过 <code>shortcut</code> 的值进行学习。虽然这种方式可以训练极深的网络，但是准确率不会无限提高，比如超过 100 层后。</li>
+</ol>
+<h3 id="深度残差学习"><a href="#深度残差学习" class="headerlink" title="深度残差学习"></a>深度残差学习</h3><h4 id="残差学习"><a href="#残差学习" class="headerlink" title="残差学习"></a>残差学习</h4><p>假设 $H(x)$ 为希望通过几层神经网络来拟合的函数，x 为输入。同时，多个非线性层可以渐近地逼近复杂的函数。</p>
+<p>如果 $H(x)$ 与输入的 $x$ 的维度相同，那么可以让神经网络层逼近残差函数 $H(x)-x$。令 $F(x)&#x3D;H(x)-x$，即：让神经网络逼近 $F(x)$。此时，$H(x)$ 可以表示为 $F(x)+x$，即:经过神经网络的结果<strong>加上</strong>输入的值。虽然这两种形式在理论上都可以逼近所需的函数，但是学习的难易程度可能不同。</p>
+<p>退化问题指的是随着网络层数增加，模型的训练误差不降反升，而理论上如果新增的层可以构造成恒等映射，更深的模型的训练误差不应大于较浅模型的训练误差，但求解器在通过多个非线性层逼近恒等映射时可能会遇到困难，因此通过残差学习的重新表述可以有助于处理这种问题。</p>
+<h4 id="Shortcut-的种类"><a href="#Shortcut-的种类" class="headerlink" title="Shortcut 的种类"></a>Shortcut 的种类</h4><ol>
+<li>使用零填充捷径来增加维度</li>
+<li>使用投影捷径来增加维度</li>
+<li>所有的捷径都是投影捷径</li>
+</ol>
+<p>区别：</p>
+<ul>
+<li>效果：<code>3 &gt; 2 &gt; 1</code></li>
+<li>内存使用：<code>3 &gt; 2 &gt; 1</code></li>
+</ul>
+<p>使用捷径有助于训练，３种类型的捷径的区别不大，并且都会比不使用捷径的效果好。</p>
+<p>恒等捷径是指直接将输入传递到输出，而不进行任何变换或参数调整。在上面的三种捷径的种类中，配置 1 和配置 2 中的一部分，用于那些不需要增加维度的连接。</p>
+<h4 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h4><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240528194449.png"></p>
+<p>左侧的为 18 层，34 层，50 层的网络使用的结构，为了减少参数，设计了右侧的结构。右侧的结构通过先降维后升维的方式，使得神经网络的参数减少，最终使得神经网络的训练时间控制在可以接受的时间范围内。</p>
+<h3 id="实验对比"><a href="#实验对比" class="headerlink" title="实验对比"></a>实验对比</h3><p>通过 <code>vgg19</code>，<code>普通卷积网络</code>, <code>残差神经网络</code> 的对比，可以得出：</p>
+<ol>
+<li>对于普通网络，越深的网络，训练误差越大</li>
+<li>对于残差网络，越深的网络，精度越高</li>
+<li>残差网络可以在参数量很少的情况下精度胜过 <code>vgg19</code></li>
+</ol>
+<p>以上总结：残差网络打赢了当时大部分网络，是更好的一种网络模型</p>
+<p>后续使用了 1202 层的残差神经网络，来探究极限，发现出现了可能是过拟合的情况。’</p>
+<h2 id="ResNet视频学习"><a href="#ResNet视频学习" class="headerlink" title="ResNet视频学习"></a>ResNet视频学习</h2><h3 id="ResNet网络简介"><a href="#ResNet网络简介" class="headerlink" title="ResNet网络简介"></a>ResNet网络简介</h3><h4 id="普通网络中存在的问题"><a href="#普通网络中存在的问题" class="headerlink" title="普通网络中存在的问题"></a>普通网络中存在的问题</h4><ul>
+<li>梯度消失或梯度爆炸</li>
+<li>退化问题（degradation problem）</li>
+</ul>
+<p>解决梯度问题的一般方式：</p>
+<ul>
+<li>对数据进行标准化处理</li>
+<li>权重初始化</li>
+<li>batch normalization 处理</li>
+</ul>
+<p>解决退化问题：</p>
+<ul>
+<li>残差结构</li>
+</ul>
+<h4 id="ResNet-的特点"><a href="#ResNet-的特点" class="headerlink" title="ResNet 的特点"></a>ResNet 的特点</h4><ul>
+<li>超深的网络结构（超 1000 层）</li>
+<li>提出 residual 模块</li>
+<li>使用 Batch Normalization 加速训练</li>
+</ul>
+<h4 id="BasicBlock"><a href="#BasicBlock" class="headerlink" title="BasicBlock"></a>BasicBlock</h4><p><img data-src="https://camo.githubusercontent.com/8070bf395c522f237a2acaf149e2c2907a7edcd33406513620919715fad9d2b8/68747470733a2f2f67616f707572737569742e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f3230323030332f32303230303330313030333935382e6a7067"></p>
+<p>主分支的输出特征矩阵的高宽，通道要与输入特征矩阵的高宽，通道都保持一致。这两个要相加。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240528105131.png"></p>
+<p>对于每个模块的第一层网络，由于该网络要将输入的尺寸改变（通过将 stride 设置为2 来使得高与宽变为原来的一半），所以 shortcut 处要对输入的数据也做相应的变换，这样才可以与主分支相加。</p>
+<h4 id="Bottleneck-Block"><a href="#Bottleneck-Block" class="headerlink" title="Bottleneck Block"></a>Bottleneck Block</h4><p><img data-src="https://camo.githubusercontent.com/ea6054f74a926ff2719915d917982de3cc92f467402b5eab0d92e2bb428aa2d7/68747470733a2f2f67616f707572737569742e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f3230323030332f32303230303330313030353434332e6a7067"></p>
+<ul>
+<li>最上面的卷积层用于降维</li>
+<li>最下面的卷积层用于升维</li>
+</ul>
+<p>这种结构的特点是，初始的结构，参数降低了约一半。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240528105518.png"></p>
+<ul>
+<li>原理与上文一致</li>
+</ul>
+<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><ul>
+<li>目的是使一批 <code>batch</code> 的 <code>feature map</code> 满足均值为 0，方差为 1 的分布规律。原因：虽然图像经过了预处理以后，可以满足某一个分布规律，但是经过卷积层以后，得出的 <code>feature map</code> 则不一定满足这个分布规律。</li>
+</ul>
+<p>可以加速网络的收敛并且提升准确率。</p>
+<h4 id="使用-BN-时需要注意的问题"><a href="#使用-BN-时需要注意的问题" class="headerlink" title="使用 BN 时需要注意的问题"></a>使用 BN 时需要注意的问题</h4><ol>
+<li>训练时要将 <code>training</code> 参数设置为 <code>True</code>，在验证时将 <code>training</code> 参数设置为 <code>False</code>。在 pytorch 中可以通过创建模型的 <code>model.train()</code> 和 <code>model.eval()</code> 方法控制。</li>
+<li><code>batch size</code> 尽可能设置大点，设置小后表现可能很糟糕，设置的越大求的均值和方差越接近整个训练集的均值与方差</li>
+<li>建议将 bn 层放在卷积层和激活层之间，肯卷积层不要使用偏置 bias（即使使用了，经过 bn 层以后也不会起效果）。</li>
+</ol>
+<h3 id="迁移学习简介"><a href="#迁移学习简介" class="headerlink" title="迁移学习简介"></a>迁移学习简介</h3><p>优点：</p>
+<ul>
+<li>可以快速训练出一个理想的结果</li>
+<li>当数据集较小时也可以训练出理想的效果</li>
+<li>使用别人预训练的模型参数时，也要注意别人的预处理的方式</li>
+</ul>
+<p>常见的迁移学习的方式：</p>
+<ol>
+<li>载入权重后训练所有参数</li>
+<li>载入权重后只训练最后几层参数</li>
+<li>载入权重后在原网络基础上再添加一层全连接层</li>
+</ol>
+<h2 id="Aggregated-Residual-Transformations-for-Deep-Neural-Networks，-CVPR-2017"><a href="#Aggregated-Residual-Transformations-for-Deep-Neural-Networks，-CVPR-2017" class="headerlink" title="Aggregated Residual Transformations for Deep Neural Networks， CVPR 2017"></a>Aggregated Residual Transformations for Deep Neural Networks， CVPR 2017</h2><p>网络准确度的提升可以像 VGG 一样，通过堆叠相同的模块来实现，也可以像 Inception 一样，通过拆分，转换，合并的方式来实现。这个网络通过结合这两种方法来实现了更进一步的准确度的提升。这种方式实现了在保持（或降低）复杂度的同时提高准确度。</p>
+<p>ResNeXt 的核心是使用分组卷积来构建一个网络层。通过使用分组卷积来结合 Inception 的拆分，转换，合并的网络构建思想，然后再通过堆叠相同的模块来结合 VGG 的思想。</p>
+<p>论文中定义了一个名词 <code>cardinality</code>，描述分组卷积中，组数的数量。实验中证明了，增加 <code>cardinality</code> 会比增加网络的深度与广度对准确度更有效果，尤其是出现退化问题的时候。而 <code>cardinality</code> 是一个具体的，可以测量的量。</p>
+<p>改进过程：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240602123224.png"></p>
+<p>左侧是 ResNet 的模块，而右侧是最初的 ResNeXt 的模块。这两者有着几乎相同的计算量。</p>
+<p>而为了简化左侧模块的计算量，可以在数学上做一个等价变形：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240602123350.png"></p>
+<ul>
+<li>32 组的 <code>4, 1*1, 256</code> 的卷积后连接可以转换为先对中间层的结果进行拼接后再使用一个 <code>128, 1*1, 256</code> 的卷积。</li>
+<li>32 组的 <code>256, 1*1, 4</code> 可以等价成一个 <code>256, 1*1, 128</code>，而 32 组的 <code>4, 3*3, 4</code> 可以等价成一个 <code>128, 3*3, 128, group=32</code></li>
+</ul>
+<p>这种等价变换的关键在于分组卷积的特性，它允许将一个大的卷积操作分解成多个小的、独立的卷积操作，每个操作只在自己的通道组内进行。这样，可以在不改变模型计算复杂度的情况下，增加模型的 <code>cardinality</code>，从而提高模型的表示能力。这种特点只有当网络块具有足够的深度时才可以体现出来：此时，分组卷积才可以形成多个独立的，并行的变换路径，从而增加模型的复杂性与多样性。</p>
+<p>分组大小选择 32 的原因：</p>
+<ul>
+<li>模型有足够的复杂性来捕捉数据中的模式</li>
+<li>当大于 32 时，对于模型的准确度提升不大，但是训练花费的时间却大幅增加</li>
+</ul>
+<h1 id="课后作业"><a href="#课后作业" class="headerlink" title="课后作业"></a>课后作业</h1><h2 id="代码作业"><a href="#代码作业" class="headerlink" title="代码作业"></a>代码作业</h2><p>以下分别是<code>LeNet</code>网络与<code>ResNet</code>网络的模型</p>
+<h3 id="LeNet网络"><a href="#LeNet网络" class="headerlink" title="LeNet网络"></a><code>LeNet</code>网络</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用类似于LeNet 的网络来分类猫与狗</span></span><br><span class="line"><span class="comment"># 输入： 3 * 256 * 256</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LeNet</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(LeNet, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="comment"># 3 * 256 * 256</span></span><br><span class="line">        <span class="variable language_">self</span>.conv1 = nn.Conv2d(in_channels=<span class="number">3</span>, out_channels=<span class="number">24</span>, kernel_size=<span class="number">3</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="comment"># 16 * 254 * 254</span></span><br><span class="line">        <span class="variable language_">self</span>.batch1 = nn.BatchNorm2d(<span class="number">24</span>)</span><br><span class="line">        <span class="variable language_">self</span>.pool1 = nn.MaxPool2d(kernel_size=<span class="number">2</span>)</span><br><span class="line">        <span class="comment"># 16 * 127 * 127</span></span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.conv2 = nn.Conv2d(in_channels=<span class="number">24</span>, out_channels=<span class="number">32</span>, kernel_size=<span class="number">3</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="comment"># 24 * 125 * 125</span></span><br><span class="line">        <span class="variable language_">self</span>.batch2 = nn.BatchNorm2d(<span class="number">32</span>)</span><br><span class="line">        <span class="variable language_">self</span>.pool2 = nn.MaxPool2d(kernel_size=<span class="number">2</span>)</span><br><span class="line">        <span class="comment"># 24 * 62 * 62</span></span><br><span class="line">        <span class="variable language_">self</span>.conv3 = nn.Conv2d(in_channels=<span class="number">32</span>, out_channels=<span class="number">32</span>, kernel_size=<span class="number">3</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="comment"># 24 * 60 * 60</span></span><br><span class="line">        <span class="variable language_">self</span>.batch3 = nn.BatchNorm2d(<span class="number">32</span>)</span><br><span class="line">        <span class="variable language_">self</span>.pool3 = nn.MaxPool2d(kernel_size=<span class="number">2</span>)</span><br><span class="line">        <span class="comment"># 24 * 30 * 30</span></span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(<span class="number">32</span> * <span class="number">30</span> * <span class="number">30</span>, <span class="number">72</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc2 = nn.Linear(<span class="number">72</span>, <span class="number">36</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc3 = nn.Linear(<span class="number">36</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line"></span><br><span class="line">        x = <span class="variable language_">self</span>.conv1(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.batch1(x)</span><br><span class="line">        x = F.relu(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.pool1(x)</span><br><span class="line"></span><br><span class="line">        x = <span class="variable language_">self</span>.conv2(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.batch2(x)</span><br><span class="line">        x = F.relu(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.pool2(x)</span><br><span class="line"></span><br><span class="line">        x = <span class="variable language_">self</span>.conv3(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.batch3(x)</span><br><span class="line">        x = F.relu(x)</span><br><span class="line">        x = <span class="variable language_">self</span>.pool3(x)</span><br><span class="line"></span><br><span class="line">        x = x.view(x.size(<span class="number">0</span>), -<span class="number">1</span>)</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.fc1(x))</span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.fc2(x))</span><br><span class="line">        x = F.softmax(<span class="variable language_">self</span>.fc3(x), dim=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<h3 id="ResNet网络"><a href="#ResNet网络" class="headerlink" title="ResNet网络"></a><code>ResNet</code>网络</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BasicNetBlock</span>(nn.Module):</span><br><span class="line">    expansion = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_channel, out_channel, stride</span>):</span><br><span class="line">        <span class="built_in">super</span>(BasicNetBlock, <span class="variable language_">self</span>).__init__()</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.stride = stride</span><br><span class="line">        <span class="variable language_">self</span>.conv1 = nn.Conv2d(in_channels=in_channel, out_channels=out_channel, kernel_size=<span class="number">1</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.bn1 = nn.BatchNorm2d(out_channel)</span><br><span class="line">        <span class="variable language_">self</span>.conv2 = nn.Conv2d(in_channels=out_channel, out_channels=out_channel, kernel_size=<span class="number">3</span>, bias=<span class="literal">False</span>,stride=stride, padding=<span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.bn2 = nn.BatchNorm2d(out_channel)</span><br><span class="line">        <span class="variable language_">self</span>.conv3 = nn.Conv2d(in_channels=out_channel, out_channels=out_channel * <span class="variable language_">self</span>.expansion, bias=<span class="literal">False</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.bn3 = nn.BatchNorm2d(out_channel * <span class="variable language_">self</span>.expansion)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> stride != <span class="number">1</span> <span class="keyword">or</span> in_channel != out_channel * <span class="variable language_">self</span>.expansion:</span><br><span class="line">            <span class="variable language_">self</span>.shortcut = nn.Sequential(</span><br><span class="line">                nn.Conv2d(in_channels=in_channel, out_channels=out_channel * <span class="variable language_">self</span>.expansion, kernel_size=<span class="number">1</span>, stride=stride, bias=<span class="literal">False</span>),</span><br><span class="line">                nn.BatchNorm2d(out_channel * <span class="variable language_">self</span>.expansion)</span><br><span class="line">            )</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="variable language_">self</span>.shortcut = nn.Identity()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        out = <span class="variable language_">self</span>.conv1(x)</span><br><span class="line">        out = <span class="variable language_">self</span>.bn1(out)</span><br><span class="line">        out = F.relu(out)</span><br><span class="line"></span><br><span class="line">        out = <span class="variable language_">self</span>.conv2(out)</span><br><span class="line">        out = <span class="variable language_">self</span>.bn2(out)</span><br><span class="line">        out = F.relu(out)</span><br><span class="line"></span><br><span class="line">        out = <span class="variable language_">self</span>.conv3(out)</span><br><span class="line">        out = <span class="variable language_">self</span>.bn3(out)</span><br><span class="line"></span><br><span class="line">        out += <span class="variable language_">self</span>.shortcut(x)</span><br><span class="line"></span><br><span class="line">        out = F.relu(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入大小：3*228*228</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ResNet</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(ResNet, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.in_channel=<span class="number">16</span></span><br><span class="line">        <span class="variable language_">self</span>.conv1 = nn.Conv2d(in_channels=<span class="number">3</span>, out_channels=<span class="number">16</span>, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.bn1 = nn.BatchNorm2d(<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.layer1 = <span class="variable language_">self</span>._make_layer(BasicNetBlock, <span class="number">16</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">        <span class="variable language_">self</span>.layer2 = <span class="variable language_">self</span>._make_layer(BasicNetBlock, <span class="number">32</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.layer3 = <span class="variable language_">self</span>._make_layer(BasicNetBlock, <span class="number">32</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(in_features=<span class="number">32</span> * BasicNetBlock.expansion *<span class="number">14</span> *<span class="number">14</span>, out_features=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># 3*228*228</span></span><br><span class="line">        x = F.relu(<span class="variable language_">self</span>.bn1(<span class="variable language_">self</span>.conv1(x)))</span><br><span class="line">        <span class="comment"># 16*226*226</span></span><br><span class="line">        x = <span class="variable language_">self</span>.layer1(x)</span><br><span class="line">        <span class="comment"># 4*16*226*226</span></span><br><span class="line">        x = <span class="variable language_">self</span>.layer2(x)</span><br><span class="line">        <span class="comment"># 4*32*113*113</span></span><br><span class="line">        x = <span class="variable language_">self</span>.layer3(x)</span><br><span class="line">        <span class="comment"># 4*32*56*56</span></span><br><span class="line">        x = F.max_pool2d(x, <span class="number">4</span>)</span><br><span class="line">        <span class="comment"># 4*32*14*14</span></span><br><span class="line">        x = x.view(x.size(<span class="number">0</span>), -<span class="number">1</span>)</span><br><span class="line">        x = <span class="variable language_">self</span>.fc1(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_make_layer</span>(<span class="params">self, block, out_channel, blockNumber, stride</span>):</span><br><span class="line">        layers = []</span><br><span class="line">        layers.append(block(<span class="variable language_">self</span>.in_channel, out_channel, stride))</span><br><span class="line">        <span class="variable language_">self</span>.in_channel = out_channel * block.expansion</span><br><span class="line">        <span class="keyword">for</span> stride <span class="keyword">in</span> <span class="built_in">range</span>(blockNumber - <span class="number">1</span>):</span><br><span class="line">            layers.append(block(<span class="variable language_">self</span>.in_channel, out_channel, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nn.Sequential(*layers)</span><br></pre></td></tr></table></figure>
+
+<p>电脑的显存就只有6g，没法搭建太大的网络。经过比赛方给出的训练集，经过20轮的训练，最终成绩分别是<code>81.95</code>与<code>84.45</code>。</p>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/ghost-him/study/tree/main/catvsdog">https://github.com/ghost-him/study/tree/main/catvsdog</a></p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="Residual-learning-的基本原理？"><a href="#Residual-learning-的基本原理？" class="headerlink" title="Residual learning 的基本原理？"></a>Residual learning 的基本原理？</h3><p>在传统的深度神经网络中，通常是将一层的输出直接作为下一层的输入。而在残差神经网络中，每一层的输出是由该层的输入与该层学习到的残差的和。可以通过$y&#x3D;F(x,{W_{i}})+x$表示。$x$为输入，$F(x,{W_{i}})$为学习的残差映射，${W_{i}}$为学习参数,$y$为输出。特点是由多个残差块组成，而一个残差块包含2个或3个卷积层，还有一个跳跃连接。</p>
+<h3 id="Batch-Normalization-的原理，思考-BN、LN、IN-的主要区别。"><a href="#Batch-Normalization-的原理，思考-BN、LN、IN-的主要区别。" class="headerlink" title="Batch Normalization 的原理，思考 BN、LN、IN 的主要区别。"></a>Batch Normalization 的原理，思考 BN、LN、IN 的主要区别。</h3><p>BN层是用于手动将每一层的输出进行归一化处理，将输出调整为均值为0，标准差为1的正太分布。</p>
+<p>BN的具体步骤如下：</p>
+<ol>
+<li>计算均值</li>
+<li>计算方差</li>
+<li>归一化</li>
+<li>缩放与平移（这里设置了两个可以学习的参数：$\gamma$与$\beta$，作用分别是控制缩放与平移）</li>
+</ol>
+<p><img data-src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*-yCzc6YlJHXe7LmCpqQmkg.png"></p>
+<p>可以从以下图看到，使用BN层以后，可以减少大量的浪费的数据（以<code>sigmoid</code>函数为例）</p>
+<p><img data-src="https://miro.medium.com/v2/resize:fit:786/format:webp/1*rsDsQp3WzaXOlmFDSmBhdQ.png"></p>
+<ul>
+<li>BN是在一个批次的数据上进行归一化，它计算每个特征维度在所有样本上的均值和方差。通常用于卷积神经网络的中间层。</li>
+<li>LN是在每个样本上进行归一化，即对每个样本的所有特征维度计算均值和方差。适用于循环神经网络和Transformer模型。</li>
+<li>IN是在每个样本的每个特征维度上进行归一化，即对每个样本的每个特征计算均值和方差。主要用于风格迁移等图像处理任务。</li>
+</ul>
+<p>BN与IN：如果对一个图像进行归一化处理，则BN会计算整个批次中所有图像的红色通道的均值和方差，然后使用这些统计量来归一化批次中所有图像的红色通道的像素值。而IN则是分别计算每个颜色通道的均值和方差，然后使用这些统计量来归一化该通道的所有像素值。</p>
+<h3 id="为什么分组卷积可以提升准确率？既然分组卷积可以提升准确率，同时还能降低计算量，分组数量尽量多不行吗？"><a href="#为什么分组卷积可以提升准确率？既然分组卷积可以提升准确率，同时还能降低计算量，分组数量尽量多不行吗？" class="headerlink" title="为什么分组卷积可以提升准确率？既然分组卷积可以提升准确率，同时还能降低计算量，分组数量尽量多不行吗？"></a>为什么分组卷积可以提升准确率？既然分组卷积可以提升准确率，同时还能降低计算量，分组数量尽量多不行吗？</h3><p>分组卷积允许每个组专注于不同的特征子空间，这种操作可以使模型更好的捕捉到多样化的特征信息。可以在不改变模型的计算复杂度的情况下，显著提升模型的表现。</p>
+<p>分组数量过多时，对准确率的提升几乎没有作用，同时还会大幅度增加模型的训练时间，因此不可以过多。比如：当在32组的基础上再增加32组，准确率可能只会提升0.1%，但是训练花费的时候却可能增加50%。</p>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><h3 id="Res2Net"><a href="#Res2Net" class="headerlink" title="Res2Net"></a>Res2Net</h3><h4 id="模型改进"><a href="#模型改进" class="headerlink" title="模型改进"></a>模型改进</h4><p><code>Res2Net</code>改进了<code>ResNet</code>的残差块的结构，从而实现了多尺度卷积。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240603153731.png"></p>
+<p>上图将一个输入的数据分成了 4 份（在实际的操作过程中也可以将其分成多份）。以  $x_{2}$ 为数据为例：该数据经历了 1 个 <code>3*3</code>（<code>y2</code>），一个 2 份 <code>3*3</code>（<code>y3</code>），一个 3 份 <code>3*3</code>（<code>y4</code>），其特征表示一定会比左侧只有一个 <code>3*3</code> 的卷积好。</p>
+<p>这种结构的设计实现了<strong>多尺度的卷积</strong>：小的感受野可能会看到更多的物体的细节，对于检测小目标有很大的好处；而大的感受野可以感受物体的整体结构，方便网络定位物体的位置，细节与位置的结合可以更好的得到具有清晰边界的物体信息。</p>
+<h3 id="比较-multi-head-和-分组卷积-的区别与联系"><a href="#比较-multi-head-和-分组卷积-的区别与联系" class="headerlink" title="比较 multi-head 和 分组卷积 的区别与联系"></a>比较 multi-head 和 分组卷积 的区别与联系</h3><p>联系：它们都是将一个整体拆分成了多个独立的子空间，然后在子空间中独立的计算，最后再拼接起来，并进行线性变换。它们都可以通过减少计算量来提高效率。</p>
+<p>区别：multi-head主要用于NLP领域的自注意力机制（self-attention）中，而分组卷积主要用于CNN中。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/4afb56ba/" title="深度学习的学习笔记04">http://example.com/posts/4afb56ba/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/419c9d10/" rel="prev" title="深度学习：算法到实战学习笔记03">
+                  <i class="fa fa-angle-left"></i> 深度学习：算法到实战学习笔记03
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/bda47da5/" rel="next" title="Transformer学习笔记">
+                  Transformer学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

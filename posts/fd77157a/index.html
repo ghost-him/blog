@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/fd77157a/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/fd77157a/","path":"posts/fd77157a/","title":"A Spatiotemporal Multiscale Deep Learning Model for Subseasonal Prediction of Arctic Sea Ice"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A Spatiotemporal Multiscale Deep Learning Model for Subseasonal Prediction of Arctic Sea Ice | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/fd77157a/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9D%90%E6%96%99"><span class="nav-number">2.1.</span> <span class="nav-text">模型的材料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">研究区域与变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.2.</span> <span class="nav-text">数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">模型架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E7%A9%BA%E9%87%8D%E6%96%B0%E7%BD%91%E6%A0%BC%E5%8C%96%E5%A4%84%E7%90%86"><span class="nav-number">2.2.1.</span> <span class="nav-text">时空重新网格化处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E7%A9%BA%E5%BA%8F%E5%88%97%E5%88%86%E8%A7%A3"><span class="nav-number">2.2.2.</span> <span class="nav-text">时空序列分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9D%97%EF%BC%88PM%EF%BC%89%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.2.3.</span> <span class="nav-text">预测模块（PM）设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.4.</span> <span class="nav-text">模型的工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E9%AA%8C%E6%A8%A1%E5%BC%8F%E6%A8%A1%E5%9D%97"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">先验模式模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%A0%E5%B0%84%E6%A8%A1%E5%9D%97"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">映射模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9D%97"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">预测模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%BB%BA%E6%A8%A1%E5%9D%97"><span class="nav-number">2.2.4.4.</span> <span class="nav-text">重建模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">2.3.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E8%AF%84%E4%BC%B0"><span class="nav-number">2.3.1.</span> <span class="nav-text">总体评估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-RS-%E5%92%8C-PIOMAS-%E8%BF%9B%E8%A1%8C%E9%AA%8C%E8%AF%81"><span class="nav-number">2.3.2.</span> <span class="nav-text">使用 RS 和 PIOMAS 进行验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A3%E8%8A%82%E5%B0%BA%E5%BA%A6%E9%A2%84%E6%B5%8B%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.3.3.</span> <span class="nav-text">季节尺度预测的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%87%A0%E7%A7%8D%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.3.4.</span> <span class="nav-text">与其他几种深度学习模型的比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA"><span class="nav-number">2.4.</span> <span class="nav-text">讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">2.4.1.</span> <span class="nav-text">与数据模型的性能比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IceFormer-%E7%9A%84%E5%8F%AF%E9%A2%84%E6%B5%8B%E6%80%A7%E4%B8%8E%E5%9B%A0%E6%9E%9C%E6%9C%BA%E5%88%B6"><span class="nav-number">2.4.2.</span> <span class="nav-text">IceFormer 的可预测性与因果机制</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/fd77157a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A Spatiotemporal Multiscale Deep Learning Model for Subseasonal Prediction of Arctic Sea Ice | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A Spatiotemporal Multiscale Deep Learning Model for Subseasonal Prediction of Arctic Sea Ice
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-09-08 18:49:29 / 修改时间：18:49:34" itemprop="dateCreated datePublished" datetime="2024-09-08T18:49:29+08:00">2024-09-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/377481019_A_Spatio-Temporal_Multiscale_Deep_Learning_Model_for_Subseasonal_Prediction_of_Arctic_Sea_Ice">researchgate</a></p>
+<span id="more"></span>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>基于物理的动力学模型可以成功的预测短期海冰趋势，但是在较短时间内提供可靠的次季节海冰预测方面存在困难，并且缺乏足够的灵活性来提供实时、准实时预测。</p>
+<p>作者提出了一个纯粹基于数据驱动的北极海冰预测系统，叫 IceFormer。它通过高质量的北极再分析数据和遥感观测数据进行训练。</p>
+<p>通过实验可以证明：在北极海冰的级多变量预测方面取得了进展。在遥感数据的驱动下，其预测性能远优于传统基线模型和机器学习模型。经过比较，从 5 月到 11 月，IceFormer 的 SIC 预测性能优于耦合集合数值预报模型（SEAS 5）</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>虽然 SICNet 结合了多个观测数据，但是由于不同的来源的数据质量差异会很大，所以作者只使用海冰变量来驱动模型，这可以有效降低模型的复杂性与不确定性，同时也方便开展业务预测工作。</p>
+<p>所以作者提出了 IceFormer，这是一种纯数据驱动的模型框架，可以用来预测泛北极地区每日海冰浓度（SIC）和海冰厚度（SIT）。IceFormer 是一个基于先驱模式（PP）和网络推理（NI）的通用浓度学习模型框架。其核心设计理念是”基于对已知的充分理解来预测未知”。</p>
+<p>北极海冰的多变量正交模式用于表示海冰多尺度演变的知识，这可以在神经网络推理之前最大化地捕获已知信息。NI的核心是基于多相关机制的预测模型。它不仅考虑了北极海冰的时空依赖性和变量依赖性，还提高了北极海冰亚季节预测的可解释性。更重要的是，<code>IceFormer</code> 可以以端到端的方式实现时空多尺度像素级任务，这比现有的DL模型提供了更轻量的方法。</p>
+<p>NI 部分被设计成一个编码器-解码器结构。将每个正交模式的多尺度时间编码和贡献编码集成到 <code>IceFormer</code> 中，这有助于我们的模型准确捕捉时空依赖性并提高可解释性。SIC和SIT被用作 <code>IceFormer</code> 的唯一输入数据。</p>
+<h2 id="模型的材料"><a href="#模型的材料" class="headerlink" title="模型的材料"></a>模型的材料</h2><h3 id="研究区域与变量"><a href="#研究区域与变量" class="headerlink" title="研究区域与变量"></a>研究区域与变量</h3><p>研究区域（图1）为泛北极地区（180°E至180°W，45°N至90°N），覆盖了北极海冰演变和观测的核心区域。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908142947.png"></p>
+<ul>
+<li>SIC 定义为海冰覆盖面积与总海域面积的比值，是描述海冰水平分布的重要变量。</li>
+<li>SIT是描述海冰垂直分布特征的核心变量，其重要性与海冰浓度相当。</li>
+</ul>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>作者考虑了 SIC 与 SIT 的多源数据（遥感观测和再分析）作为原始数据集。同时，作者还设计了从再分析数据到遥感数据的迁移学习过程。其中，再分析仅用作模型训练的扩展数据，而遥感观测则用作模型校准的驱动数据。</p>
+<p>SIC 的数据来自：国家雪冰数据中心（NSIDC）</p>
+<p>SIT 的数据来自：哥白尼气候变化服务（C3S）</p>
+<p>迁移学习的再分析数据：北极监测和预报中心（ARC-MFC）提供</p>
+<p>作者使用 PIOMAS 来作为评估 SIT 的基准，使用 SEAS 5 作为评估 SIC 的基准</p>
+<h2 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h2><p>在构建 IceFormer 和进行训练之前，会先对原始的遥感数据进行预处理，并通过插值方法将具有非均匀时空分辨率的数据（图 2）重新网格化为统一的数据（图 3）。如下图所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908144313.png"></p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908144330.png"></p>
+<p>基于多变量经验正交函数理论，设计了一种算法来提取海冰浓度（SIC）与海冰厚度（SIT）的同时演化先验模式。基于每日的 SIC 和 SIT，作者开发了一个深度学习建模框架，这个框架有三个核心组件，信息嵌入，编码器，解码器。通过将 iceFormer 预测系统设计为化组合，集成了先验模型模块，映射模块，预测模块和重建模块，形成了一个标准的工作流程。</p>
+<p><code>IceFormer</code> 首先用高质量的再分析数据进行预训练，并通过遥感数据进行微调（见III-E节），以减少使用遥感观测进行 <code>SIC</code> 和 <code>SIT</code> 预测时的偏差。</p>
+<h3 id="时空重新网格化处理"><a href="#时空重新网格化处理" class="headerlink" title="时空重新网格化处理"></a>时空重新网格化处理</h3><p>由于 SIT 数据无法达到与 SIC 数据相同的时空分辨率，为了实现每日 SIC 和 SIT 的联合预测并确保评估过程的合理性，需要调整 SIC 和 SIT 的数据。</p>
+<p>作者将 1991 到 2016 年的再分析数据和遥感数据用于预处理与微调，而 2017 到 2021 的遥感数据用于测试。作者对训练数据和测试数据进行时空插值。</p>
+<p>由于 SIC 的已经满足要求，所以，只插值 SIT 数据。数据集由此制作完成。</p>
+<p>从图 3 可以看到，重新网格化的 SIT 数据与遥感观测一致。同时，季节性的 SIT 周期波动也和再分析数据相似（图 3 a）。从图 3 b 可以看到，网格化的 SIT 在三季 <code>MAM</code>、<code>SON</code> 和 <code>DJF</code> 中的异常值与再分析数据正相关，但在 <code>JJA</code> 中呈现负相关。从图 3 c 中可以看出，重新网格化的 SIT 与 <code>PIOMAS</code> 的每日 <code>SIT</code> 具有相对一致的空间形态，但仍存在明显差异。</p>
+<h3 id="时空序列分解"><a href="#时空序列分解" class="headerlink" title="时空序列分解"></a>时空序列分解</h3><p>经验正交函数（<code>EOF</code>）是地球科学领域常用的统计分析方法，可用于分析时空分布特征。多变量经验正交函数（<code>MV-EOF</code>）和经典 <code>EOF</code> 的计算步骤基本相同，不同之处在于 <code>MV-EOF</code> 在构建初始异常矩阵时需要按行连接多个变量。</p>
+<p>从公式 1 中可以看到，$X^n_{SIC}$ 表示第 n 天的 SIC 样本。样本矩阵的维度是 $2m*N$，$m$ 是每个变量的空间维度，$N$ 是变量的时间维度。</p>
+<p>$$<br>\mathbf{X}<em>{2m \times N} &#x3D; \left( \begin{array}{ccc}<br>X^{1}</em>{SIC} &amp; \cdots &amp; X^{n}<em>{SIC} &amp; \cdots &amp; X^{N}</em>{SIC} \<br>X^{1}<em>{SIT} &amp; \cdots &amp; X^{n}</em>{SIC} &amp; \cdots &amp; X^{N}<em>{SIT} \<br>\end{array} \right)<br>$$<br>在进行 <code>MV-EOF</code> 分解之前，会扣除 $SIC$ 和 $SIT$ 的气候状态，并进一步标准化异常矩阵来获得标准化异常矩阵 $X</em>{M<em>N}$。其中，$M$ 是 <code>SIC</code> 与 <code>SIT</code> 的公共空间点的数据 $M&#x3D;2m$，$N$ 是时间长度，然后可以计算矩阵 $X_{M</em>N}$ 的协方差矩阵 $C_{M<em>M}$：<br>$$<br>C_{M</em>M}&#x3D;\frac{1}{N}X_{M<em>N}<em>M^T_{M</em>N}<br>$$<br>$C_{M</em>M}$ 的特征值 $\mathbf{\Lambda}<em>{M \times M}$ 和特征向量 $\mathbf{V}</em>{M \times M}$ 可以表示为</p>
+<p>$$<br>\mathbf{C}<em>{M \times M} \times \mathbf{V}</em>{M \times M} &#x3D; \mathbf{V}<em>{M \times M} \times \mathbf{\Lambda}</em>{M \times M}<br>$$<br>$$<br>\mathbf{\Lambda}<em>{M \times M} &#x3D; \operatorname{diag}(\lambda_1, \ldots, \lambda_M)<br>$$<br>其中，特征值按降序排列，每个非零特征值对应于特征向量的一列，也称为空间模式。将空间模式投影到矩阵 $X</em>{M<em>N}$ 上可以获得与特征向量对应的主成分：<br>$$<br>PC_{M</em>N}&#x3D; V^T_{M<em>M}<em>X_{M</em>N}<br>$$<br>$PC_{M</em>N}$ 中每年的数据表示特征向量中系列对应的 PCs。</p>
+<h3 id="预测模块（PM）设计"><a href="#预测模块（PM）设计" class="headerlink" title="预测模块（PM）设计"></a>预测模块（PM）设计</h3><p>预测模块专为高维相空间中的海冰演化设计。通过 PM 捕捉海冰覆盖率（SIC）和海冰厚度（SIT）的联合演化是基本需求。因此，PM 的结构设计需要采用可以推断 SIC 和 SIT 在相空间中的相关性及其多交互的结构单元。</p>
+<p>PM 的结构如图 4 a 所示，包含三个核心单元：嵌入层，编码器和解码器。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908154045.png"></p>
+<p>作者使用三种核心组件：前馈网络，多相关机制和分解模块。多相关性机制用于推断 EOF 空间中的 SIC 和 SIT 的自相关和交叉相关性，而分解模块用于捕捉海冰的多尺度信息。</p>
+<p>由于 SIC 和 SIT 的联合成分（PC）不可以直接使用地理坐标进行空间标注，所以作者首先重新设计了嵌入层。SIC 与 SIT 的联合成分构成了高维的 EOF 相空间维度 $X \in \mathbb{R}^{NS*TI}$，$NS$ 是 EOF 相空间的维度，$TI$ 是输入的时间维度。EOF 相空间中的每个点都代表两个海冰变量的联合演化。</p>
+<p>从图 4 b 中可以看到，PM 的嵌入层对 EOF 相空间，时间和联合 PC 的信息分别进行嵌入映射。嵌入层由全连接层组成。同时，嵌入层不包含激活函数与偏差信息。</p>
+<p>EOF 相空间的每个维度中的权重信息 $X \in \mathbb{R}^{NS \times 3}$ 都被嵌入了，包括个EOF模式的方差贡献、累积方差贡献和特征值。时间信息的编码包括每个时间点的年、月和日。</p>
+<p>$$<br>X_{en} &#x3D; Embed_{data}(X)+Embed_{ps}(X_{ps})+Embed_{time}(X_{time})<br>$$</p>
+<p>其中，$X_{en} \in R^{NS<em>TI</em>D_{model}}$ 是编码器的嵌入输入，$D_{model}$ 是隐藏变量的通道数。相同的嵌入方式也用于解码器的输入准备。</p>
+<p>编码过程（图 4 c）从历史观测中学习联合 PC 信息的表示，并将其输入解码器。PM 的编码器交替应用 MC 和 FF 层，来捕捉时空相关性。这个过程可以用以下来表示：</p>
+<p>$$<br>\begin{cases}<br>\widehat{X}<em>{en}^{i-1} &#x3D; \text{MC}(X</em>{en}^{i-1}) \<br>X_{en}^{i} &#x3D; \text{FF}(\widehat{X}_{en}^{i-1})<br>\end{cases}<br>\quad i &#x3D; 1, 2, \ldots, \text{Ens}<br>$$</p>
+<p>$i$ 是编码层的编号，$X_{\text{Ens}} \in \mathbb{R}^{NS \times T \times D}$ 是从第 $i$ 个编码层中提取的演化信息。</p>
+<p>解码器的输入是 $X_{season},X_{trend} \in \mathbb{R}^{NS \times (\frac{TI}{3}+TO)}$，分别表示未来的广义平稳季节性部分和非平稳趋势部分，包括长度为 $TI&#x2F;3$ 的近历史观测和长度为 $TO$ 的未来预测占位符作为初始化。这些初始化将基于编码器中学习的时空信息在解码器中进行细化，过程为：</p>
+<p>$$<br>\begin{cases}<br>\widehat{X}<em>{de}^{j,1} &#x3D; \text{MC}(X</em>{de}^{j-1}) \<br>\widehat{X}<em>{de}^{j,2} &#x3D; \text{MC}(X</em>{de}^{j,1}, X_{en}^{\text{Ens}}) \<br>X_{de}^{j} &#x3D; \text{FF}(\widehat{X}<em>{de}^{j,2})<br>\end{cases}<br>\quad j &#x3D; 1, 2, \ldots, \text{Des}<br>$$<br>$j$ 是解码层的编号，$X</em>{\text{season}}$ 和 $X_{\text{trend}}$ 被输入 PM 的解码器进行处理。最后，预测结果表示为多项式的形式。</p>
+<p>分解模块基于沿时间维度的移动平均，可以将序列分解为具有广义平稳性和非平稳趋势的季节性部分。多相关性机制用于从分散的局部观测中发现复杂的时空相关性，以同时预测海冰。总体来说，PM在编码器和解码器内部嵌套了多个分解模块和多相关性机制，以实现海冰的时空多尺度预测。</p>
+<h3 id="模型的工作流程"><a href="#模型的工作流程" class="headerlink" title="模型的工作流程"></a>模型的工作流程</h3><p>作者建立了一个预测模块为核心的标准化工作流程。采用模块化设计，集成了四个模块：先验模式模块（Prior Patterns Module，PPM），映射模块（Mapping Module，MM），预测模块（Prediction Module，PM）和重建模块（Reconstruction Module，RM）。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908162206.png"></p>
+<h4 id="先验模式模块"><a href="#先验模式模块" class="headerlink" title="先验模式模块"></a>先验模式模块</h4><p>图 5 a</p>
+<p>用于提取 SIC 和 SIT 的同时演化模式，这是 EOF 分解计算过程的模块化实现。</p>
+<h4 id="映射模块"><a href="#映射模块" class="headerlink" title="映射模块"></a>映射模块</h4><p>图 5 b</p>
+<p>该模块在完成 PPM 的冷启动和 IceFormer 的预训练后执行。在 IceFormer 的二次训练之前，采用 1991 至 2016 年的遥感数据和 PPM 中保留的空间模式作为输入，并将观测数据投影到 EOF 空间，其中的联合PC用于IceFormer的微调。</p>
+<h4 id="预测模块"><a href="#预测模块" class="headerlink" title="预测模块"></a>预测模块</h4><p>图 5 c</p>
+<p>此模块是IceFormer的核心，采用编码-解码机制进行联合PC预测。该部分总共运行3次，第一次为直接预测阶段，使用15天的联合PC预测接下来的15天。最后两次为滚动预测阶段，使用前一步中预测的联合PC作为输入。最终，PM获得未来45天的联合PC。</p>
+<h4 id="重建模块"><a href="#重建模块" class="headerlink" title="重建模块"></a>重建模块</h4><p>图 5 d</p>
+<p>此模块是联合PC的反向映射，利用PPM保留的空间模式和PM预测的45天联合PC重建未来每日的SIC和SIT。</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>作者使用均方根误差（RMSE）、平均绝对误差（MAE）、平均绝对百分比误差（MAPE）、空间异常相关系数（SACC）、二值准确率（BACC）和决定系数（R2）作为评价指标。</p>
+<p>RMSE、MAPE和MAE是通用的误差评估指标，可以直接反映预测结果与观测结果之间的相对或绝对误差。SACC和R2从相关性的角度进行衡量，可以更清晰地反映演变趋势的相似性与差异。BACC源于综合冰缘误差（IIEE），它通过判断SIC大于15%（取值1）或不大于15%（取值0）的二值海冰面积计算得出。IIEE定义为所有SIE被高估或低估区域的总和。</p>
+<h3 id="总体评估"><a href="#总体评估" class="headerlink" title="总体评估"></a>总体评估</h3><p>IceFormer 的训练过程大约需要 75 分钟，其核心是因为提取了海冰演变的大规模信息和主要模式，使得原本高维的地理空间映射到了低维的相空间。大规模信息和主要模式在普通 CPU 上需要运行 3 天左右，但是一但提取成功，就可以保存成为固定的文件，无需重复的计算。在这以后，IceFormer 的时间消耗则会主要集中在模型的迭代训练的部分。</p>
+<p>其平均 SACC 和 RMSE 如图 6 所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908164409.png"></p>
+<p>如图6所示，与基线模型相比，IceFormer在45天的海冰预测中表现远优于持续预测，这得益于IceFormer混合预测方案的设计。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908164445.png"></p>
+<p>如表I所示，SIC和SIT的平均RMSE分别为6.62%和0.04米，综合SACC分别为0.80和0.93</p>
+<p>作者还展示了SIC和SIT的RMSE在时间和空间上的分布，如图7(a)-(d)所示，并重点展示了IceFormer在融冰季节的表现。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908164604.png"></p>
+<p>如图7(a)所示，SIC的预测与遥感观测总体趋势一致。如图7(c)所示，SIT的短期融化趋势也被准确捕捉到。</p>
+<p>通过对每个非陆地区网格点的时间平均，得到整体RMSE的空间分布。RMSE的空间分布更直接地显示在图7(b)和图7(d)中。</p>
+<p>如图7(b)所示，SIC在北极大部分地区的空间RMSE小于10%。主要误差分布在融冰季节的海冰覆盖边缘区域。从图7(d)可以看出，SIT的主要误差区域也是边缘区域。</p>
+<h3 id="使用-RS-和-PIOMAS-进行验证"><a href="#使用-RS-和-PIOMAS-进行验证" class="headerlink" title="使用 RS 和 PIOMAS 进行验证"></a>使用 RS 和 PIOMAS 进行验证</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908165455.png"></p>
+<p>图 8 展示了 SICA 的详细信息。可以看到，IceFormer的预测结果基本与RS观测和PIOMAS再分析结果一致，如图8(a)和(b)所示。总体而言，IceFormer预测结果的异常值分布小于观测值（图8 d），这表明预测结果的不确定性与遥感观测大致相同。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908165640.png"></p>
+<p>图 9 展示了 SITA 的详细信息。IceFormer的预测结果通常大于遥感观测，如图9(a)和(b)所示。</p>
+<p>可以发现IceFormer的预测结果显著高估了北极盆地沿海水域的SIT。</p>
+<p>可以从下图看到预测结果高估的原因：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908165814.png"></p>
+<p>IceFormer的整体预测性能显著优于Persist，但SIE的预测也会向外延伸。这表明IceFormer估计的SIE大于观测值，并存在滞后效应。</p>
+<p>上述误差的原因在于两个变量的共同预测中，主要演变集中在大尺度和中尺度，而海冰边缘区域更多地受小尺度控制。此部分的小尺度误差有两个来源：一方面来自主要模态的截断；另一方面，冰融季节的小尺度高频演变强烈非线性。值得一提的是，由于夏季海冰的重新网格化精度仍然不足，数据插值误差也应被视为误差来源。</p>
+<h3 id="季节尺度预测的比较"><a href="#季节尺度预测的比较" class="headerlink" title="季节尺度预测的比较"></a>季节尺度预测的比较</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908170106.png"></p>
+<p>5 年（60 个月）的月度SIC和SIT预测，如图 11 所示。可以看到：IceFormer在整体月度尺度上保持了与观测一致的趋势。</p>
+<p>总体而言，IceFormer将相对高估SIC 9%（图11(a)）和SIT 13%（图11(b)）。从图 11 c 中也可以看出：IceFormer的SIE预测更准确，但SIT显著偏高。</p>
+<p>IceFormer的预测结果反映了数据驱动模型对未来海冰含量的稳定高估，这可能是由于我们对长期气候趋势对海冰变化影响的乐观估计所导致的系统不确定性。</p>
+<p>总之，IceFormer模型在捕捉季节尺度的海冰演变方面表现良好，其亚季节预测的相对误差在可接受范围内。</p>
+<p>同时，季节性海冰的预测也提醒我们，在海冰预测研究中应将气候变化等大规模信号视为直接的误差来源，尤其是在复杂的海洋-大气-海冰耦合系统中。</p>
+<h3 id="与其他几种深度学习模型的比较"><a href="#与其他几种深度学习模型的比较" class="headerlink" title="与其他几种深度学习模型的比较"></a>与其他几种深度学习模型的比较</h3><p>将 IceFormer 与之前用于海冰浓度（SIC）预测的三种深度学习模型进行对比，比如 Unet, ConvLSTM，融合注意力机制的 UNet。</p>
+<p>其结果如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908181940.png"></p>
+<p>可以看到，IceFormer 在所有的指标上都优于其他的模型。三种基于 CNN 的模型的均方根误差（RMSE）分布大致与 IceFormer 相同，表明每个模型都捕捉到了海冰的时间演变。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908182135.png"></p>
+<p>图 12(a) 和 (b) 显示了四种模型的 RMSE 的时间分布。这表明，IceFormer 的总体误差远小于 Unet 和 ConvLSTM，同时，注意力机制能更有效地捕捉 SIC 和 SIT 的非线性演变。</p>
+<p>通过 SIC 的 RMSE 空间分布 (图 12(c) 和 (e))可以发现，Unet+CBAM 的预测误差比 Unet 小得多，但仍大于 IceFormer。</p>
+<h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><h3 id="与数据模型的性能比较"><a href="#与数据模型的性能比较" class="headerlink" title="与数据模型的性能比较"></a>与数据模型的性能比较</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908182503.png"></p>
+<p>北极海冰预测主要依赖于海冰-海洋耦合数值模型。作者使用SEAS5季节尺度SIC的每日预测进行比较。其结果如图 13 所示。</p>
+<p>作者采用 <code>SACC</code> 和 <code>BACC</code> 来评估SEAS5和 <code>IceFormer</code> 在SIC上的预测性能。如图13(a)所示，集合平均SIC的 <code>SACC</code> 在45天的预见期内大于0.5。<code>IceFormer</code> 的 <code>SACC</code> 在15天内与SEAS5相似，但在15天后 <code>IceFormer</code> 的 <code>SACC</code> 高于SEAS5的集合平均。这是因为数值模型的单一输入和输出仅为一个时间步长，这使得误差积累的效果更快且更明显。</p>
+<p>如图13(b)所示，<code>IceFormer</code> 和SEAS5对月平均SIC的预测性能大致相同，甚至从5月到11月，<code>IceFormer</code> 的预测性能优于SEAS5。同时，也可以看出，IceFormer 对季节不敏感，具有很强的鲁棒性。</p>
+<p>同时，为了验证其稳定性，作者选择了2019年和2020年9月的NSIDC SIC与预测结果进行比较。</p>
+<p>其结果如图13(c)-(g)所示，<code>IceFormer</code> 和SEAS5的集合平均预测结果可以有效捕捉2019年9月的海冰融化演变。</p>
+<p>以上结果均表明，<code>IceFormer</code> 的预测性能可与以SEAS5为代表的复杂海冰-海洋耦合数值模型相媲美。在某些情况下，其预测结果甚至优于数值模型。</p>
+<h3 id="IceFormer-的可预测性与因果机制"><a href="#IceFormer-的可预测性与因果机制" class="headerlink" title="IceFormer 的可预测性与因果机制"></a>IceFormer 的可预测性与因果机制</h3><p>作者认为，造成可解释性困难的主要原因是缺乏直接量化的方法来推断变量之间的作用机制和因果关系。</p>
+<p>作者采用 <code>Liang-Kleeman</code> 信息流方法来识别变量之间因果关系的方向与大小。</p>
+<p>从变量 $X_j$ 到变量 $X_i$ 的传递的绝对速率计算如下：</p>
+<p>$$<br>T_{j \to i} &#x3D; \frac{1}{\det C} \cdot \sum_{k&#x3D;1}^{d} \Delta_{jk} C_{k,di} \cdot \frac{C_{ij}}{C_{ii}}<br>$$<br>$C$ 是协方差矩阵，$d$ 是变量的数量，$\Delta_{jk}$ 是 $C$ 的余因子，$C_{k,di}$ 是所有 $X_k$ 和 $dX_i&#x2F;dt$（$t$ 为时间）的样本协方差，$C_{ij}$ 是 $X_i$ 和 $X_j$ 之间的样本协方差，$C_{ii}$ 是 $X_i$ 的样本方差。当 $T_{j -&gt; i}$ 在统计上不同于 0 时，$X_j$ 对 $X_i$ 有影响。</p>
+<p>分析的数据是 IceFormer 输入的 50 个主要主成分（PCs）。同时，根据每年的时间窗口构建了 32 年的集合样本。通过自助法（bootstrap）重新抽样评估 iceFormer 的不确定性。其结果如下所示</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240908183811.png"></p>
+<p>图14(c)和(d)显示了输入数据到IceFormer的总体信息传递平均相对比率和相关系数矩阵（仅显示前5个PCs）。</p>
+<p>在当前框架中，自影响意味着可变状态的动态依赖于可变状态本身。除了自影响，不同PCs之间的双向信息传递表明SIC和SIT的某些模式之间存在交互。如图14(a)所示，前5个模式提供了约50%的SIC和SIT的空间演变信息。</p>
+<p>除了未通过显著性检验的部分，大多数PCs交换信息且方向不同。例如，从PC3到PC5的信息传递率约为4%，而反向仅为0.06%。这表明从PC3到PC5的信息传递过程更为重要。</p>
+<p>其中，PC3和PC5代表不同尺度的演变。这表明北极海冰的不同时间和空间尺度之间存在交互。因此，IceFormer提取海冰联合演变模式的方法是合理的。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/fd77157a/" title="A Spatiotemporal Multiscale Deep Learning Model for Subseasonal Prediction of Arctic Sea Ice">http://example.com/posts/fd77157a/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2c9b5ca7/" rel="prev" title="U-Net网络结构">
+                  <i class="fa fa-angle-left"></i> U-Net网络结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/da26157e/" rel="next" title="Mamba模型学习笔记">
+                  Mamba模型学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

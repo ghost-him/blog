@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/bf216496/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/bf216496/","path":"posts/bf216496/","title":"使用 OpenSTL完成模型训练与评估"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用 OpenSTL完成模型训练与评估 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/bf216496/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">制作数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">加载数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">自定义数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E4%B8%8E%E8%AF%84%E4%BC%B0"><span class="nav-number">4.</span> <span class="nav-text">训练与评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">可视化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%BD%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number"></span> <span class="nav-text">好用的函数</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/bf216496/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用 OpenSTL完成模型训练与评估 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用 OpenSTL完成模型训练与评估
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-08-23 09:50:00 / 修改时间：09:51:49" itemprop="dateCreated datePublished" datetime="2024-08-23T09:50:00+08:00">2024-08-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/chengtan9907/OpenSTL">github</a></p>
+<span id="more"></span>
+
+<p>主要的步骤：</p>
+<ol>
+<li>数据的预处理：将原始的视频格式转换成 <code>.npy</code> 格式。这种格式是 python 中常见的数值数组存储格式，可以更高效地存储与读取大量数值数据</li>
+<li>自定义数据使用： 展示如何在 OpenSTL 框架中导入和使用自定义的数据集。这对于研究者使用自己的特定数据集很有帮助。</li>
+<li>模型训练和评估： 利用 OpenSTL 提供的工具和 API 来训练时空学习（STL）模型，并对模型性能进行评估。</li>
+<li>结果可视化： 将模型预测的视频帧进行可视化处理。这包括生成 <code>.gif</code> 动图或完整视频，以直观地展示模型的预测效果。</li>
+</ol>
+<h2 id="制作数据集"><a href="#制作数据集" class="headerlink" title="制作数据集"></a>制作数据集</h2><p>在预测时，通常要使用以下的步骤：</p>
+<p>定义两个参数：<code>pre_seq_length</code> 与 <code>aft_seq_length</code>。其作用分别是：观察的帧数（历史的帧数）与未来的帧数（要预测的帧数）</p>
+<p>以下是从视频中均匀采样指定数量的帧的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sample_frames</span>(<span class="params">video_path, num_frames=<span class="number">20</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    从视频中均匀采样指定数量的帧。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    video_path (str): 视频文件的路径</span></span><br><span class="line"><span class="string">    num_frames (int): 要采样的帧数，默认为20</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">    np.array: 包含采样帧的NumPy数组，形状为(num_frames, height, width, channels)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 读取视频</span></span><br><span class="line">    video = cv2.VideoCapture(video_path)</span><br><span class="line">    <span class="comment"># 获取视频总帧数</span></span><br><span class="line">    total_frames = <span class="built_in">int</span>(video.get(cv2.CAP_PROP_FRAME_COUNT))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 在视频总帧数范围内均匀生成采样帧的索引</span></span><br><span class="line">    frame_idxs = np.linspace(<span class="number">0</span>, total_frames-<span class="number">1</span>, num_frames, dtype=<span class="built_in">int</span>)</span><br><span class="line">    </span><br><span class="line">    frames = []</span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> frame_idxs:</span><br><span class="line">        <span class="comment"># 设置视频读取位置到指定帧</span></span><br><span class="line">        video.<span class="built_in">set</span>(cv2.CAP_PROP_POS_FRAMES, idx)</span><br><span class="line">        <span class="comment"># 读取该帧</span></span><br><span class="line">        _, frame = video.read()</span><br><span class="line">        <span class="comment"># 可以在这里添加frame的resize操作，如果需要的话</span></span><br><span class="line">        <span class="comment"># frame = cv2.resize(frame, (height, width))</span></span><br><span class="line">        frames.append(frame)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 释放视频对象</span></span><br><span class="line">    video.release()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将采样的帧堆叠成一个NumPy数组并返回</span></span><br><span class="line">    <span class="keyword">return</span> np.stack(frames)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_folder</span>(<span class="params">folder_path, pre_slen=<span class="number">10</span>, aft_slen=<span class="number">10</span>, suffix=<span class="string">&#x27;.avi&#x27;</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    处理指定文件夹中的所有视频，采样帧并进行数据处理。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    folder_path (str): 包含视频文件的文件夹路径</span></span><br><span class="line"><span class="string">    pre_slen (int): 前半部分视频的帧数，默认为10</span></span><br><span class="line"><span class="string">    aft_slen (int): 后半部分视频的帧数，默认为10</span></span><br><span class="line"><span class="string">    suffix (str): 视频文件的后缀名，默认为&#x27;.avi&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">    tuple: 包含两个NumPy数组，分别是前半部分和后半部分的处理后的视频数据</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 获取文件夹中所有的视频</span></span><br><span class="line">    videos = []</span><br><span class="line">    files = os.listdir(folder_path)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        video_path = os.path.join(folder_path, file)</span><br><span class="line">        <span class="comment"># 检查文件是否为指定后缀的视频文件</span></span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(video_path) <span class="keyword">and</span> file.endswith(suffix):</span><br><span class="line">            <span class="comment"># 对每个视频进行采样</span></span><br><span class="line">            video = sample_frames(video_path, pre_slen + aft_slen)</span><br><span class="line">            videos.append(video)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将所有视频的帧堆叠起来，并调整维度顺序</span></span><br><span class="line">    <span class="comment"># 最终形状为 (num_videos, num_frames, channels, height, width)</span></span><br><span class="line">    data = np.stack(videos).transpose(<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 如果数据范围在[0, 255]，则将其缩放到[0, 1]</span></span><br><span class="line">    <span class="keyword">if</span> data.<span class="built_in">max</span>() &gt; <span class="number">1.0</span>:</span><br><span class="line">        data = data.astype(np.float32) / <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 返回前半部分和后半部分的数据</span></span><br><span class="line">    <span class="keyword">return</span> data[:, :pre_slen], data[:, pre_slen:]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>np.linspace</code> 的作用是创建等间距的数字序列。其作用是在指定的区间内生成均匀分布的数值数组。</p>
+<p><code>np.stack</code> 的作用是沿着新轴将一系列数组堆叠起来。由于使用 <code>cv2.imread()</code> 或 <code>cv2.VideoCapture().read()</code> 读取图像或视频帧时，返回的是 NumPy 数组。所以可以使用这个函数将其堆叠起来。</p>
+<p>之后，可以使用以下的函数，完成对数据集的制作与保存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入pickle模块，用于序列化和反序列化Python对象</span></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化一个空字典，用于存储数据集</span></span><br><span class="line">dataset = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义包含数据集文件夹名称的列表</span></span><br><span class="line">folders = [<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>, <span class="string">&#x27;test&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历每个文件夹</span></span><br><span class="line"><span class="keyword">for</span> folder <span class="keyword">in</span> folders:</span><br><span class="line">    <span class="comment"># 调用process_folder函数处理每个文件夹，返回数据和标签</span></span><br><span class="line">    <span class="comment"># 参数pre_slen和aft_slen用于指定序列长度，suffix用于指定文件后缀</span></span><br><span class="line">    data_x, data_y = process_folder(folder, pre_slen=pre_seq_length, aft_slen=aft_seq_length, suffix=<span class="string">&#x27;.avi&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将处理后的数据和标签存储在字典中，键名为&#x27;X_&#x27;或&#x27;Y_&#x27;加上文件夹名称</span></span><br><span class="line">    dataset[<span class="string">&#x27;X_&#x27;</span> + folder] = data_x</span><br><span class="line">    dataset[<span class="string">&#x27;Y_&#x27;</span> + folder] = data_y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将数据集保存为pkl文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;dataset.pkl&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 使用pickle模块将&#x27;dataset&#x27;对象序列化，并写入文件</span></span><br><span class="line">    pickle.dump(dataset, f)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>pickle</code> 模块可以序列化与反序列化一个 python 对象。</p>
+<h2 id="加载数据集"><a href="#加载数据集" class="headerlink" title="加载数据集"></a>加载数据集</h2><p>通过以上代码，可以得知，本地目录下 <code>dataset.pkl</code> 存放的是一个数据集，所以可以使用 <code>pickle</code> 从本地中加载这个数据集。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据集</span></span><br><span class="line"><span class="comment"># 打开名为&#x27;dataset.pkl&#x27;的文件，模式为读取二进制(&#x27;rb&#x27;)</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;dataset.pkl&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># 使用pickle模块反序列化文件内容，加载到&#x27;dataset&#x27;对象中</span></span><br><span class="line">    dataset = pickle.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从数据集中提取训练数据和标签</span></span><br><span class="line">train_x, train_y = dataset[<span class="string">&#x27;X_train&#x27;</span>], dataset[<span class="string">&#x27;Y_train&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印训练数据的形状</span></span><br><span class="line"><span class="built_in">print</span>(train_x.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 形状说明为B x T x C x H x W</span></span><br><span class="line"><span class="comment"># B: 样本数量</span></span><br><span class="line"><span class="comment"># T: 每个样本中的帧数</span></span><br><span class="line"><span class="comment"># C: 每帧的通道数</span></span><br><span class="line"><span class="comment"># H: 每帧的高度</span></span><br><span class="line"><span class="comment"># W: 每帧的宽度</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对于已经加载好的数据集，可以使用 <code>show_video_line</code> 函数来进行可视化处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openstl.utils <span class="keyword">import</span> show_video_line</span><br><span class="line"><span class="comment"># show the given frames from an example</span></span><br><span class="line"></span><br><span class="line">example_idx = <span class="number">0</span></span><br><span class="line">show_video_line(train_x[example_idx], ncols=pre_seq_length, vmax=<span class="number">0.6</span>, cbar=<span class="literal">False</span>, out_path=<span class="literal">None</span>, <span class="built_in">format</span>=<span class="string">&#x27;png&#x27;</span>, use_rgb=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这个函数的定义与作用如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">show_video_line</span>(<span class="params">data, ncols, vmax=<span class="number">0.6</span>, vmin=<span class="number">0.0</span>, cmap=<span class="string">&#x27;gray&#x27;</span>, norm=<span class="literal">None</span>, cbar=<span class="literal">False</span>, <span class="built_in">format</span>=<span class="string">&#x27;png&#x27;</span>, out_path=<span class="literal">None</span>, use_rgb=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    生成并显示视频序列的图像</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    data: 包含视频帧的数组</span></span><br><span class="line"><span class="string">    ncols: 要显示的列数（即视频帧数）</span></span><br><span class="line"><span class="string">    vmax: 颜色映射的最大值 (默认 0.6)</span></span><br><span class="line"><span class="string">    vmin: 颜色映射的最小值 (默认 0.0)</span></span><br><span class="line"><span class="string">    cmap: 颜色映射 (默认 &#x27;gray&#x27;)</span></span><br><span class="line"><span class="string">    norm: 归一化对象 (默认 None)</span></span><br><span class="line"><span class="string">    cbar: 是否显示颜色条 (默认 False)</span></span><br><span class="line"><span class="string">    format: 输出图像格式 (默认 &#x27;png&#x27;)</span></span><br><span class="line"><span class="string">    out_path: 输出图像路径 (默认 None)</span></span><br><span class="line"><span class="string">    use_rgb: 是否使用RGB颜色空间 (默认 False)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义数据集"><a href="#自定义数据集" class="headerlink" title="自定义数据集"></a>自定义数据集</h2><p>对于实际的视频预测，一般使用 <code>float32</code> 来表示帧，并将其值限制在 $[0, 1]$ 之间。其优势有：</p>
+<ol>
+<li>浮点数据更适合神经网络的处理与优化。</li>
+<li>归一化到 $[0, 1]$ 满园有助于模型的数值稳定性与收敛性。</li>
+</ol>
+<p>以下是常见的模板</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CustomDataset</span>(<span class="title class_ inherited__">Dataset</span>):</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, X, Y, normalize=<span class="literal">False</span>, data_name=<span class="string">&#x27;custom&#x27;</span></span>):</span><br><span class="line">    <span class="built_in">super</span>(CustomDataset, <span class="variable language_">self</span>).__init__()</span><br><span class="line">    <span class="variable language_">self</span>.X = X  <span class="comment"># 输入数据</span></span><br><span class="line">    <span class="variable language_">self</span>.Y = Y  <span class="comment"># 标签数据</span></span><br><span class="line">    <span class="variable language_">self</span>.mean = <span class="literal">None</span>  <span class="comment"># 用于存储数据的平均值</span></span><br><span class="line">    <span class="variable language_">self</span>.std = <span class="literal">None</span>   <span class="comment"># 用于存储数据的标准差</span></span><br><span class="line">    <span class="variable language_">self</span>.data_name = data_name  <span class="comment"># 数据集的名称</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> normalize:</span><br><span class="line">        <span class="comment"># 如果需要归一化，计算并应用均值和标准差</span></span><br><span class="line">        mean = data.mean(axis=(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)).reshape(<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">        std = data.std(axis=(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)).reshape(<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">        data = (data - mean) / std    <span class="comment"># 这样就可以使数据的分布大致以 0 为中心，标准差为 1。</span></span><br><span class="line">        <span class="variable language_">self</span>.mean = mean</span><br><span class="line">        <span class="variable language_">self</span>.std = std</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="comment"># 返回数据集的长度</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">self</span>.X.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):</span><br><span class="line">    <span class="comment"># 返回指定索引的数据项和标签</span></span><br><span class="line">    data = torch.tensor(<span class="variable language_">self</span>.X[index]).<span class="built_in">float</span>()</span><br><span class="line">    labels = torch.tensor(<span class="variable language_">self</span>.Y[index]).<span class="built_in">float</span>()</span><br><span class="line">    <span class="keyword">return</span> data, labels</span><br></pre></td></tr></table></figure>
+
+<p>接下来就可以使用自定义数据集来加载数据了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">X_train, X_val, X_test, Y_train, Y_val, Y_test = dataset[<span class="string">&#x27;X_train&#x27;</span>], dataset[<span class="string">&#x27;X_val&#x27;</span>], dataset[<span class="string">&#x27;X_test&#x27;</span>], dataset[<span class="string">&#x27;Y_train&#x27;</span>], dataset[<span class="string">&#x27;Y_val&#x27;</span>], dataset[<span class="string">&#x27;Y_test&#x27;</span>]</span><br><span class="line"></span><br><span class="line">train_set = CustomDataset(X=X_train, Y=Y_train)</span><br><span class="line">val_set = CustomDataset(X=X_val, Y=Y_val)</span><br><span class="line">test_set = CustomDataset(X=X_test, Y=Y_test)</span><br><span class="line"></span><br><span class="line">dataloader_train = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=<span class="literal">True</span>, pin_memory=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">dataloader_val = torch.utils.data.DataLoader(val_set, batch_size=batch_size, shuffle=<span class="literal">True</span>, pin_memory=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">dataloader_test = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=<span class="literal">True</span>, pin_memory=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="训练与评估"><a href="#训练与评估" class="headerlink" title="训练与评估"></a>训练与评估</h2><p>在训练开始前，要先设置一些超参数</p>
+<p>首先设置 <code>epoch</code>，一般来说，要将 <code>epoch</code> 设置成 100 或更高。之后用户需要加载一个时空预测学习模型。以 <code>MetaVP</code> 模型为例，其比较重要的参数有：<code>N_S</code>、<code>N_T</code>、<code>hid_S</code>、<code>hid_T</code> 和 <code>model_type</code>。可以通过配置文件来加载，也可以通过自定义来设置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">custom_training_config = &#123;</span><br><span class="line">    <span class="string">&#x27;pre_seq_length&#x27;</span>: pre_seq_length,</span><br><span class="line">    <span class="string">&#x27;aft_seq_length&#x27;</span>: aft_seq_length,</span><br><span class="line">    <span class="string">&#x27;total_length&#x27;</span>: pre_seq_length + aft_seq_length,</span><br><span class="line">    <span class="string">&#x27;batch_size&#x27;</span>: batch_size,</span><br><span class="line">    <span class="string">&#x27;val_batch_size&#x27;</span>: batch_size,</span><br><span class="line">    <span class="string">&#x27;epoch&#x27;</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">&#x27;lr&#x27;</span>: <span class="number">0.001</span>,  </span><br><span class="line">    <span class="string">&#x27;metrics&#x27;</span>: [<span class="string">&#x27;mse&#x27;</span>, <span class="string">&#x27;mae&#x27;</span>],</span><br><span class="line">  </span><br><span class="line">    <span class="string">&#x27;ex_name&#x27;</span>: <span class="string">&#x27;custom_exp&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;dataname&#x27;</span>: <span class="string">&#x27;custom&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;in_shape&#x27;</span>: [<span class="number">10</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">32</span>],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">custom_model_config = &#123;</span><br><span class="line">    <span class="comment"># For MetaVP models, the most important hyperparameters are:</span></span><br><span class="line">    <span class="comment"># N_S, N_T, hid_S, hid_T, model_type</span></span><br><span class="line">    <span class="string">&#x27;method&#x27;</span>: <span class="string">&#x27;SimVP&#x27;</span>,</span><br><span class="line">    <span class="comment"># Users can either using a config file or directly set these hyperparameters</span></span><br><span class="line">    <span class="comment"># &#x27;config_file&#x27;: &#x27;configs/custom/example_model.py&#x27;,</span></span><br><span class="line">    <span class="comment"># Here, we directly set these parameters</span></span><br><span class="line">    <span class="string">&#x27;model_type&#x27;</span>: <span class="string">&#x27;gSTA&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;N_S&#x27;</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="string">&#x27;N_T&#x27;</span>: <span class="number">8</span>,</span><br><span class="line">    <span class="string">&#x27;hid_S&#x27;</span>: <span class="number">64</span>,</span><br><span class="line">    <span class="string">&#x27;hid_T&#x27;</span>: <span class="number">256</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openstl.api <span class="keyword">import</span> BaseExperiment</span><br><span class="line"><span class="keyword">from</span> openstl.utils <span class="keyword">import</span> create_parser, default_parser</span><br><span class="line">  </span><br><span class="line">args = create_parser().parse_args([])</span><br><span class="line">config = args.__dict__</span><br><span class="line">  </span><br><span class="line"><span class="comment"># update the training config</span></span><br><span class="line">config.update(custom_training_config)</span><br><span class="line"><span class="comment"># update the model config</span></span><br><span class="line">config.update(custom_model_config)</span><br><span class="line"><span class="comment"># fulfill with default values</span></span><br><span class="line">default_values = default_parser()</span><br><span class="line"><span class="keyword">for</span> attribute <span class="keyword">in</span> default_values.keys():</span><br><span class="line">    <span class="keyword">if</span> config[attribute] <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        config[attribute] = default_values[attribute]</span><br><span class="line">  </span><br><span class="line">exp = BaseExperiment(args, dataloaders=(dataloader_train, dataloader_val, dataloader_test), strategy=<span class="string">&#x27;auto&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>设置好了超参数了以后就可以训练模型了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&gt;&#x27;</span>*<span class="number">35</span> + <span class="string">&#x27; training &#x27;</span> + <span class="string">&#x27;&lt;&#x27;</span>*<span class="number">35</span>)</span><br><span class="line">exp.train()</span><br><span class="line">  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&gt;&#x27;</span>*<span class="number">35</span> + <span class="string">&#x27; testing  &#x27;</span> + <span class="string">&#x27;&lt;&#x27;</span>*<span class="number">35</span>)</span><br><span class="line">exp.test()</span><br></pre></td></tr></table></figure>
+
+<h2 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h2><p>可以通过使用 <code>OpenSTL</code> 提供的 <code>show_video_line</code> 与 <code>show_gif_multiple</code> 函数，从而实现可视化输入，真实值和预测帧，同时生成 gif。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> openstl.utils <span class="keyword">import</span> show_video_line</span><br><span class="line">  </span><br><span class="line"><span class="comment"># show the given frames from an example</span></span><br><span class="line">inputs = np.load(<span class="string">&#x27;./work_dirs/custom_exp/saved/inputs.npy&#x27;</span>)</span><br><span class="line">preds = np.load(<span class="string">&#x27;./work_dirs/custom_exp/saved/preds.npy&#x27;</span>)</span><br><span class="line">trues = np.load(<span class="string">&#x27;./work_dirs/custom_exp/saved/trues.npy&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">example_idx = <span class="number">0</span></span><br><span class="line">show_video_line(trues[example_idx], ncols=aft_seq_length, vmax=<span class="number">0.6</span>, cbar=<span class="literal">False</span>, out_path=<span class="literal">None</span>, <span class="built_in">format</span>=<span class="string">&#x27;png&#x27;</span>, use_rgb=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>与</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example_idx = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">show_video_line(preds[example_idx], ncols=aft_seq_length, vmax=<span class="number">0.6</span>, cbar=<span class="literal">False</span>, out_path=<span class="literal">None</span>, <span class="built_in">format</span>=<span class="string">&#x27;png&#x27;</span>, use_rgb=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>以下是生成 gif 的示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openstl.utils <span class="keyword">import</span> show_video_gif_multiple</span><br><span class="line">  </span><br><span class="line">example_idx = <span class="number">0</span></span><br><span class="line">show_video_gif_multiple(inputs[example_idx], trues[example_idx], preds[example_idx], use_rgb=<span class="literal">True</span>, out_path=<span class="string">&#x27;example.gif&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="好用的函数"><a href="#好用的函数" class="headerlink" title="好用的函数"></a>好用的函数</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = rearrange(x, &#x27;b t c h w -&gt; b c t h w&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>这行代码使用了 <code>einops</code> 库中的 <code>rearrange</code> 函数。<code>rearrange</code> 函数用于重新排列张量的维度。它接受两个主要参数：</p>
+<ul>
+<li>第一个参数是要重排的张量（这里是 <code>x</code>）</li>
+<li>第二个参数是一个字符串，描述了如何重排维度</li>
+</ul>
+<p>参数解释：<code>&#39;b t c h w -&gt; b c t h w&#39;</code></p>
+<ul>
+<li>箭头左边 <code>&#39;b t c h w&#39;</code> 描述了输入张量的当前维度顺序</li>
+<li>箭头右边 <code>&#39;b c t h w&#39;</code> 描述了期望的输出张量的维度顺序</li>
+</ul>
+<p>这个库会自动处理层的 <code>reshape</code> 与 <code>permute</code> 操作。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/bf216496/" title="使用 OpenSTL完成模型训练与评估">http://example.com/posts/bf216496/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3f6d21e4/" rel="prev" title="Wavelet-Driven Spatiotemporal Predictive Learning--  Bridging Frequency and Time Variations">
+                  <i class="fa fa-angle-left"></i> Wavelet-Driven Spatiotemporal Predictive Learning--  Bridging Frequency and Time Variations
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/87aace2c/" rel="next" title="Enhanced Spatiotemporal Prediction Using Physical-guided And Frequency-enhanced Recurrent Neural Networks">
+                  Enhanced Spatiotemporal Prediction Using Physical-guided And Frequency-enhanced Recurrent Neural Networks <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

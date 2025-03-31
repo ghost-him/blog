@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/ce93c3b3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/ce93c3b3/","path":"posts/ce93c3b3/","title":"Mamba or RWKV- Exploring High-Quality and High-Efficiency Segment Anything Model"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Mamba or RWKV- Exploring High-Quality and High-Efficiency Segment Anything Model | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/ce93c3b3/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E6%96%B0"><span class="nav-number">1.2.</span> <span class="nav-text">创新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-1"><span class="nav-number">2.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE"><span class="nav-number">2.2.</span> <span class="nav-text">贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E5%88%86%E5%89%B2"><span class="nav-number">2.3.1.</span> <span class="nav-text">高效分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C"><span class="nav-number">2.3.2.</span> <span class="nav-text">高效骨干网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E8%B4%A8%E9%87%8F%E5%88%86%E5%89%B2"><span class="nav-number">2.3.3.</span> <span class="nav-text">高质量分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.4.</span> <span class="nav-text">线性注意力模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84"><span class="nav-number">2.4.</span> <span class="nav-text">模型架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E7%9A%84%E5%88%86%E5%89%B2%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C"><span class="nav-number">2.4.1.</span> <span class="nav-text">高效的分割骨干网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-number">2.4.2.</span> <span class="nav-text">骨干网络的总体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E5%B1%82%E6%AC%A1%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.4.3.</span> <span class="nav-text">微层次设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.5.</span> <span class="nav-text">数据，模型与训练流程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B"><span class="nav-number">2.5.1.</span> <span class="nav-text">训练流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">2.6.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2"><span class="nav-number">2.6.1.</span> <span class="nav-text">语义分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E4%BB%BB%E4%BD%95%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.6.2.</span> <span class="nav-text">分割任何模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.7.</span> <span class="nav-text">消融实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90"><span class="nav-number">2.7.1.</span> <span class="nav-text">效率分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E5%99%A8%E4%B8%AD%E8%9E%8D%E5%90%88%E6%A8%A1%E5%9D%97%E7%9A%84%E6%95%88%E6%9E%9C"><span class="nav-number">2.7.2.</span> <span class="nav-text">解码器中融合模块的效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E5%99%A8%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.7.3.</span> <span class="nav-text">编码器设计的消融实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">2.7.4.</span> <span class="nav-text">可视化</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/ce93c3b3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Mamba or RWKV- Exploring High-Quality and High-Efficiency Segment Anything Model | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mamba or RWKV- Exploring High-Quality and High-Efficiency Segment Anything Model
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-07 14:14:39" itemprop="dateCreated datePublished" datetime="2024-07-07T14:14:39+08:00">2024-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 17:07:52" itemprop="dateModified" datetime="2024-08-20T17:07:52+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2406.19369">arxiv</a></p>
+<span id="more"></span>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>基于 Transformer 的分割在处理高分辨率的图像时有着困难，而线性注意力机构，比如 Mamba 与 RWKV，因其可以高效处理长序列而引起关注。</p>
+<h2 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h2><p>作者通过探索不同的架构来设计一个高效的分割任何东西的模型。</p>
+<p>设计了一个包含卷积和 RWKV 操作的混合骨干网络（mixed backbone），在准确性与效率都达到了最佳。还设计了一个高效的解码器，利用多尺度的 token 来获得高质量的掩码。</p>
+<p>作者将他们的方法称为 RWKV-SAM，这是一个简单，有效，快速的 SAM 类模型基线（baseline for SAM-like models）。还构建了一个包含各种高质量分割数据集的基准（benchmark），并使用该基准共同训练了一个高效且高质量的分割模型。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>SAM 由于在众多分割任务中的能用性与有效性，所以有很多的关注，但是其计算成本很高，并且在情况下仍然不足。因此这限制了 SAM 在实时场景和需要高质量分割结果的领域中的应用。现有的工作通常只关注解决第一个问题或第二个问题。</p>
+<p>而最近出现了线性注意力模型，该模型可以处理非常长的序列，同时保持其全局感知能力。由于没有使用该模型来在类似 SAM 的可揭示分割任务上探索这些架构，所以作者解决了该问题。</p>
+<p>作者提出了 RWKV-SAM 来处理 SAM 的计算成本与分割质量问题。SAM 的高计算成本可以归因于两个原因：1. 巨量的参数 2. 随着输入特征大小的增加，Transformer 层中的注意力设计引起的二次时间复杂度。作者通过 RWKV 在保持全局感知的同时提高高分辨率下的效率。</p>
+<p>高效分割骨干网络有三个阶段，解码器可以用来细化生成的掩码。</p>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><ul>
+<li>提出了 RWKV-SAM，包含了一个分割骨干网络，生成不同分辨率的特征图，并利用 RWKV 操作来降低时间复杂度。</li>
+<li>在解码器中用多尺度特征图，并在高质量分割数据集上训练 RWKV-SAM</li>
+<li>在几个基准上展示了 RWKV-SAM 的有效性。</li>
+<li>对各种线性注意力模型，进行了详细的比较研究。</li>
+</ul>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><h3 id="高效分割"><a href="#高效分割" class="headerlink" title="高效分割"></a>高效分割</h3><p>现有的高效分割方法主要集中在封闭集和特定领域。许多高效分割研究专注于驾驶场景。此外，多个研究致力于高效全景分割和快速视频实例分割。</p>
+<h3 id="高效骨干网络"><a href="#高效骨干网络" class="headerlink" title="高效骨干网络"></a>高效骨干网络</h3><p>这一方向主要集中在开发高效的卷积神经网络（CNN），Transformer 与混合架构。在机器学习中，最近的研究集中在线性注意力模型，如 RWKV 与 Mamba。但是这些工作忽略了在不同尺度上生成特征。</p>
+<p>作者采用了 CNN 与 RWKV 的混合架构。</p>
+<h3 id="高质量分割"><a href="#高质量分割" class="headerlink" title="高质量分割"></a>高质量分割</h3><p>以前的研究通过设计特定模块、提出细粒度数据集和添加精细化器来实现高质量分割，但这些方法通常无法实时运行。我们的目标是设计一个新模型，实现实时高质量分割，并建立一个完整的训练管道（training pipeline）。</p>
+<h3 id="线性注意力模型"><a href="#线性注意力模型" class="headerlink" title="线性注意力模型"></a>线性注意力模型</h3><p>Transformer 有着计算成本的问题。而状态空间模型（SSM）可以被证明能建模长程依赖，并且，RWKV 是另一种具有更快推理速度的方法。</p>
+<p>在高分辨率的图像僌的高效分割设计下，RWKV 比 Mamba 更快，所以作者使用 RWKV 作为骨干网络。</p>
+<h2 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h2><p>作者认为设计的模型应该有以下的特性：</p>
+<ul>
+<li>在高分辨下也可以保持高效的主干网络（backbone）</li>
+<li>模型应该可以利用现有的 SAM 知识，来避免在整个上 <code>SA-1B</code> 数据集上进行训练</li>
+<li>模型应该可以利用来自主干的特征金字塔 （feature pyramid），并使用高质量的数据进行训练，以生成高质量的掩码（masks）</li>
+</ul>
+<p>作者设计出的模型有以下的特点：</p>
+<ul>
+<li>该网络有特征金字塔</li>
+<li>在高分辨率下高效，同时在性能上优于其他的 transformer 或线性注意力模型</li>
+</ul>
+<h3 id="高效的分割骨干网络"><a href="#高效的分割骨干网络" class="headerlink" title="高效的分割骨干网络"></a>高效的分割骨干网络</h3><p>借鉴了 NLP 社区中线性时间序列建模的理念，提出了一种基于 RWKV 的高效视觉骨干网络：有三个阶段的设计，包含了两件中类型的模块：移动卷积模型（MBConv）和视觉 RWKV 模块（VRWKV）。</p>
+<h3 id="骨干网络的总体架构"><a href="#骨干网络的总体架构" class="headerlink" title="骨干网络的总体架构"></a>骨干网络的总体架构</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240707121745.png"></p>
+<p>左边的是 RWKV-SAM 的概述；右边的是分割主干架构，前两个阶段使用 MBConv，第三个阶段使用 VRWKV 块。</p>
+<p>在前两个阶段中，采用基于卷积的模块，即 MBConv，生成高分辨率的特征图。每个阶段之前都将特征图下采样 2 倍。这些高分辨率的特征图可以在解码器中用于掩码细化。在第三个阶段之前，特征图的下采样因子为 16，所以特征图中的每个像素可以看作一个 token。在第三个阶段，堆叠了一系列 VRWKV 模块，将这些 token 输入。</p>
+<p>与普通的视觉 transformer 或视觉 RWKV 相比，作者的骨干网络具有不同尺度的特征图，而不是单一固定的分辨率。以下是不同变体的设计：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240707130523.png"></p>
+<h3 id="微层次设计"><a href="#微层次设计" class="headerlink" title="微层次设计"></a>微层次设计</h3><p>MBConv 块使用了倒置瓶颈设计。它包含了一个 <code>1*1</code> 卷积用于扩展通道大小，一个 <code>3*3</code> 深度卷积用于空间混合，以及另一个 <code>1*1</code> 卷积通道投影回原始大小。</p>
+<p>作者使用 LayerNorm 来简化设计。在 MBConv 块中将扩展比设置为 4，对于 VRWKV 块，令 token 首先经过空间混合模块，然后再进入通道混合模块。空间混合模块起到了全局感知的作用。</p>
+<p>如果输入的 token 可以表示为 $X$，$L$ 为 token 长度，$C$ 为通道大小，空间混合模块以 $Q-shift$ 模块开始：<br>$$<br>R_s&#x3D;Q-Shift_R(X)W_R, K_s &#x3D; Q-Shift_K(X)W_k, V_S&#x3D;Q-Shift_V(X)W_V<br>$$<br>Q-Shift 是一个重要的模块，因为它允许每个 token 与四个方向的像素邻域进行插值，保持图像特征的局部性，并已被证明是有效的：<br>$$<br>Q\text{-}Shift(X) &#x3D; X + (1 - \mu)X’<br>$$<br>其中 $X’$ 是通过沿通道维度结合每个 token 周围的四个像素得到的 token。$\mu$ 是一个可学习的超标量，每个表征都不同。</p>
+<p>在混合像素邻域后，空间混合模块全局且双向地融合 token：<br>$$<br>O_s &#x3D; (\sigma(R_s) \odot \text{Bi-WKV}(K_s, V_s)) W_O<br>$$<br>$\sigma$ 表示 sigmoid 函数，$\odot$ 是元素级乘法。Bi-WKV 是注意力机制的关键组件，使得每个 token 可以与序列中的所有其他 token 进行全局交互。对于序列中的索引为 t 的每个 token，输入为 $K_s$ 和 $V_s$ 可以有以下的计算：<br>$$<br>\text{Bi-WKV}(K, V)<em>t &#x3D; \frac{\sum</em>{i&#x3D;0, i \neq t}^{L-1} e^{-(|t-i|-1)&#x2F;L \cdot w + k_i} v_i + e^{u + k_t} v_t}{\sum_{i&#x3D;0, i \neq t}^{L-1} e^{-(|t-i|-1)&#x2F;L \cdot w + k_i} + e^{u + k_t}}<br>$$<br>$w$ 与 $u$ 是序列中共享的参数，$k_i$ 与 $v_i$ 分别对应于索引 i 处的特征 $K_s$ 与 $V_s$。Bi-WKV (K, V) 可以转换为 RNN 形式，以线性计算复杂度并行执行。</p>
+<p>在空间混合模块之后，toekn 被送往通道混合模块：<br>$$<br>R_c &#x3D; Q\text{-}Shift_R(X)W_R<br>$$<br>$$<br>K_c &#x3D; Q\text{-}Shift_K(X)W_K<br>$$<br>$$<br>O_c &#x3D; (\sigma(R_c) \odot \text{SquaredReLU}(K_c)W_V)W_O<br>$$<br>通道混合模块独立地对每个 token 进行计算，类似于 MLP，但它添加了 Q-Shift 以进一步保持图像特征的局部性。特别地， $W_K$ 将嵌入投影扩展为原来的两倍， $W_V$ 将嵌入投影回原始大小。</p>
+<h2 id="数据，模型与训练流程介绍"><a href="#数据，模型与训练流程介绍" class="headerlink" title="数据，模型与训练流程介绍"></a>数据，模型与训练流程介绍</h2><p>原始的 SAM 使用了一个庞大的 ViT-H 骨干网络和一个轻量的解码器，能够处理大规模的图像数据。为了提高效率和质量，RWKV-SAM 在训练数据、模型结构和训练流程上进行了改进。</p>
+<p>在训练数据方面，RWKV-SAM 引入了三个新的数据集：COCONut-B、EntitySeg 和 DIS 5 K。这些数据集包含了高质量的人工标注图像，弥补了原始自动标注数据集的不足。</p>
+<p>在模型结构方面，RWKV-SAM 设计了一个三阶段的骨干网络，前两个阶段可以用于低级局部特征，第三阶段的输出可以用作全局特征。通过保留原始 SAM 的提示编码器和解码器，并引入额外的细化模块，RWKV-SAM 能够生成更准确的掩码。</p>
+<p>原始的 SAM 生成掩码特征的过程如下：<br>$$<br>F_M &#x3D; \Phi_{\text{dec}}(\Phi_{\text{pe}}(P), X)<br>$$<br>$\phi_{pe}$ 为编码器，$\phi_{dec}$ 为解码器，$F_M$ 为掩码，$P$ 为视觉提示。</p>
+<p>而额外的细化模块的过程如下：<br>$$<br>F’<em>M &#x3D; \Phi’</em>{\text{dec}}(F_M, X, X_{mr}, X_{hr})<br>$$<br>$X_{hr}$ 为第一阶段的输出，$X_{mr}$ 为第二阶段的输出，$F’_M$ 为细化后的掩码特征。</p>
+<p>作者设计了几种细化模块的设计，并使用了两个卷积层来融合特征，来简化与提高效率。细化后的掩码特征可用于生成掩码输出：$M &#x3D; Q \cdot F’_M$，$Q$ 为生成的实例，$\cdot$ 表示每个掩码的点积。</p>
+<h3 id="训练流程"><a href="#训练流程" class="headerlink" title="训练流程"></a>训练流程</h3><p>训练的过程分别两个步骤：</p>
+<ol>
+<li>骨干网络对齐</li>
+</ol>
+<p>使用原始的 SAM（具体为 VIT-H 模型）来训练一个高效的分割骨干网络。</p>
+<p>使用每像素均方误差（MSE）损失来确保新训练的骨干网络与 VIT-H 的输出一致，其损失函数为：<br>$$<br>LS1 &#x3D; \text{MSE}(X_{\text{SAM}}, X)<br>$$<br>$X$ 为 RWKV-SAM 的网络输出，$X_{SAM}$ 为 SAM 中 VIT_H 骨干网络的输出。</p>
+<ol start="2">
+<li>联合训练</li>
+</ol>
+<p>利用组合数据集对整个模型进行联合训练。对于每个图像，先根据掩码标注生成每个实例的边界框，并随机选择最多 20 个实例进行训练。通过 RWKV-SAM 基于视觉提示生成掩码后，应用掩码交叉熵（CE）损失与 Dice 损失，计算生成掩码与真实掩码之间的损失。第二步的损失公式为：<br>$$<br>L_{S2} &#x3D; \lambda_{\text{ce}} L_{\text{ce}} + \lambda_{\text{dice}} L_{\text{dice}}<br>$$<br>同时，两个系数均为 5.</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240707140047.png"></p>
+<p>在参数数量较少的情况下，该方法比基于 Mamba 或 RWKV 的前期方法表现更好或相当。</p>
+<p>作者认为，这种改进可能得益于宏观设计，它在前两个块中使用卷积层来获取不同尺度的特征，而不是直接通过将图像转换为图像块来下采样。</p>
+<h3 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240707140321.png"></p>
+<h3 id="分割任何模型"><a href="#分割任何模型" class="headerlink" title="分割任何模型"></a>分割任何模型</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240707140418.png"></p>
+<p>RWKV-SAM 在多个基准测试中表现出色，特别是在高质量数据集和零样本学习任务中，优于其他现有方法。</p>
+<h2 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h2><h3 id="效率分析"><a href="#效率分析" class="headerlink" title="效率分析"></a>效率分析</h3><p>该部分分析了 RWKV-SAM-Small 和 ViT-Small 在不同输入图像尺寸下的延迟表现。测试结果显示，RWKV-SAM-Small 在高分辨率图像输入时具有更好的延迟表现，特别是在 1024 x 1024 的输入尺寸下，其 FPS 显著高于 ViT-Small，这表明 RWKV-SAM-Small 具有更高的计算效率。</p>
+<h3 id="解码器中融合模块的效果"><a href="#解码器中融合模块的效果" class="headerlink" title="解码器中融合模块的效果"></a>解码器中融合模块的效果</h3><p>作者使用了不同的设计来融合来自不同试炼的特征。使用这些设计的结果如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240707140841.png"></p>
+<p>第一个设计的在效率上最佳，同时在性能上也与其他设计相当。第一个设计的结果如下：每个尺度使用两个卷积层来下采样低级特征并对齐通道，然后在融合三个特征后沿通道维度再使用两个卷积层。</p>
+<h3 id="编码器设计的消融实验"><a href="#编码器设计的消融实验" class="headerlink" title="编码器设计的消融实验"></a>编码器设计的消融实验</h3><p>作者尝试在第一个阶段中添加一些 RWKV 块，来评估宏观层面的设计。其结果为上图的右表。可知，在前两个阶段添加更多 RWKV 块会降低推理速度和模型性能，因此将 RWKV 块放在第三阶段是更优的设计。</p>
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240707141202.png"></p>
+<p>通过对比可视化结果，展示了 RWKV-SAM 在复杂场景中的优越分割质量，特别是在细节处理上优于其他方法。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/ce93c3b3/" title="Mamba or RWKV- Exploring High-Quality and High-Efficiency Segment Anything Model">http://example.com/posts/ce93c3b3/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/34e96b3d/" rel="prev" title="Rewrite the Stars">
+                  <i class="fa fa-angle-left"></i> Rewrite the Stars
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/1f1b3457/" rel="next" title="DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning">
+                  DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

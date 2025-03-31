@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/41bf04e4/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/41bf04e4/","path":"posts/41bf04e4/","title":"kmp算法的原理与实现"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>kmp算法的原理与实现 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/41bf04e4/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%89%8D%E7%BC%80%EF%BC%8C%E5%90%8E%E7%BC%80%E5%92%8C%E9%83%A8%E5%88%86%E5%8C%B9%E9%85%8D%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">字符串的前缀，后缀和部分匹配值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next-%E6%95%B0%E7%BB%84%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="nav-number">2.</span> <span class="nav-text">next 数组的由来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82-nextval-%E6%95%B0%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">求 nextval 数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%80%83%E8%AF%95%E6%97%B6%E6%B1%82-next-%E5%92%8C-nextval-%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">考试时求 next 和 nextval 数组的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81%E6%9D%A5%E5%AE%9E%E7%8E%B0-kmp-%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">使用代码来实现 kmp 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82-pm-%E6%95%B0%E7%BB%84%EF%BC%8Cnext-%E6%95%B0%E7%BB%84%EF%BC%8Cnextval-%E6%95%B0%E7%BB%84"><span class="nav-number">5.1.</span> <span class="nav-text">求 pm 数组，next 数组，nextval 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-next-%E6%95%B0%E7%BB%84%E8%BF%9B%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="nav-number">5.2.</span> <span class="nav-text">使用 next 数组进行模式匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/41bf04e4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="kmp算法的原理与实现 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kmp算法的原理与实现
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-21 19:24:00" itemprop="dateCreated datePublished" datetime="2023-04-21T19:24:00+08:00">2023-04-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-10 19:41:07" itemprop="dateModified" datetime="2023-07-10T19:41:07+08:00">2023-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%B8%B2/" itemprop="url" rel="index"><span itemprop="name">串</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文介绍了 kmp 算法和实现过程和原理讲解，并提供了完整的实现代码。同时，还详细介绍了 PM 数组到 next 数组到 nextval 数组的转变过程，以及它们之前的转换方法，并提供了可运行代码以供同学们进行自我练习与测试。</p>
+<span id="more"></span>
+
+<h2 id="字符串的前缀，后缀和部分匹配值"><a href="#字符串的前缀，后缀和部分匹配值" class="headerlink" title="字符串的前缀，后缀和部分匹配值"></a>字符串的前缀，后缀和部分匹配值</h2><p>前缀：除了最后一个字符外，字符串的所有头部子串。<br>后缀：除了第一个字符外，字符串的所有尾部子串。<br>部分匹配：字符串的前缀和后缀的最长相等前后缀的长度。</p>
+<p>例：<code>aba</code>，前缀：<code>&#123;a, ab&#125;</code>；后缀：<code>&#123;b, ba&#125;</code>。最长相等前后綴长度：${a, ab} \cap {ba, a} &#x3D; {a}$。所以长度是 1。</p>
+<p>此时，我们可以写出一个字符串的所有子串的部分匹配值（Partial Match, PM）：</p>
+<p>例：</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>a</td>
+<td>c</td>
+</tr>
+<tr>
+<td>PM</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>那么，这有什么作用呢？</p>
+<p>例如，如果我们要匹配两个字符串：主串：<code>ababcac</code> 和模式串： <code>abcac</code></p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主串</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>a</td>
+<td>c</td>
+</tr>
+<tr>
+<td>模式串</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>我们会发现，在编号是 3 的位置，主串和模式串是不一样的，如果我们是朴素算法，那么应该将模式串移动 1 个字符的位置，来进行下一轮匹配。</p>
+<p>但是我们可以通过移动 $MOVE &#x3D; 已匹配的字符数 - 对应的部分的匹配值$ 这么多来进行下一轮匹配。在当前的这个例子中，就是移动 $MOVE &#x3D; 2 - 0 &#x3D; 2$ 个字符。即</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主串</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>a</td>
+<td>c</td>
+</tr>
+<tr>
+<td>模式串</td>
+<td></td>
+<td></td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>a</td>
+<td>c</td>
+</tr>
+</tbody></table>
+<p>这样来匹配。</p>
+<p>我们可以发现，对于主串来说，由于不需要重新再比较已经比较过的字符了，所以可以将算法的时间复杂度从 $O(n * m)$ 降到 $O(n + m)$</p>
+<p>问：这个使用部分匹配值来进行匹配的原理是什么？</p>
+<p>我们知道一个字符串的部分匹配值的意思是：这个字符串<strong>最长的</strong>前缀与后缀<strong>相等的</strong>长度。这里有两个限制：一个是最长的，一个是相等的。</p>
+<p>例如：对于字符串：<code>aaaa</code>，这里前缀可以是 <code>&#123;a, aa, aaa&#125;</code>，后缀可以是 <code>&#123;a, aa ,aaa&#125;</code>，因此根据这个定义可得，部分匹配值的长度应该是 <code>aaa</code> 的长度，即 3。</p>
+<p>对于字符串 <code>ababc</code> 我们可以知道，当主串的第 i 个字符与子串的第 j 个字符不一致的时候，我们可以从前 j-1 个字符组成的子串中，取出长度是部分匹配值长度的前缀，来代替后缀的位置，即：向右移动模式串，直到前缀和移动前的后缀的位置重合，此时，移动的长度为 $MOVE &#x3D; j - 1 - pm[j - 1]$。</p>
+<p>例：当前第 <strong>4</strong> 个元素不一致，所以从前 <strong>3</strong> 个字符组成的字符串 <code>aba</code> 中取出<strong>长度是部分匹配值</strong>（1）的前缀：<code>a</code> 来代替后缀的位置。可以看下面第二个表格：前 3 个字符的后缀是 <code>a</code>，因此，将前缀的 a 移动到与后缀重合的位置上，然后再继续比较。</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>c</td>
+</tr>
+<tr>
+<td>PM</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主串</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+</tr>
+<tr>
+<td>模式串</td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>移动后的模式串</td>
+<td></td>
+<td></td>
+<td>a</td>
+<td>b</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>移动的长度： $MOVE &#x3D; 3 - 1 &#x3D; 2$。</p>
+<h2 id="next-数组的由来"><a href="#next-数组的由来" class="headerlink" title="next 数组的由来"></a>next 数组的由来</h2><p>我们通过前面的学习，可以知道，每一次匹配失败的时候，都需要去找前一个元素的部分匹配值。为了让这个操作方便一些，我们可以将所有的部分匹配值向右移动一格，使得每一次匹配失败的时候，都只需要找自己的部分匹配值。同时，空出来的地方填为-1，多出来的地方截去。</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+</tr>
+<tr>
+<td>PM</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>PM’</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0（舍去）</td>
+</tr>
+</tbody></table>
+<p>所以，移动的距离可以改为 $MOVE &#x3D; j - 1 - pm[j]$ （当子串的第 j 个字符不匹配的时候）<br>相当于将整个子串的比较指针移到 $j &#x3D; j - MOVE &#x3D; pm[j] + 1$ 个位置上，为了将这个公式更加简洁，我们将 pm 的每个值都加 1，此时，next 数组就求出来了。</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+</tr>
+<tr>
+<td>PM</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>PM’</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0（舍去）</td>
+</tr>
+<tr>
+<td>next</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong><code>next[j]</code> 在这里的意思是：在子串的第 j 个字符与主串发生失配的时候，将子串的指针跳到 <code>next[j]</code> 所指的位置重新与主串进行比较。（子串的位序从 1 开始）</strong></p>
+<h2 id="求-nextval-数组"><a href="#求-nextval-数组" class="headerlink" title="求 nextval 数组"></a>求 nextval 数组</h2><p>nextval 数组是对 next 数组的优化。可以再次减小比对的次数，优化代码运行的效率。</p>
+<p>我们先来看一个例子：</p>
+<p>对于一个主串和模式串：<code>aaacaaaac</code> 和 <code>aaaac</code></p>
+<p>我们可以知道：</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>c</td>
+</tr>
+<tr>
+<td>next</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<p>我们先用 next 数组的解法来求一下这个问题的匹配过程</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主串</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>c</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>c</td>
+</tr>
+<tr>
+<td>模式串</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>模式串移动 1</td>
+<td></td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>模式串移动 2</td>
+<td></td>
+<td></td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>模式串移动 3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>c</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>我们可以看到，由于编号 4 的不同，我们经过了 3 次移动以后，才会去判断主串的下一个字符。这里就是 next 数组的不足之处。</p>
+<p>我们可以知道，如果在第 4 个字符两个串不匹配的时候，说明当前模式串的字符的主串的字符不一样。如果  <code>next[4]</code> 处的字符和当前的字符一样的时候，那么就可以得出：<code>next[4]</code> 处的字符也和当前的主串的字符不一样。所以当前这个字符如果和 <code>next[4]</code> 字符一样，那么 <code>next[4] = next[next[4]]</code> 。即当前的字符应该跳到 <code>next[4]</code> 字符跳到的位置。如果不一样，那么 next 数值保持不变。</p>
+<h2 id="考试时求-next-和-nextval-数组的方法"><a href="#考试时求-next-和-nextval-数组的方法" class="headerlink" title="考试时求 next 和 nextval 数组的方法"></a>考试时求 next 和 nextval 数组的方法</h2><p>以字符串 <code>ababaa</code> 为例</p>
+<table>
+<thead>
+<tr>
+<th>S</th>
+<th>a</th>
+<th>b</th>
+<th>a</th>
+<th>b</th>
+<th>a</th>
+<th>a</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>k</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>next</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>nextval</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<p>当遍历到第 i (i &gt; 2)个字符的时候，当前第 i 个元素的 next 值等于<strong>前 i-1 个字符的最大的前缀与后缀相等的时候的值 + 1</strong>。$i&#x3D;1$ 时 $i&#x3D;2$ 时 next 值分别为 0 和 1。</p>
+<p>例如：当 i&#x3D;1 时，那么 <code>next[1] = 0</code>，当 <code>i = 5</code> 时，看前 i-1 个元素组成的字符串：<code>abab</code>，可以发现最大的公共前缀后缀串为 <code>ab</code>。那么当前的 next 值为 <code>length(ab) + 1 = 2 + 1 = 3</code>。</p>
+<p>对于 nextval 数组，第 1 位无脑写 0。对于其他的字符 i (i &gt; 1 )，如果当前 next 数组指向的字符 <code>s[next[i]]</code> 不等于当前的字符，即：<code>s[next[i]] != s[i]</code>，那么当前 nextval 的值等于 next 的值。如果当前 next 数组指向的字符和当前的字符一样，那么当前的 nextval 的值就正好等于 next 指向的那个字符的 nextval 的值，即: <code>nextval[i] = nextval[next[i]]</code>。</p>
+<p>例：当 i 等于 2 时，<code>next[2] = 1</code>，此时，当前的字符是 b，next 指向的字符是 a。a 和 b 不相等，所以当前 nextval 的值就是 next 和值 <code>nextval[2] = next[2] = 1</code>。当 i 等于 3 的时候，此时当前的字符是 a，next 指向的字符也是 a，所以当前的 nextval 的值等于指向的字符的 nextval 的值，即 <code>nextval[3] = nextval[next[3]] = nextval[1] = 0</code>。</p>
+<h2 id="使用代码来实现-kmp-算法"><a href="#使用代码来实现-kmp-算法" class="headerlink" title="使用代码来实现 kmp 算法"></a>使用代码来实现 kmp 算法</h2><h3 id="求-pm-数组，next-数组，nextval-数组"><a href="#求-pm-数组，next-数组，nextval-数组" class="headerlink" title="求 pm 数组，next 数组，nextval 数组"></a>求 pm 数组，next 数组，nextval 数组</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="comment">// 要求的数组</span></span><br><span class="line"><span class="type">char</span> p[N];</span><br><span class="line"><span class="comment">// pm数组</span></span><br><span class="line"><span class="type">int</span> pm[N];</span><br><span class="line"><span class="comment">// next数组</span></span><br><span class="line"><span class="type">int</span> next[N];</span><br><span class="line"><span class="comment">// nextval数组</span></span><br><span class="line"><span class="type">int</span> nextval[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 读取数组的长度和数组，数组从1号开始存放</span></span><br><span class="line">	cin &gt;&gt; n &gt;&gt; p + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 求pm数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">		<span class="keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = pm[j];</span><br><span class="line">		<span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>]) j ++;</span><br><span class="line">		pm[i] = j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 输出pm数组</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;pm&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">	    cout &lt;&lt; pm[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="comment">// 求next数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">		next[i] = pm[i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// next数组1号为0</span></span><br><span class="line">	next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 输出next数组</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;next&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">	    cout &lt;&lt; next[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="comment">// 求nextval数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">		<span class="comment">// 如果当前的字符和next跳过以后的字符一样，那么当前字符的nextval和next的nextval一样</span></span><br><span class="line">		<span class="keyword">if</span> (p[i] == p[next[i]]) &#123;</span><br><span class="line">			nextval[i] = nextval[next[i]];</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 否则，保持不变</span></span><br><span class="line">			nextval[i] = next[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;nextval&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">	    cout &lt;&lt; nextval[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-next-数组进行模式匹配"><a href="#使用-next-数组进行模式匹配" class="headerlink" title="使用 next 数组进行模式匹配"></a>使用 next 数组进行模式匹配</h3><p>求 next 数组的部分在上面的代码中已经打过注释了，所以这个代码中就不写相关部分的注释了。</p>
+<p>如果要使用 nextval 数组来求，那么只需要添加一段求 nextval 的代码，然后在匹配部分将 <code>ne</code> 改成 <code>nextval</code> 即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>, M = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// n为子串的长度，m为主串的长度</span></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="comment">// p为子串，s为主串</span></span><br><span class="line"><span class="type">char</span> p[N], s[M];</span><br><span class="line"><span class="type">int</span> ne[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 读取子串的长度，子串的内容，主串的长度，主串的内容</span></span><br><span class="line">	cin &gt;&gt; n &gt;&gt; p + <span class="number">1</span> &gt;&gt; m &gt;&gt; s + <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i ++) &#123;</span><br><span class="line">		<span class="keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">		<span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>]) j ++;</span><br><span class="line">		ne[i] = j;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = n; i &gt;= <span class="number">1</span>; i --) &#123;</span><br><span class="line">	    ne[i] = ne[i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ne[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// i遍历主串，j遍历模式串</span></span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i &lt;= m &amp;&amp; j &lt;= n) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (j == <span class="number">0</span> || s[i] == p[j]) &#123;</span><br><span class="line">	        i ++;</span><br><span class="line">	        j ++;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">else</span> &#123;</span><br><span class="line">	        j = ne[j];</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (j &gt; n) &#123;</span><br><span class="line">	    cout &lt;&lt; <span class="string">&quot;位序是：&quot;</span> &lt;&lt; i - n &lt;&lt; endl;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	    cout &lt;&lt; <span class="string">&quot;不匹配&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>求 next 数组有两种方法：一种是先求 pm 数组，然后将 pm 数组整体向右移一格，再整体加 1 即可得到；另一种是根据定义（前 i-1个字符串中，最长匹配前缀的下一格的位序），直接用手模拟出 <code>next[i]</code> 所代表的值。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/41bf04e4/" title="kmp算法的原理与实现">http://example.com/posts/41bf04e4/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+              <a href="/tags/kmp%E7%AE%97%E6%B3%95/" rel="tag"># kmp算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/b2834aa4/" rel="prev" title="栈的应用（计算器）">
+                  <i class="fa fa-angle-left"></i> 栈的应用（计算器）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3d32d5db/" rel="next" title="C++高精度计算模版">
+                  C++高精度计算模版 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

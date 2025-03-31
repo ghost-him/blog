@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/7e3634af/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/7e3634af/","path":"posts/7e3634af/","title":"OpenSTL-- A Comprehensive Benchmark of Spatio-Temporal Predictive Learning"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OpenSTL-- A Comprehensive Benchmark of Spatio-Temporal Predictive Learning | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/7e3634af/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">贡献点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.</span> <span class="nav-text">问题定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">支持的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.4.</span> <span class="nav-text">支持的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="nav-number">2.5.</span> <span class="nav-text">支持的评估指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%BA%93%E7%BB%93%E6%9E%84"><span class="nav-number">2.6.</span> <span class="nav-text">代码库结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C"><span class="nav-number">2.7.</span> <span class="nav-text">预测结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E6%88%90%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%89%A9%E4%BD%93%E8%BD%A8%E8%BF%B9%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.1.</span> <span class="nav-text">合成的移动物体轨迹预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E5%AE%9E%E8%A7%86%E9%A2%91%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.2.</span> <span class="nav-text">真实视频预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E9%80%9A%E5%92%8C%E5%A4%A9%E6%B0%94%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.3.</span> <span class="nav-text">交通和天气预测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E6%B8%A9%E5%BA%A6%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.3.1.</span> <span class="nav-text">单变量温度预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E6%B9%BF%E5%BA%A6%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.3.2.</span> <span class="nav-text">单变量湿度预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E9%A3%8E%E5%88%86%E9%87%8F%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.3.3.</span> <span class="nav-text">单变量风分量预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E4%BA%91%E9%87%8F%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.3.4.</span> <span class="nav-text">单变量云量预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E5%88%86%E8%BE%A8%E7%8E%87%E5%8D%95%E5%8F%98%E9%87%8F%E6%B8%A9%E5%BA%A6%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.3.5.</span> <span class="nav-text">高分辨率单变量温度预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E9%A2%84%E6%B5%8B"><span class="nav-number">2.7.3.6.</span> <span class="nav-text">多变量预测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%B2%81%E6%A3%92%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">2.7.4.</span> <span class="nav-text">鲁棒性分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.8.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/7e3634af/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OpenSTL-- A Comprehensive Benchmark of Spatio-Temporal Predictive Learning | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenSTL-- A Comprehensive Benchmark of Spatio-Temporal Predictive Learning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-10-10 11:22:16 / 修改时间：11:26:20" itemprop="dateCreated datePublished" datetime="2024-10-10T11:22:16+08:00">2024-10-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.11249">arxiv</a></p>
+<span id="more"></span>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>由于时空预测没有标准化的比较，所以为了解决这个问题，作者提出了 OpenSTL，这是一个全面的时空预测学习基准。它将流行的方法分为基于循环和非循环模型两类。OpenSTL提供了一个模块化且可扩展的框架，实现了各种最先进的方法。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>当前的时空预测模型可以分别循环型与非循环型。而在该领域，有一个问题：是否有必要使用循环神经网络架构来捕捉时间依赖关系。所以作者为了公平的评估，提出了一个全面的基准。</p>
+<h2 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h2><ul>
+<li>构建了 OpenSTL，包含了 14 种代表性算法与 24 个模型的时空预测学习的综合基准。</li>
+<li>在多样化的任务进制了实验。</li>
+<li>重新思考了非循环模型的潜力，提出了类似 MetaFormer 的架构来促进非循环时空预测学习。</li>
+</ul>
+<h2 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h2><p>给定一系列视频帧 $X_{t,T}&#x3D;{x_i}^t_{t-T+1}$，涵盖了过去 $T$ 帧，从时间 $t-T+1$ 到时间 $t$，目标是预测随后的 $T’$ 帽 $Y_{t+1,T’}&#x3D;{x_i}^{t+1+T’}<em>{t+1}$，即从时间 $t+1$ 开始的未来 $T’$ 帧。其中每一帧 $x_i$ 通常包含 $C$ 个通道，高度为 $H$ 像素，宽度为 $W$ 像素。而在实际操作中，通道将输入帧序列表示为 $X</em>{t,T} \in R^{T<em>C</em>H<em>W}$，而输出序列通常表示为 $Y_{t+1,T’} \in R^{T’<em>C</em>H</em>W}$</p>
+<p>具有可学习参数 $\Theta$ 的模型通过利用空间与时间依赖关系学习映射 $F_{\Theta}:X_{t,T} \mapsto Y_{t+1,T’}$。而最优参数 $\Theta^<em>$ 由下式给出：<br>$$<br>\Theta^</em>&#x3D;argmin_\Theta L(F_\Theta(X_{t,T}),Y_{t+1,T’})<br>$$<br>$L$ 为表示量化这种差异的损失函数。</p>
+<p>对于基于循环的模型，映射 $F_\Theta$ 包含若干循环交互：<br>$$<br>F_\Theta : f_\theta(x_{t-T+1}, h_{t-T+1}) \circ \ldots \circ f_\theta(x_t, h_t) \circ \ldots \circ f_\theta(x_{t+T’-1}, h_{t+T’-1})<br>$$<br>其中 $h_i$ 表示包含历史信息的记忆状态，$f_\theta$ 表示每对相信帧之间的映射。参数 $\theta$ 在每个状态间共享。所以，预测过程可以表示为：<br>$$<br>x_{t+1} &#x3D; f_\theta(x_i, h_i), \quad \forall i \in {t + 1, \ldots, t + T’}<br>$$<br>而对于无循环模型，预测过程直接将整个观察到的帧序列输入模型，并一次性输出完整预测帧。</p>
+<h2 id="支持的方法"><a href="#支持的方法" class="headerlink" title="支持的方法"></a>支持的方法</h2><p>OpenSTL 在一个统一的框架下实现了 14 种具有代表性的时空预测学习方法，包括 11 种基于循环神经网络和 3 种不基于循环神经网络。如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010102209.png"></p>
+<p>这些方法的主要区别在于它们如何使用其提出的模块来建模时间依赖性。</p>
+<p>非循环时空预测学习模型具有相似的架构，如下所示。编码器由几个二维卷积网络组成，将高维输入数据投射到低维潜在空间。给定一批输入观察帧 $B \in R^{B<em>T</em>C<em>H</em>W}$，编码器专注于帧内空间相关性，忽略时间建模。随后，中间时间模块将低维表示沿时间维度䨺，以确定时间依赖性。最后，解码器由几个二维卷积上采样网络组成，从学习的潜在表示中重建后续帧。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010102809.png"></p>
+<p>编码器和解码器通过在低维潜在空间中建模时间依赖性来实现高效的时间学习。非循环模型的核心组件是时间模块。然而，作者认为这种能力主要源自通用的非循环架构，而不是特定的时间模块。</p>
+<h2 id="支持的任务"><a href="#支持的任务" class="headerlink" title="支持的任务"></a>支持的任务</h2><p>OpenSTL 支持五种不同的任务，这些任务涵盖了从合成模拟到各种规模的现实世界场景。任务包括合成移动物体轨迹、现实世界的人体动作捕捉、驾驶场景、交通流和天气预报。以下是提供的数据集的统计摘要。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010103541.png"></p>
+<h2 id="支持的评估指标"><a href="#支持的评估指标" class="headerlink" title="支持的评估指标"></a>支持的评估指标</h2><ul>
+<li>误差指标：使用均方误差（MSE）和平均绝对误差（MAE）来评估预测结果与真实目标之间的差异。在天气预报中，还使用了均方根误差（RMSE）。</li>
+<li>相似性指标：使用结构性指数（SSIM）和峰值信噪比（PSRN）来评估预测结果与真实目标之间的相似度。这些指标广泛用于图像处理与计算机视觉领域。</li>
+<li>感知指标：实现了感知图像补偿误差（LPIPS），用于评估人类视觉系统中预测结果与真实目标之间的感知差异。LPIPS 提供了视觉任务的感知对齐评估。作者在现实世界的视频预测任务中使用这一指标。</li>
+<li>计算指标：通过参数数量和浮点运算次数（FLOPs）来评估模型的计算复杂度。</li>
+</ul>
+<h2 id="代码库结构"><a href="#代码库结构" class="headerlink" title="代码库结构"></a>代码库结构</h2><p> OpenSTL 遵循 OpenMMLab 的设计原则，吸收了 OpenMixup 和 USB 的代码元素。</p>
+<h2 id="预测结果"><a href="#预测结果" class="headerlink" title="预测结果"></a>预测结果</h2><h3 id="合成的移动物体轨迹预测"><a href="#合成的移动物体轨迹预测" class="headerlink" title="合成的移动物体轨迹预测"></a>合成的移动物体轨迹预测</h3><p>在 Moving MNIST，Moving FashionMNIST 和 Moving MNIST-CIFAR。上评估了所有的模型。以下是在三个数据集上的结果。</p>
+<p>Moving MNIST：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010104520.png"></p>
+<p>Moving FashionMNIST：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010104552.png"></p>
+<p>Moving MNIST-CIFAR：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010104607.png"></p>
+<p>可以观察到：</p>
+<ul>
+<li>基于循环（recurrent-based）模型的结果不一致，并不总是优于无循环（recurrent-free）模型</li>
+<li>基于循环的模型推理速度总是比无循环模型慢。</li>
+</ul>
+<p>这进一步证明了无循环模型在表现上相当，但效率显著更高。</p>
+<p>作者还做了可视化示例，这里给出 Monving MNIST 的结果。为方便排版，作者将帧从下到上垂直排列。可以观察到，大多数基于循环神经网络（recurrent-based）的模型产生了高质量的预测结果，除了PredNet和DMVFN以外。无循环神经网络（recurrent-free）的模型取得了可比的结果，但在最后几帧中表现出模糊现象。这一现象表明，基于循环神经网络的模型在捕捉时间依赖性方面表现出色。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111009.png"></p>
+<h3 id="真实视频预测"><a href="#真实视频预测" class="headerlink" title="真实视频预测"></a>真实视频预测</h3><p>使用了 KTH 和 Human3.6M 数据集捕捉人类运动以及用 Kitti &amp; Caltech 数据集进行驾驶场景预测。</p>
+<p>以下是 Kitti &amp; Caltech 的结果：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010104852.png"></p>
+<p>KTH：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010104925.png"></p>
+<p>Human3.6M：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010104948.png"></p>
+<p>可以观察到，随着分辨率的增加，基于循环的模型的计算复杂度显著增加。相反，无循环模型实现了效率和性能之间的优良平衡。值得注意的是，虽然一些基于循环的模型达到了更低的 MSE 和 MAE，每秒浮点运算（FLOPs）几乎比无循环模型高出20倍。这突显了无循环模型的效率优势，特别是在高分辨率场景中。</p>
+<h3 id="交通和天气预测"><a href="#交通和天气预测" class="headerlink" title="交通和天气预测"></a>交通和天气预测</h3><p>在 TaxiBJ 和 WeatherBench 数据集上进行了实验。作者对低分辨率单变量天气因素预测的代表方法进行 MAE 和 RMSE 指标比较。</p>
+<p>TaxiBJ 数据集上的结果：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111331.png"></p>
+<p>可以看到，无循环神经网络的模型在处理低频交通流数据时表现出了有希望的结果。</p>
+<p>WeatherBench 数据集上：</p>
+<p>以下展示了四个气候因素的结果，即温度、湿度、风向和云量。显著的是，所有天气因素中，无循环模型均优于基于循环的模型，表明其在宏观任务中应用时空预测学习的潜力，而不是仅依赖基于循环的模型。这些发现强调了无循环模型的前景，表明它们可以在天气预报中成为现有基于循环的模型的可行替代方案。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010105940.png"></p>
+<h4 id="单变量温度预测"><a href="#单变量温度预测" class="headerlink" title="单变量温度预测"></a>单变量温度预测</h4><p>无循环神经网络模型在性能和效率方面明显优于基于循环神经网络的模型，取得了压倒性的胜利。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111226.png"></p>
+<h4 id="单变量湿度预测"><a href="#单变量湿度预测" class="headerlink" title="单变量湿度预测"></a>单变量湿度预测</h4><p>结果与温度预测几乎一致</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111442.png"></p>
+<h4 id="单变量风分量预测"><a href="#单变量风分量预测" class="headerlink" title="单变量风分量预测"></a>单变量风分量预测</h4><p>可以看到：大多数无循环神经网络模型的表现优于基于循环神经网络的模型。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111529.png"></p>
+<h4 id="单变量云量预测"><a href="#单变量云量预测" class="headerlink" title="单变量云量预测"></a>单变量云量预测</h4><p>可以看到：所有无循环神经网络模型都比它们的对手表现得更好。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111600.png"></p>
+<h4 id="高分辨率单变量温度预测"><a href="#高分辨率单变量温度预测" class="headerlink" title="高分辨率单变量温度预测"></a>高分辨率单变量温度预测</h4><p>高分辨率（<code>128*256</code>）。SimVPv2实现了卓越的性能，远远超过了基于循环神经网络的模型。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111740.png"></p>
+<h4 id="多变量预测"><a href="#多变量预测" class="headerlink" title="多变量预测"></a>多变量预测</h4><p>此任务侧重于多因素气候预测。在预测过程中包含了温度、湿度、纬度风和经度因素。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111803.png"></p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111816.png"></p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111826.png"></p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111842.png"></p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010111851.png"></p>
+<h3 id="鲁棒性分析"><a href="#鲁棒性分析" class="headerlink" title="鲁棒性分析"></a>鲁棒性分析</h3><p>作者设计了三个实验：</p>
+<ol>
+<li>Moving MNIST - 缺失，即处理缺失帧的输入帧，我们将随机缺失帧的概率设为20%；</li>
+<li>Moving MNIST - 动态，即为每个数字的速度添加随机高斯噪声，使其运动速度不规律；</li>
+<li>Moving MNIST - 感知，即随机遮挡输入帧，使用大小为24×24的黑色补丁遮挡。</li>
+</ol>
+<p>作者选择了三种代表性的基于循环和三种无循环方法进行评估。以下是结果：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010110110.png"></p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010110121.png"></p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20241010110130.png"></p>
+<p>可以观察到，无循环方法在缺失和感知噪声情境下表现出显著的鲁棒性。即使与无噪声的情况相比，性能下降也较小，因为它们关注全局信息。相反，基于循环的方法表现出显著的性能下降。它们过于关注单帧之间的关系，导致过拟合。在动态噪声的情况下，所有方法均面临显著的性能下降，因为数字的速度变得不规律且难以预测。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>作者观察到，循环架构在捕捉时间依赖性方面具有优势，但也不是必须的，尤其是在计算开销较大的任务中。非循环模型可以作为一种可行的替代方案，在效率和性能之间取得良好的平衡。基于循环的模型在捕捉高频空间-时间依赖性方面的有效性可以归因于其对逐帧变化的顺序跟踪，提供了一种局部时间归纳偏差。而非循环模型则结合了多个帧，展现出一种适合低频空间-时间依赖性的全局时间归纳偏差。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/7e3634af/" title="OpenSTL-- A Comprehensive Benchmark of Spatio-Temporal Predictive Learning">http://example.com/posts/7e3634af/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/f81e25b3/" rel="prev" title="训练进度监视器">
+                  <i class="fa fa-angle-left"></i> 训练进度监视器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/89549ed/" rel="next" title="ZeroLaunch：专为Windows打造的极简应用启动器">
+                  ZeroLaunch：专为Windows打造的极简应用启动器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

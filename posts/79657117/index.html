@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/79657117/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/79657117/","path":"posts/79657117/","title":"Temporal Attention Unit- Towards Efficient Spatiotemporal Predictive Learning"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Temporal Attention Unit- Towards Efficient Spatiotemporal Predictive Learning | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/79657117/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">问题的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%A7%88"><span class="nav-number">2.2.</span> <span class="nav-text">模型概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%8D%95%E5%85%83%EF%BC%88TAU%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">时间注意力单元（TAU）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%95%A3%E5%BA%A6%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">2.2.2.</span> <span class="nav-text">差分散度正则化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">2.3.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%97%B6%E9%97%B4"><span class="nav-number">2.3.1.</span> <span class="nav-text">训练时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.4.</span> <span class="nav-text">消融实验</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/79657117/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Temporal Attention Unit- Towards Efficient Spatiotemporal Predictive Learning | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Temporal Attention Unit- Towards Efficient Spatiotemporal Predictive Learning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-08-23 14:04:28 / 修改时间：14:04:32" itemprop="dateCreated datePublished" datetime="2024-08-23T14:04:28+08:00">2024-08-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.12126">arxiv</a></p>
+<span id="more"></span>
+
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>作者提出了一个时空预测学习的能用框架，其中空间编码器与解码器捕捉帧内特征，而中间的时间模块捕捉帧间关联。</p>
+<p>同时，为了并行化时间模块，作者提出了时间注意单元（Temporal Attention Unit, TAU），它将时间注意力分解为帧内静态注意力与帧间动态注意力。</p>
+<p>作者还引入了一种新的差分散度正则化（differential divergence regularization）来考虑帧间变化。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>作者通过对当前主流的时空预测模型的抽象，得出了以下的框架：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823100843.png"></p>
+<p>基于这个框架，作者认为<strong>时间模块</strong>在时空预测学习中起着至关重要的作用。</p>
+<p>作者提出了叫做”时间注意单元”的新型可并行化注意模块来捕捉时间演变。将时间注意分解为帧内静态注意与帧间动态注意。</p>
+<p>此外，作者认为均方误差损失仅关注帧内差异，提出了一种差分散度正则化（differential divergence regularization），也关注帧间变化。</p>
+<h2 id="问题的定义"><a href="#问题的定义" class="headerlink" title="问题的定义"></a>问题的定义</h2><p>时空预测学习问题为：</p>
+<p>给家一个视频序列，其中包含时间 $t$ 的过去 $T$ 帧。而模型的目标是预测从时间 $t+1$ 开始的后续 $T_0$ 帧。其中预测的帧为一张具有通道数 $C$，高度 $H$，与宽度 $W$ 的图像。在实验中，将视频序列表示为张量，即 $X^{t,T} \in R^{T<em>C</em>H<em>W}$ 与 $Y^{t+1, T’} \in R^{T’<em>C</em>H</em>W}$。</p>
+<p>具有可学习参数 $\Theta$ 的模型通过探索空间和时间依赖关系来学习一个映射 $F_\Theta: X^{t,T} -&gt; Y^{t+1,T’}$。在本论文中，$F_\Theta$ 是一个神经网络模型，通过最小化预测的未来帧和真实未来帧之间的差异来进行训练，最优参数 $\Theta ^*$ 为：</p>
+<p>$$<br>\Theta^* &#x3D; \arg \min_{\Theta} L(F_{\Theta}(X^{t,T}), Y^{t+1,T_0})<br>$$</p>
+<h2 id="模型概览"><a href="#模型概览" class="headerlink" title="模型概览"></a>模型概览</h2><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823104921.png"></p>
+<p>该模型为输入数据 <code>Moving MNIST</code> 的模型概览。空间<strong>编码器</strong>由四个<strong>普通的</strong> 2 D 卷积层组成，空间<strong>解码器</strong>由四个 2 D <strong>转置</strong>卷积层组成。在 pytorch 中，分别为 <code>Conv2D</code> 与 <code>ConvTranspose2d</code>。</p>
+<p>作者在第一个卷积层与最后一个转置卷积层之间添加了一个残差连接，以保留空间相关特征。空间编码器与解码器是间是多个 TAU 模块的堆栈，用于提取时间相关特征。</p>
+<h3 id="时间注意力单元（TAU）"><a href="#时间注意力单元（TAU）" class="headerlink" title="时间注意力单元（TAU）"></a>时间注意力单元（TAU）</h3><p>时间注意力单元的处理过程：</p>
+<p>假设输入的视频张量 $B \in R^{B<em>T</em>C<em>H</em>W}$，其中视频数量 $B&#x3D;|B|$。在空间编码器与解码器中，我们将顺序输入数据 $B<em>T</em>C<em>H</em>W$ 重塑为 $(B<em>T)<em>C</em>H</em>W$，以便只考虑空间相关性。在时间模块中，将特征 $B<em>T</em>C<em>H</em>W$ 重塑为 $B*(T*C)<em>H</em>W$，使帧按顺序排列在通道维度上。</p>
+<p>作者将时间注意力分解为帧内静态注意力与帧间动态注意力，如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823110122.png"></p>
+<p>作者使用小核深度卷积（DWConv）与带膨胀的深度卷积（DW-D Conv）和 <code>1*1</code> 卷积来模拟大核卷积。通过在帧内获得的大感受野，静态注意力能够捕捉长距离依赖。同时为了学习沿时间轴学习时间演变，作者以”压缩和激励”的方式学习通道的注意力权重。而最终的注意力为动态注意力与静态注意力的乘积。</p>
+<p>以下是 TAU 模块的详细内容：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823110442.png"></p>
+<p><code>FC</code> 全连接层，<code>AvgPool</code> 为平均池化，$\otimes$ 表示Kronecker积，$\odot$ 表示Hadamard积。</p>
+<h3 id="差分散度正则化"><a href="#差分散度正则化" class="headerlink" title="差分散度正则化"></a>差分散度正则化</h3><p>该正则化方法可以强迫模型学习连续帧之间的差异并意识到固有的变化。</p>
+<p>通过计算预测帧和真实帧之间的差异，并使用 softmax 函数将其转换为概率分布，然后使用 Kullback-Leibler 散度来惩罚高差异帧，从而提高模型对帧间变化的敏感度。</p>
+<p>模型以完全无监督的方式进行端到端的训练，整体的目标函数由均方误差损失与加权常数 $\alpha$ 的差分散度正则化组成：</p>
+<p>$$<br>L &#x3D; \sum_{i&#x3D;1}^{T’} \left| \hat{Y} - Y \right|^2 + \alpha L_{\text{reg}}(\hat{Y}, Y)<br>$$</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>作者从以下三个方面来验证</p>
+<ul>
+<li>标准时空预测学习</li>
+<li>跨不同数据集的泛化能力</li>
+<li>预测具有灵活长度的帧</li>
+</ul>
+<p>使用的数据集：</p>
+<ul>
+<li>Moving MNIST</li>
+<li>TaxiBJ</li>
+<li>KTH</li>
+<li>Caltech Pedestrian</li>
+</ul>
+<p>以下是详细信息：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823112913.png"></p>
+<p>训练样本数 $N_{train}$，测试样本数 $N_{test}$。</p>
+<p>测量方法：</p>
+<p>均方误差（MSE）、平均绝对误差（MAE）、结构相似性指数（SSIM）和峰值信噪比（PSNR）来评估预测质量。MSE和MAE估计绝对像素误差，SSIM测量空间邻域内结构信息的相似性，PSNR是信号最大可能功率与失真噪声功率之间的比率。</p>
+<p>在 Moving MNIST 数据集上的效果如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823134055.png"></p>
+<p>在 TaxiBJ 数据集上的效果如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823134320.png"></p>
+<p>在不同数据集上的泛化能力如下所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823134402.png"></p>
+<p>预测灵活长度的帧</p>
+<p>使用峰值信噪比（PSNR）和结构相似性指数（SSIM）作为评估指标，从感知角度衡量逐帧预测质量。以下是结果分析表：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823134620.png"></p>
+<h3 id="训练时间"><a href="#训练时间" class="headerlink" title="训练时间"></a>训练时间</h3><p>TAU 是可并行计算架构，所以可以快速的收敛与高训练速度。以下是不同的模型的收敛速度对比：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823135001.png"></p>
+<h2 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h2><p>通过消融研究，证明了 TAU 模块和微分散度正则化对模型的性能很重要。</p>
+<p>如果使用普通的卷积块替换了 TAU，则会显著降低性能。不使用微分散度正则化时，也会削弱预测结果。同时，TAU 的静态注意力（SA）与动态注意力（DA）也发挥了很重要的作用。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240823135151.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/79657117/" title="Temporal Attention Unit- Towards Efficient Spatiotemporal Predictive Learning">http://example.com/posts/79657117/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/87aace2c/" rel="prev" title="Enhanced Spatiotemporal Prediction Using Physical-guided And Frequency-enhanced Recurrent Neural Networks">
+                  <i class="fa fa-angle-left"></i> Enhanced Spatiotemporal Prediction Using Physical-guided And Frequency-enhanced Recurrent Neural Networks
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/a6ac5ec9/" rel="next" title="MIMO Is All You Need -- A Strong Multi-in-Multi-Out Baseline for Video Prediction">
+                  MIMO Is All You Need -- A Strong Multi-in-Multi-Out Baseline for Video Prediction <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

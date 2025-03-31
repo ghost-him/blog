@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/1f1b3457/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/1f1b3457/","path":"posts/1f1b3457/","title":"DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/1f1b3457/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E6%96%B0"><span class="nav-number">1.2.</span> <span class="nav-text">创新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-1"><span class="nav-number">2.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE"><span class="nav-number">2.2.</span> <span class="nav-text">贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">模型架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E5%9F%9F%E5%A2%9E%E5%BC%BA%E6%A8%A1%E5%9D%97%EF%BC%88FEM%EF%BC%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">频域增强模块（FEM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%9F%9F%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%9D%97%EF%BC%88SRM%EF%BC%89"><span class="nav-number">2.3.2.</span> <span class="nav-text">空间域恢复模块（SRM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.3.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">2.3.4.</span> <span class="nav-text">模型评估</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.4.</span> <span class="nav-text">消融实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FEM-%E4%B8%8E-SRM-%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.4.1.</span> <span class="nav-text">FEM 与 SRM 的有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E9%A2%91%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">2.4.2.</span> <span class="nav-text">不同频率的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0%E9%87%8F%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.4.3.</span> <span class="nav-text">不同参数量与效率的对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">2.5.</span> <span class="nav-text">可视化</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/1f1b3457/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-08 13:11:06" itemprop="dateCreated datePublished" datetime="2024-07-08T13:11:06+08:00">2024-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 17:07:51" itemprop="dateModified" datetime="2024-08-20T17:07:51+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2406.13606">arxiv</a></p>
+<span id="more"></span>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>遥感变化检测（RSCD）旨在通过分析多时相的遥感图像来识别某一地区的关注变化，对于地方发展监测具有突出的价值。</p>
+<p>现有的 RSCD 方法在空间域中进行上下文建模来增强关注的变化，但是在频域知识的缺乏限制了模型性能的进一步提升。</p>
+<h2 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h2><p>作者设计了一个频域增强模块（Frequency-domain Enhancement Module, FEM），用于离散余弦变换（Discrete Cosine Transform, DCT）从输入的双时相图像中捕捉频率成分，从而增强关注的变化。</p>
+<p>此外，作者还设计了一个空间域恢复模块（Spatial-domain Recovery Module, SRM），用于融合时空特征以重建变化表示的空间细节。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>RSCD（遥感变化检测）是一项关键任务，通过分析在相同地理区域内拍摄的多时相遥感图像，识别由光谱变化表示的关注变化。因此，图像像素被分类为变化图，以确定区域的每个部分是否涉及关注的变化。</p>
+<p>在该领域，已经有基于卷积神经网络的方法来处理，也有利用 Transformer 模型在时间序列中进行空间关系学习。但是这些方法主要集中在解决空间哉中的 RSCD 问题，仍有进一步提升的宰。</p>
+<p>受到从频率域的角度来处理目标检测和语义分割领域的启发，作者提出了 DDLNet，这是一种基于双域学习的 RSCD 网络，涉及频率域增强模块（FEM）和空间域恢复模块（SRM）。</p>
+<p>由 Siamese 神经网络从输入的双时相图像中提取的特征图，FEM 使用离散余弦变换（DCT）捕捉频率成分以增强关注的变化。同时，不同尺度的 SRM 通过粗细表示的融合以级联方式促进空间细节的恢复。此外，采用轻量级解码器在所有尺度上互连表示以生成变化图。</p>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><ul>
+<li>引入了频率域增强，从双时图像特征图中提取频率成分并增强关注的变化</li>
+<li>实现了空间域恢复，采用跨时间与跨尺度机制进行特征融合，并重建变化表示中的空间细节</li>
+<li>提出了一种新颖的 RSCD 方法，在三个变化检测数据集上取得了最先进的性能，同时在准确性与效率之间达到了更满意的平衡。</li>
+</ul>
+<h2 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h2><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240708103443.png"></p>
+<p>DDLNet 由四个关键组件组成：特征提取，频域增强，空间域恢复与解码。</p>
+<p>给定输入的双时相图像 T 1 和 T 2，使用一个 Siamese 神经网络（即双流 ResNet-18）在四个不同的尺度上提取双时相特征图。在每个尺度上，来自相应残差块的双时相特征图在频域中通过 FEM（频域增强模块）增强，FEM 利用 DCT（离散余弦变换）有效捕捉频率成分。在第四尺度上的频率增强特征图经历初步特征融合，然后由 SRM（空间恢复模块）处理，SRM 专注于恢复变化细节，同时处理每个其他尺度的特征图。所有尺度的特征图在通道方向上进行上采样和拼接；通过卷积恢复通道数量。最后，上采样生成与 T 1 和 T 2 相同大小的变化地图。</p>
+<h3 id="频域增强模块（FEM）"><a href="#频域增强模块（FEM）" class="headerlink" title="频域增强模块（FEM）"></a>频域增强模块（FEM）</h3><p>该模块采用 DCT 高效捕捉特征中的频率成分，从而增强输入图像中的变化的辨识度。</p>
+<p>二维 DCT 可以如下公式表示：</p>
+<p>$$<br>B^{i,j}_{h,w} &#x3D; \cos(\frac{\pi h}{H} (i + \frac{1}{2})) \cos(\frac{\pi w}{W} (j + \frac{1}{2}))<br>$$</p>
+<p>$$<br>f_{h,w}^{2d} &#x3D; \sum_{i&#x3D;0}^{H-1} \sum_{j&#x3D;0}^{W-1} x_{h,w}^{2d} B^{i,j}_{h,w}<br>$$<br>$f^{2d}$ 表示二维 DCT 频谱，$x^{2d}$ 表示输入，H 表示高度，W 表示宽度。</p>
+<p>FEM 将输入图像 $X$ 沿通道维度分成若干部分 $[X^0, X^1, \cdots, X^{n-1}]$ 且 $C’&#x3D;\frac{C}{n}$，假设 $C$ （表示图像的通道数）可以被 n 整除。为每个部分的 $X_i$ 分配相应的二维 DCT 来生成对应的频率成分，然后通过拼接这些分块的频率成分，获得频率向量：<br>$$<br>\text{Freq} &#x3D; \text{cat}([\text{Freq}^0, \text{Freq}^1, \cdots, \text{Freq}^{n-1}])<br>$$<br>每个频率成分表示如下：<br>$$  \text{Freq}^i &#x3D; \text{DCT}^{u_i, v_i}(X^i) &#x3D; \sum_{h&#x3D;0}^{H-1} \sum_{w&#x3D;0}^{W-1} X^i_{h,w} B^{u_i, v_i}_{h,w}$$<br>$Freq^i$ 是一个 $C’$ 维度的向量，$[u_i,v_i]$ 表示 $X_i$ 的频率成分的二维索引。FEM 的输出计算如下：<br>$$<br>Z&#x3D;Sigmoid(f_c(Freq))<br>$$<br>$f_c$ 表示一维卷积，$Z$ 表示频率增强特征图。</p>
+<p>FEM 还通过在 Imagenet 上预训练确定频率成分的重要性，以选择适当的频率成分进行特征增强。</p>
+<h3 id="空间域恢复模块（SRM）"><a href="#空间域恢复模块（SRM）" class="headerlink" title="空间域恢复模块（SRM）"></a>空间域恢复模块（SRM）</h3><p>SRM 通过跨时间与跨尺度机制实现特征融合。在每个层级上的特征经过频率增强后，最深层的特征会进行逐元素减法，并与在时间点 T 1 捕获的图像进行拼接，从而生成深层变化的表示。随后，深层变化的表示会独立地与跨尺度的浅层特征融合。这使得高层变化表示能够指导低层表示的上下文建模，增强低层特征中的语义信息，并改进变化表示的空间细节恢复。</p>
+<p>由于 FEM 在 T 1 与 T 2 时刻在前三个尺度上输出的频率增强特征图 Z 1 与 Z 2，SRM 首先进行特征融合，来获得关注变化的粗略表示 $Z_c$，其公式表示如下：<br>$$<br>Z_c &#x3D; \psi((Z_1 \ominus Z_2) \oplus Z_1)<br>$$<br>其中，$\ominus$ 表示逐元素减法，$\phi$ 表示深度可分离卷积。</p>
+<p>$Z_c$ 的权重图 $W_c$ 可如下表示：<br>$$<br>W_1 &#x3D; \text{Sigmoid}(\phi (P_{mean}(Z_c) \oplus P_{max}(Z_c))<br>$$<br>$P_{mean}$ 与 $P_{max}$ 分别表示平均池化与最大池化。$\phi$ 表示 <code>1*1</code> 卷积。然后将权重图应用于第 4 尺度上粗略表示 $C_4$，可得到关注变化的精细表示 $C_i$：<br>$$<br>C_i &#x3D; (W_1 \otimes C_4) \oplus C_{i+1}<br>$$<br>$C_{i+1}$ 表示前一个 SRM 的关注变化的精细表示。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>由于 RSCD 中已短发与未改变像素分布的不平衡的问题，他们设计了一种混合损失函数，结合了焦点损失与 Dice 损失，其公式如下：<br>$$<br>L &#x3D; L_{\text{focal}} + L_{\text{dice}}<br>$$</p>
+<p>其中，焦点损失的公式如下：</p>
+<p>$$<br>L_{\text{focal}} &#x3D; -\alpha (1 - \hat{p})^\gamma \log(\hat{p})<br>$$</p>
+<p>$$<br>\hat{p} &#x3D;<br>\begin{cases}<br>p, &amp; \text{if } y &#x3D; 1 \\<br>1 - p, &amp; \text{otherwise}<br>\end{cases}<br>$$ </p>
+<p>$\alpha$ 与 $\gamma$ 是控制正负样本贡献和方法对困难样本关注度的两个超参数。</p>
+<p>Dice 损失的公式如下：</p>
+<p>$$<br>L_{\text{dice}} &#x3D; 1 - \frac{2 \cdot E \cdot \text{Softmax}(E’)}{E + \text{Softmax}(E’)}<br>$$</p>
+<p>$$<br>E’ &#x3D; { e’_k \in \mathbb{R}^2 \mid k &#x3D; 1, 2, \ldots, H \times W }<br>$$</p>
+<h3 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h3><p>在三个 RSCD（遥感变化检测）数据集上，通过五个常用指标对提出的 DDLNet 进行比较：F 1 分数（F 1）、召回率（Recall, Rec）、精确率（Precision, Pre）、交并比（Intersection over Union, IoU）和总体准确率（Overall Accuracy, OA）。</p>
+<p>数据集分别是：</p>
+<ul>
+<li>WHU 建筑数据集</li>
+<li>LEVIR-CD 数据集</li>
+<li>CLCD 数据集</li>
+</ul>
+<p>以下是在这三个数据集上的评测数据：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240708125628.png"></p>
+<p>作者认为：这种性能优势可以归因于 FEM（特征增强模块）和 SRM（空间关系模块）模块的有效特征优化，利用多频率成分增强感兴趣的变化，改进像素空间的特征表示，并通过特征融合捕捉细粒度信息，从而促进变化表示中的空间细节恢复。</p>
+<h2 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h2><h3 id="FEM-与-SRM-的有效性"><a href="#FEM-与-SRM-的有效性" class="headerlink" title="FEM 与 SRM 的有效性"></a>FEM 与 SRM 的有效性</h3><p>在 WHU-CD 数据集上进行了消融实验。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240708125724.png"></p>
+<p>表明：引入 FEM 或 SRM 模块显著提高了性能。</p>
+<h3 id="不同频率的影响"><a href="#不同频率的影响" class="headerlink" title="不同频率的影响"></a>不同频率的影响</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240708125826.png"></p>
+<p>作者使用 n 个频率验证了结果，如图所示，n 为 16 时，有最佳的性能。</p>
+<h3 id="不同参数量与效率的对比"><a href="#不同参数量与效率的对比" class="headerlink" title="不同参数量与效率的对比"></a>不同参数量与效率的对比</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240708130102.png"></p>
+<h2 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h2><p>对比图表明，DDLNet 通过有效利用 FEM 和 SRM 模块提取高质量的变化信息和增强变化对象边界，显著优于其他模型。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240708130138.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/1f1b3457/" title="DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning">http://example.com/posts/1f1b3457/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/ce93c3b3/" rel="prev" title="Mamba or RWKV- Exploring High-Quality and High-Efficiency Segment Anything Model">
+                  <i class="fa fa-angle-left"></i> Mamba or RWKV- Exploring High-Quality and High-Efficiency Segment Anything Model
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2411b718/" rel="next" title="Ultra-High-Definition Restoration- New Benchmarks  and A Dual Interaction Prior-Driven Solution">
+                  Ultra-High-Definition Restoration- New Benchmarks  and A Dual Interaction Prior-Driven Solution <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

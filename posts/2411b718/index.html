@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/2411b718/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/2411b718/","path":"posts/2411b718/","title":"Ultra-High-Definition Restoration- New Benchmarks  and A Dual Interaction Prior-Driven Solution"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ultra-High-Definition Restoration- New Benchmarks  and A Dual Interaction Prior-Driven Solution | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/2411b718/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E6%96%B0"><span class="nav-number">1.2.</span> <span class="nav-text">创新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A1%E7%8C%AE"><span class="nav-number">2.2.</span> <span class="nav-text">贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95"><span class="nav-number">2.3.</span> <span class="nav-text">基准测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UHD-DIP"><span class="nav-number">2.4.</span> <span class="nav-text">UHD-DIP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E5%88%86%E8%BE%A8%E7%8E%87%E7%A9%BA%E9%97%B4%E4%B8%AD%E7%9A%84%E7%89%B9%E5%BE%81%E8%9E%8D%E5%90%88%E5%92%8C%E9%87%8D%E5%BB%BA%E5%88%86%E6%94%AF"><span class="nav-number">2.4.1.</span> <span class="nav-text">高分辨率空间中的特征融合和重建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8E%E5%88%86%E8%BE%A8%E7%8E%87%E7%A9%BA%E9%97%B4%E4%B8%AD%E7%9A%84%E5%85%88%E9%AA%8C%E7%89%B9%E5%BE%81%E4%BA%A4%E4%BA%92%E5%88%86%E6%94%AF"><span class="nav-number">2.4.2.</span> <span class="nav-text">低分辨率空间中的先验特征交互分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%88%E9%AA%8C%E7%89%B9%E5%BE%81%E4%BA%A4%E4%BA%92%EF%BC%88PFI%EF%BC%89"><span class="nav-number">2.4.3.</span> <span class="nav-text">先验特征交互（PFI）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SPFI"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">SPFI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DPFI"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">DPFI</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DGF"><span class="nav-number">2.4.3.2.1.</span> <span class="nav-text">DGF</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">2.4.4.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">2.5.</span> <span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UHD-%E4%BD%8E%E5%85%89%E7%85%A7%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA"><span class="nav-number">2.5.1.</span> <span class="nav-text">UHD 低光照图像增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UHD-%E5%9B%BE%E5%83%8F%E5%8E%BB%E9%9B%AA"><span class="nav-number">2.5.2.</span> <span class="nav-text">UHD 图像去雪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UHD-%E5%9B%BE%E5%83%8F%E5%8E%BB%E9%9B%A8"><span class="nav-number">2.5.3.</span> <span class="nav-text">UHD 图像去雨</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E7%A0%94%E7%A9%B6"><span class="nav-number">2.6.</span> <span class="nav-text">消融研究</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">129</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/2411b718/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Ultra-High-Definition Restoration- New Benchmarks  and A Dual Interaction Prior-Driven Solution | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ultra-High-Definition Restoration- New Benchmarks  and A Dual Interaction Prior-Driven Solution
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-09 15:28:59" itemprop="dateCreated datePublished" datetime="2024-07-09T15:28:59+08:00">2024-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-21 15:27:09" itemprop="dateModified" datetime="2024-08-21T15:27:09+08:00">2024-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2406.13607">arxiv</a></p>
+<span id="more"></span>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>超高清图像修复很重要。</p>
+<h2 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h2><p>作者构建了 UHD 雪和雨基准，分别命名为 UHD-Snow 和 UHD-Rain，以弥补该领域的不足。</p>
+<p>UHD-Snow&#x2F;UHD-Rain 通过模拟雨&#x2F;雪的物理过程建立，每个基准包含 3200 对 4 K 分辨率的退化&#x2F;清晰图像对。此外，提出了一种有效的 UHD 图像修复方案，通过在模型设计中考虑梯度和法线先验（normal priors），利用这些先验的空间和细节贡献。</p>
+<p>作者的方法有两个分支：</p>
+<ul>
+<li>高分辨率空间中的特征融合和重建分支</li>
+<li>低分辨率空间中的先验特征交互分支<br>前者学习高分辨率特征，并融合先验引导的低分辨率特征以重建清晰图像，而后者利用法线和梯度先验挖掘有用的空间特征和细节特征，以更好地引导高分辨率恢复。</li>
+</ul>
+<p>为了更好地利用这些先验，引入了单一先验特征交互和双重先验特征交互，其中前者分别将法线和梯度先验与高分辨率特征融合以增强先验特征，而后者计算增强先验特征之间的相似性，并进一步利用双重引导滤波（dual guided filtering）来促进双重先验的特征交互。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>UHD 图像可以呈现出更多的细节与更广的色域。而当前基于学习的一般图像恢复算法都江堰有效处理 UHD 图像，所以开发了 UHD 恢复模型，而对于雪与雨的 UHD，其数据集少，所以阻碍了相关任务的进一步探索与研究，所以要构建 UHD 雪与雨的基准。</p>
+<p>作者构建了两个新的基准，分别为：UHD-Snow 和 UHD-Rain。每个数据集包括 3200 对退化&#x2F;清晰的 4 K 图像对，这些图像分别合成了不同密度、方向和位置的雪花和雨条纹。其中，3000 对用于训练，200 对用于测试。</p>
+<p>以下是 UHD-Snow 和 UHD-Rain 基准中的一些示例。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709130546.png"></p>
+<p>此外，还提出了有效的双重交互先验驱动的 UHD 恢复解决方案（UHD-DIP）。其原理是：</p>
+<ol>
+<li>法线图包含的形状区域或纹理边界可以提供更多的几何空间结构</li>
+<li>梯度图揭示了每个局部区域的边缘和纹理方向，可以提供细节补偿。</li>
+</ol>
+<p>UHD-DIP 有两个分支：</p>
+<ol>
+<li>高分辨率空间的特征融合和重建分支</li>
+<li>低分辨率空间的先验特征交互分支</li>
+</ol>
+<p>前者学习高分辨率特征并融合先验引导的低分辨率特征以重建最终的潜在清晰图像，而后者探索先验特征交互以在高分辨率空间中呈现具有更精细结构和细节特征的改进特征。</p>
+<p>为了更好地融合和交互先验特征，提出了先验特征交互：包含单一先验特征交互（SPFI）和双重先验特征交互（DPFI）。SPFI 分别融合<strong>法线先验</strong>和<strong>梯度先验</strong>与<strong>高分辨率特征</strong>以增强先验特征，而 DPFI 计算增强先验特征之间的相似性，并进一步利用双重引导滤波来促进双重先验特征交互，以捕捉更好的结构和细节。</p>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><ul>
+<li>构建了 UHD-Snow 和 UHD-Rain 基准</li>
+<li>提出了UHD-DIP，将梯度与法线先驱整合到模型设计中，来实现具有更精细结构和细节的高质量的恢复</li>
+</ul>
+<h2 id="基准测试"><a href="#基准测试" class="headerlink" title="基准测试"></a>基准测试</h2><p>作者构建了两个 UHD-Snow 和 UHD-Rain 数据集，这些数据集由分辨率为 3840×2160 的 4 K 图像组成，基于大规模图像数据集 UHDSR 4 K。</p>
+<p>用于 UHD 图像超分辨率的 UHDSR 4 K 数据集中提取了 2300 张原始 UHD 图像，按照 Photoshop 的雨雪合成教程合成相应的雨雪图像。</p>
+<p>为了确保合成图像的多样性和真实性，作者采用了不同的技术参数和处理方法，包括高斯模糊、运动模糊和结晶化等。其具体使用的参数如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709132346.png"></p>
+<p>UHD 数据集的统计信息如下：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709132447.png"></p>
+<h2 id="UHD-DIP"><a href="#UHD-DIP" class="headerlink" title="UHD-DIP"></a>UHD-DIP</h2><h3 id="高分辨率空间中的特征融合和重建分支"><a href="#高分辨率空间中的特征融合和重建分支" class="headerlink" title="高分辨率空间中的特征融合和重建分支"></a>高分辨率空间中的特征融合和重建分支</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709133151.png"></p>
+<p>该分支为 (a) 所示。给定一个退化的超高清图像 $U$ 作为输入，UHDDIP 首先应用一个 <code>3*3</code> 卷积提取浅层特征 $F_0$，其中 $H \times W$ 表示空间维度，$C$ 为通道数。接下来 $F_0$ 被输入到第一组 NAFBlocks 以获得第一层高分辨率特征 $F_1$。然后 $F_1$ 通过 8 倍下采样进入低分辨率空间，生成与先驱特征交互的 $F^p_1$，然后 $F_1^p$ 被输入到 NFABlocks 进行进一步学习。输出特征被 8 倍上采样，并在通道维度上与第一层高分辨率特征 $F_1$ 连接，通过 <code>1*1</code> 卷积获得新的第一层特征 $F_1’$。然后融合特征 $F_1’$ 被输入到第二组 NAFBlocks，同时的操作继续进行，直到第三组 NAFBlocks 之后开始进行高分辨率特征重建。最后，通过三组 NAFBlocks 和一个 <code>3*3</code> 卷积层生成的输出被添加到输入图像中，以获得最终恢复的图像 $O$</p>
+<h3 id="低分辨率空间中的先验特征交互分支"><a href="#低分辨率空间中的先验特征交互分支" class="headerlink" title="低分辨率空间中的先验特征交互分支"></a>低分辨率空间中的先验特征交互分支</h3><p>为了提供更丰富的结构与细节，会对输入图像 $U$ 使用 Omnidata 和 Canny 滤波器生成正常先验 $P_n$ 与梯度先验 $P_g$。在低分辨率空间中，$P_n$ 与 $P_g$ 首先被输入到一个 <code>3*3</code> 卷积层与第一个 NAFBlock，造成第一层先验特征 $P_{n1}$ 与 $P_{g1}$，它们作为第一个先验特征交互（PFI）模块的输入。同时，PFI 还接收从高分辨率传下来的 $F_1$，并与 $P_{n1}$ 与 $P_{g1}$ 一起编码和交互，生成交互的低分辨率特征 $F_{1}^p1$，和增强的先验特征 $P_{n1}’$，$P_{g1}’$。这特征被输入到第二个 PFI 继续执行相同的操作，直到从第 i 个（$i \in [1, L]$） PFI 输出的 $P_{ni}’$ 和 $P_{gi}’$ 以及 $F_i^p$ 被获得。这些特征被聚合到高分辨率分支中参与最终的图像重建。此外，通过两个 NAFBlocks 和一个 <code>3*3</code> 卷积层生成的结果 $H$ 进一步用于监督低分辨率分支。</p>
+<h3 id="先验特征交互（PFI）"><a href="#先验特征交互（PFI）" class="headerlink" title="先验特征交互（PFI）"></a>先验特征交互（PFI）</h3><p>PFI 有两个子模块：单一先验特征交互（SPFI）与双重先验特征交互（DPFI）。SPFI 分别将正常先验与梯度先验与高分辨率特征融合以增强先验特征，而 DPFI 计算增强先验特征之间的相似性，并进一步利用双重引导滤波提升双重先验特征交互。</p>
+<h4 id="SPFI"><a href="#SPFI" class="headerlink" title="SPFI"></a>SPFI</h4><p>利用正常和梯度先验引导图像恢复的主要挑战在于如何使网络能够有效地感知像素级的图像细节和结构。所以作者使用 SPFI 来增强单一先验特征。</p>
+<p>如下图所示：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709141108.png"></p>
+<p>图片在进入第一个 SPFI 之前提取正常与梯度先验的特征（图 a, e）。正常特征自然提供了更精细的任何结构，而梯度特征包含了更多的纹理细节，它们可以提供互补信息。这些特征分别通过 SPFI 模块与高分辨率特征集成，来进一步增加相应的结构与细节（图 b, f）</p>
+<p>其实现细节如下：</p>
+<p>在 SPFI 中，$P_{ni}$ 与 $P_{gi}$ 通过两组多 D 卷积头转换交叉注意力（MTCA）分别与 $F_{i}$ 融合，其定义如下（记 $P_{ni}, P_{gi}, F_{i}$ 为 $P_{n}, P_{g}, F$）：<br>$$<br>\text{MTCA}(Q^n_p, K_f, V_f) &#x3D; \text{Softmax}(\frac{Q^n_p K_f^T}{\sqrt{f_k}}) V_f<br>$$<br>$$<br>\text{MTCA}(Q^g_p, K_f, V_f) &#x3D; \text{Softmax}(\frac{Q^g_p K_f^T}{\sqrt{f_k}}) V_f<br>$$<br>其中，查询 $Q^{n}<em>{p}$ 来自正常先验特征 $P</em>{n}$；查询 $Q_p^g$ 来自梯度先验特征 $P_g$；键 $K_f$ 与值 $V_f$ 来自图像特征 F。这些矩阵通过层归一化，<code>1*1</code> 卷积与 <code>3*3</code> 深度卷积生成。</p>
+<p>然后使用门控 D 卷积前馈网络（GDFN）基于注意力图与原始先验特征生成单一先验特征 $P_n’$ 与 $P_g’$：<br>$$<br>P’_n &#x3D; \text{GDFN}(P_n) + \text{MTCA}(Q^n_p, K_f, V_f)<br>$$<br>$$<br>P’_g &#x3D; \text{GDFN}(P_g) + \text{MTCA}(Q^g_p, K_f, V_f)<br>$$<br>最后，作为当前阶段增强的先验特征，$P_n’$ 和 $P_g’$ 被输入到后续的 DPFI 以实现双重先验特征交互，并且也传递到下一个 SPFI 以进一步学习。</p>
+<h4 id="DPFI"><a href="#DPFI" class="headerlink" title="DPFI"></a>DPFI</h4><p>该网络利用场景先验和相似性权重来减少纹理干扰，DPFI 旨在通过利用增强的单一先验的内在属性计算它们之间的相似性，以进一步捕捉图像结构和细节，从而为高分辨率空间提供有意义的指导。</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709142341.png"></p>
+<p>先将特征 $P_n’$ 与 $P_g’$ 进行 4 倍下采样来减少后续的计算负担。然后它们分别通过一个 NAFBlock 后通过 <code>k*k</code> 核（<code>k=3</code>）展示，生成大小为 $(C<em>k</em>k)*\frac{\hat{H}\hat{W}}{16}$，其中 $\hat{H}&#x3D;H&#x2F;8, \hat{W}&#x3D;W&#x2F;8$。使用归一化邮件管理员计算所有补丁的相似性嵯进一步获得性权重 W。之后将两个先验特征和相似性权重应用于提出了双重引导滤波器（DGF），来进一步过滤掉无关特征，同时平衡和细节。</p>
+<h5 id="DGF"><a href="#DGF" class="headerlink" title="DGF"></a>DGF</h5><p>接收两个先验特征 $F_n$ 与 $F_g$ 和相似性权重 $W$ 作为输入，然后生成正常先验滤波器内核和梯度先验滤波器内容，分别表示为 $K_n, K_g$：</p>
+<p>$$<br>K_n &#x3D; g({Conv_3}(F_n), W)<br>$$<br>$$<br>K_g &#x3D; g({Conv_3}(F_g), W)<br>$$<br>$g$ 表示内核生成模块，包含一个 <code>1*1</code> 卷积和一个激活函数。然后，这两个内核分别过滤两个先验特征，以保留它们各自的先验属性并进一步过滤无关特征：<br>$$<br>F_{pn} &#x3D; F_n \otimes K_n + F_n<br>$$<br>$$<br>F_{pg} &#x3D; F_g \otimes K_g + F_g<br>$$<br>$\otimes$ 是过滤操作，注意这里的 $F_n$ 和 $F_g$ 是通过一个 3×3 卷积和一个 NAFBlock 获得的。最后，先验特征被添加到从高分辨率传下来的低分辨率特征中，以生成交互的先验特征 $F_g$  。</p>
+<p>上面可视化的图中，(g) 展示了第一个 PFI 的可视化特征。可以观察到，PFI 可以有效地进行结构与细节特征。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>使用最小化恢复结果 $O$ ，中间结果 $H$ 与真实值 $G$ 之间的 L 1 损失与频率损失来构成损失函数。</p>
+<p>$$<br>L_{\text{total}} &#x3D; |O - G|_1 + \lambda |F(O) - F(G)|_1 + \alpha |H - G|_1 + \lambda |F(H) - F(G)|_1<br>$$</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>在三个超高清图像修复任务上，与最先进的方法进行了定性和定量的比较，包括：(a) 低光增强，(b) 去雪，和 (c) 去雨。</p>
+<h3 id="UHD-低光照图像增强"><a href="#UHD-低光照图像增强" class="headerlink" title="UHD 低光照图像增强"></a>UHD 低光照图像增强</h3><p>在 UHD-LL上评估了 UHD 低光照图像增强的效果</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709150345.png"></p>
+<p>以下是视觉对比</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709150448.png"></p>
+<h3 id="UHD-图像去雪"><a href="#UHD-图像去雪" class="headerlink" title="UHD 图像去雪"></a>UHD 图像去雪</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709150617.png"></p>
+<p>可视化：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709150738.png"></p>
+<h3 id="UHD-图像去雨"><a href="#UHD-图像去雨" class="headerlink" title="UHD 图像去雨"></a>UHD 图像去雨</h3><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709150845.png"></p>
+<p>UHDDIP 显著提升了当前的最先进方法</p>
+<p>可视化：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709150649.png"></p>
+<p>UHDDIP 有效地去除了雨条纹</p>
+<h2 id="消融研究"><a href="#消融研究" class="headerlink" title="消融研究"></a>消融研究</h2><p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709151845.png"></p>
+<p>表 a 表明了移除 PFI 会导致所有指标的性能显著下降，同时仅使用 SPFI 模块会降低网络的性能，而 DPFI 可以提升性能。结合使用时表现最佳。</p>
+<p>以下是可视化：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709152132.png"></p>
+<p>表 b 表示了先验（法线与梯度）的影响。可以发现，法线有助于 SSIM（结构相似性指数）与 LPIPS（感知图像质量评估指标）的提升。结合使用时，SSIM 与 LPIPS 方面达到最佳性能。</p>
+<p>以下是可视化：</p>
+<p><img data-src="http://kodo.ghost-him.com/blogPicture/study/20240709152206.png"></p>
+<p>B 与 g 为法线与梯度先验生成的不同的结构与细节。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/2411b718/" title="Ultra-High-Definition Restoration- New Benchmarks  and A Dual Interaction Prior-Driven Solution">http://example.com/posts/2411b718/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/1f1b3457/" rel="prev" title="DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning">
+                  <i class="fa fa-angle-left"></i> DDLNet- Boosting Remote Sensing Change  Detection with Dual-Domain Learning
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/fc29564c/" rel="next" title="C++20使用“复制和交换”方法实现安全处理异常的赋值运算符">
+                  C++20使用“复制和交换”方法实现安全处理异常的赋值运算符 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
