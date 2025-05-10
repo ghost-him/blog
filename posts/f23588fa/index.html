@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+
+
+<link rel="canonical" href="http://example.com/posts/f23588fa/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/f23588fa/","path":"posts/f23588fa/","title":"C++中线程安全的对两个锁同时加锁"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C++中线程安全的对两个锁同时加锁 | ghost-him|🏠个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js","integrity":"sha256-2obLuIPcceEhkE3G09G33hBdmE55ivVcZUlcKcGNHjU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/posts/f23588fa/"}</script>
+  <script src="/js/third-party/quicklink.js" defer></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ghost-him|🏠个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-捐赠"><a href="/donate/" rel="section"><i class="fa fa-heart fa-fw"></i>捐赠</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E4%B8%AD%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%AF%B9%E4%B8%A4%E4%B8%AA%E9%94%81%E5%90%8C%E6%97%B6%E5%8A%A0%E9%94%81"><span class="nav-number">1.</span> <span class="nav-text">C++中线程安全的对两个锁同时加锁</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ghost-him" src="http://kodo.ghost-him.com/head.jpg">
+    <p class="site-author-name" itemprop="name">ghost-him</p>
+    <div class="site-description" itemprop="description">爱代码，爱生活！</div>
+  </div>
+    <div class="site-state-wrap animated">
+      <nav class="site-state">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">130</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+            
+          </div>
+          <div class="site-state-item site-state-tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+          </div>
+      </nav>
+    </div>
+    <div class="links-of-author animated">
+        <span class="links-of-author-item">
+          <a href="https://github.com/ghost-him" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ghost-him" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="links-of-author-item">
+          <a href="mailto:ghost-him@outlook.com" title="E-Mail → mailto:ghost-him@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        </span>
+    </div>
+    <div class="cc-license animated" itemprop="license">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+    </div>
+  <iframe
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="270"
+    src="//music.163.com/outchain/player?type=0&id=8244788626&auto=0&height=430"></iframe>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://alan-blog.netlify.app/" title="https:&#x2F;&#x2F;alan-blog.netlify.app&#x2F;" rel="noopener" target="_blank">alan</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/f23588fa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://kodo.ghost-him.com/head.jpg">
+      <meta itemprop="name" content="ghost-him">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost-him|🏠个人博客">
+      <meta itemprop="description" content="爱代码，爱生活！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C++中线程安全的对两个锁同时加锁 | ghost-him|🏠个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++中线程安全的对两个锁同时加锁
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-10 16:16:48 / 修改时间：16:16:54" itemprop="dateCreated datePublished" datetime="2025-05-10T16:16:48+08:00">2025-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">编程语言学习</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="C-中线程安全的对两个锁同时加锁"><a href="#C-中线程安全的对两个锁同时加锁" class="headerlink" title="C++中线程安全的对两个锁同时加锁"></a>C++中线程安全的对两个锁同时加锁</h1><p>在C++中，线程安全地同时加锁多个锁是一个常见的需求，尤其是在操作多个需要互斥访问的资源时。本文通过一个big_object类的例子，展示了如何在多线程环境中安全地交换两个对象。首先，danger_swap函数展示了非线程安全的加锁方式，可能导致死锁。随后，safe_swap函数通过使用std::lock和std::lock_guard结合std::adopt_lock，实现了对两个锁的同时加锁，避免了死锁问题。进一步，C++17引入的std::scoped_lock简化了这一过程，能够自动管理多个锁的加锁</p>
+<p>参考文档：<a target="_blank" rel="noopener" href="https://llfc.club/articlepage?id=2UVOC0CihIdfguQFmv220vs5hAG">https://llfc.club/articlepage?id=2UVOC0CihIdfguQFmv220vs5hAG</a></p>
+<span id="more"></span>
+
+<p>如果我们现在有一个需要互斥访问的变量 <code>big_object</code>，它的定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假如这个object是一个非常大的数据结构</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">big_object</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">big_object</span>(<span class="type">int</span> data) :_data(data) &#123;&#125;</span><br><span class="line">    <span class="comment">//拷贝构造</span></span><br><span class="line">    <span class="built_in">big_object</span>(<span class="type">const</span> big_object&amp; b2) :_data(b<span class="number">2.</span>_data) &#123;</span><br><span class="line">        _data = b<span class="number">2.</span>_data;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//移动构造</span></span><br><span class="line">    <span class="built_in">big_object</span>(big_object&amp;&amp; b2) :_data(std::<span class="built_in">move</span>(b<span class="number">2.</span>_data)) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重载输出运算符</span></span><br><span class="line">    <span class="keyword">friend</span> std::ostream&amp; <span class="keyword">operator</span> &lt;&lt; (std::ostream&amp; os, <span class="type">const</span> big_object&amp; big_obj) &#123;</span><br><span class="line">        os &lt;&lt; big_obj._data;</span><br><span class="line">        <span class="keyword">return</span> os;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重载赋值运算符</span></span><br><span class="line">    big_object&amp; <span class="keyword">operator</span> = (<span class="type">const</span> big_object&amp; b2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == &amp;b2) &#123;</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        _data = b<span class="number">2.</span>_data;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//交换数据</span></span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">swap</span><span class="params">(big_object&amp; b1, big_object&amp; b2)</span> </span>&#123;</span><br><span class="line">        big_object temp = std::<span class="built_in">move</span>(b1);</span><br><span class="line">        b1 = std::<span class="built_in">move</span>(b2);</span><br><span class="line">        b2 = std::<span class="built_in">move</span>(temp);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 这里使用随便一个变量用于表示其成员</span></span><br><span class="line">    <span class="type">int</span> _data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>由于这个是需要互斥访问的，所以每一个对象都需要有一个锁来确保线程安全的访问。所以定义一个<code>big_object_mgr</code>来管理这个类。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 现在使用一个线程安全的类对这个超大类做管理</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">big_object_mgr</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">big_object_mgr</span>(<span class="type">int</span> data = <span class="number">0</span>): _obj(data) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">printinfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;current obj data is &quot;</span> &lt;&lt; _obj &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">danger_swap</span><span class="params">(big_object_mgr&amp; obj_1, big_object_mgr&amp; obj_2)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">safe_swap</span><span class="params">(big_object_mgr&amp; obj_1, big_object_mgr&amp; obj_2)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">safe_swap_scope</span><span class="params">(big_object_mgr&amp; obj_1, big_object_mgr&amp; obj_2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::mutex _mutex;</span><br><span class="line">    big_object _obj;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>我们以交换这两个<code>big_object_mgr</code>对象为例，来说明一下如果线程安全的实现交换。</p>
+<p>首先来看一下实现的，线程不安全的交换逻辑：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">danger_swap</span><span class="params">(big_object_mgr &amp;obj_1, big_object_mgr &amp;obj_2)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;danger swap start&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 如果这两个对象是同一个对象，则直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (&amp;obj_1 == &amp;obj_2) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock_guard1</span><span class="params">(obj_<span class="number">1.</span>_mutex)</span></span>;</span><br><span class="line">    <span class="comment">// 这个延时1s表示：用于演示两个锁加锁之间发生了线程运行交换</span></span><br><span class="line">    std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">1</span>));</span><br><span class="line">    <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock_guard2</span><span class="params">(obj_<span class="number">2.</span>_mutex)</span></span>;</span><br><span class="line"></span><br><span class="line">    std::<span class="built_in">swap</span>(obj_<span class="number">1.</span>_obj, obj_<span class="number">2.</span>_obj);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;danger swap end&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个代码第一眼看上去是没有问题的，但是如果仔细分析一下，就可以知道有以下的问题：<strong>由于lock_guard1与2是非同时加锁的，所以可能会出现当lock_guard1加锁后，发生了线程的调度，此时会有另一个线程对lock_guard2进行了加锁，这样就会有可能发生了死锁。</strong></p>
+<p>实验代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_danger_swap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">big_object_mgr <span class="title">objm1</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="function">big_object_mgr <span class="title">objm2</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(danger_swap, std::ref(objm1), std::ref(objm2))</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">(danger_swap, std::ref(objm2), std::ref(objm1))</span></span>;</span><br><span class="line">    t<span class="number">1.</span><span class="built_in">join</span>();</span><br><span class="line">    t<span class="number">2.</span><span class="built_in">join</span>();</span><br><span class="line">    objm<span class="number">1.</span><span class="built_in">printinfo</span>();</span><br><span class="line">    objm<span class="number">2.</span><span class="built_in">printinfo</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里为了可以 100% 的产生死锁，我们通过在给<code>lock_guard1</code>加锁成功后，延迟1秒再来加锁<code>lock_guard2</code>。</p>
+<hr>
+<p>以上就可以确定出问题：<strong>由于需要使用两个锁，但是当这两个锁没有同时加锁时，就会导致线程不安全</strong>。为了解决这个问题，我们可以使用<code>std::lock()</code>实现对两个锁的同时加锁。现在来看<code>safe_swap</code>代码的实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">safe_swap</span><span class="params">(big_object_mgr&amp; obj_1, big_object_mgr&amp; obj_2)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;safe_swap start&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">if</span> (&amp;obj_1 == &amp;obj_2) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从上述的代码中可以看到，死锁的过程是在给两个锁分别加锁的过程中发生的</span></span><br><span class="line">    <span class="comment">// 所以只需要给这两个锁同时加锁就可以解决这个问题</span></span><br><span class="line">    std::<span class="built_in">lock</span>(obj_<span class="number">1.</span>_mutex, obj_<span class="number">2.</span>_mutex);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果想使用lock_guard来管理这个锁的释放，则可以使用领养锁来管理</span></span><br><span class="line">    <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock_guard1</span><span class="params">(obj_<span class="number">1.</span>_mutex, std::adopt_lock)</span></span>;</span><br><span class="line">    <span class="comment">// 这个延时1s表示：用于演示两个锁加锁之间发生了线程运行交换</span></span><br><span class="line">    std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">1</span>));</span><br><span class="line">    <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock_guard2</span><span class="params">(obj_<span class="number">2.</span>_mutex, std::adopt_lock)</span></span>;</span><br><span class="line">    std::<span class="built_in">swap</span>(obj_<span class="number">1.</span>_obj, obj_<span class="number">2.</span>_obj);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;safe_swap end&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>std::lock_guard</code>会默认给传入的锁上锁，而我们使用<code>std::lock</code>以后，就已经给锁上好锁了，所以就无法直接通过<code>std::lock_guard</code>来对这个锁做管理。此时就可以通过领养锁<code>std::adopt_lock</code>来实现对已经上过锁的锁的管理。此时，<code>std::lock_guard</code>就只负责<code>std::mutex</code>的释放，而不负责上锁。</p>
+<p>这个的测试代码如下，可以看到，代码是可以正确的运行的：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_safe_swap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">big_object_mgr <span class="title">objm1</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="function">big_object_mgr <span class="title">objm2</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(safe_swap, std::ref(objm1), std::ref(objm2))</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">(safe_swap, std::ref(objm2), std::ref(objm1))</span></span>;</span><br><span class="line">    t<span class="number">1.</span><span class="built_in">join</span>();</span><br><span class="line">    t<span class="number">2.</span><span class="built_in">join</span>();</span><br><span class="line">    objm<span class="number">1.</span><span class="built_in">printinfo</span>();</span><br><span class="line">    objm<span class="number">2.</span><span class="built_in">printinfo</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>现在已经解决了同时上锁的问题，但是这样写代码又过于麻烦了，有没有更简单的办法呢？有的兄弟，有的。c++17中引入了一个<code>std::scoped_lock</code>，可以使用这个锁来实现对两个锁的同时上锁，使用方式如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">safe_swap_scope</span><span class="params">(big_object_mgr&amp; obj_1, big_object_mgr&amp; obj_2)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;safe_swap_scope start&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">if</span> (&amp;obj_1 == &amp;obj_2) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 上述的方式还是太麻烦了，在c++17中引入了std::scoped_lock，可以同时对两个锁上锁，以及解锁</span></span><br><span class="line">    <span class="function">std::scoped_lock <span class="title">guard</span><span class="params">(obj_<span class="number">1.</span>_mutex, obj_<span class="number">2.</span>_mutex)</span></span>;</span><br><span class="line">    std::<span class="built_in">swap</span>(obj_<span class="number">1.</span>_obj, obj_<span class="number">2.</span>_obj);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;safe_swap_scope end&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_safe_swap_scope</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">big_object_mgr <span class="title">objm1</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="function">big_object_mgr <span class="title">objm2</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(safe_swap_scope, std::ref(objm1), std::ref(objm2))</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">(safe_swap_scope, std::ref(objm2), std::ref(objm1))</span></span>;</span><br><span class="line">    t<span class="number">1.</span><span class="built_in">join</span>();</span><br><span class="line">    t<span class="number">2.</span><span class="built_in">join</span>();</span><br><span class="line">    objm<span class="number">1.</span><span class="built_in">printinfo</span>();</span><br><span class="line">    objm<span class="number">2.</span><span class="built_in">printinfo</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>由于在开发中很难避免一个函数内同时加多个锁的情况，所以需要避免循环加锁。而我们可以使用层级锁来解决这个问题。</p>
+<p>层级锁的实现如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 层级锁</span></span><br><span class="line"><span class="comment">// 为了避免循环加锁，可以使用层级锁来完成加锁</span></span><br><span class="line"><span class="comment">// 如果不按顺序加锁，则会抛出异常</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">hierarchical_mutex</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">hierarchical_mutex</span><span class="params">(<span class="type">unsigned</span> <span class="type">long</span> value)</span>:_hierarchy_value(value), _previous_hierarchy_value(<span class="number">0</span>)&#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">hierarchical_mutex</span>(<span class="type">const</span> hierarchical_mutex&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    hierarchical_mutex&amp; <span class="keyword">operator</span> = (<span class="type">const</span> hierarchical_mutex&amp;) = <span class="keyword">delete</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">check_for_hierarchy_violation</span>();</span><br><span class="line">        _internal_mutex.<span class="built_in">lock</span>();</span><br><span class="line">        <span class="built_in">update_hierarchy_violation</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 如果解锁的顺序不对，则抛出异常</span></span><br><span class="line">        <span class="keyword">if</span> (_this_thread_hierarchy_value != _hierarchy_value) &#123;</span><br><span class="line">            <span class="keyword">throw</span> std::<span class="built_in">logic_error</span>(<span class="string">&quot;hierarchical_mutex unlock unexpectedly&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        _this_thread_hierarchy_value = _previous_hierarchy_value;</span><br><span class="line">        _internal_mutex.<span class="built_in">unlock</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">try_lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">check_for_hierarchy_violation</span>();</span><br><span class="line">        <span class="keyword">if</span> (!_internal_mutex.<span class="built_in">try_lock</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">update_hierarchy_violation</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::mutex _internal_mutex;</span><br><span class="line">    <span class="comment">// 当前的层级值</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">long</span> <span class="type">const</span> _hierarchy_value;</span><br><span class="line">    <span class="comment">// 上一级层级的值</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">long</span> _previous_hierarchy_value;</span><br><span class="line">    <span class="comment">// 本线程记录的层级值</span></span><br><span class="line">    <span class="type">static</span> <span class="keyword">thread_local</span> <span class="type">unsigned</span> <span class="type">long</span> _this_thread_hierarchy_value;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检测加锁是不是合理的</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">check_for_hierarchy_violation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (_this_thread_hierarchy_value &lt;= _hierarchy_value) &#123;</span><br><span class="line">            <span class="keyword">throw</span> std::<span class="built_in">logic_error</span>(<span class="string">&quot;hierarchy violation&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">update_hierarchy_violation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        _previous_hierarchy_value = _this_thread_hierarchy_value;</span><br><span class="line">        _this_thread_hierarchy_value = _hierarchy_value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">thread_local</span> <span class="type">unsigned</span> <span class="type">long</span> hierarchical_mutex::_this_thread_hierarchy_value(ULONG_MAX);</span><br></pre></td></tr></table></figure>
+
+<p>层级锁的核心思路是通过 <strong>给每个锁分配一个层级（hierarchy level），并强制线程按照层级从高到低（数值从大到小）的顺序来获取锁，从而避免死锁。</strong> 如果加锁的顺序不正确，则会抛出异常，这会强迫程序员检查代码逻辑。</p>
+<p>测试代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_hierarchy_lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">hierarchical_mutex <span class="title">hmtx1</span><span class="params">(<span class="number">1000</span>)</span></span>;</span><br><span class="line">    <span class="function">hierarchical_mutex <span class="title">hmtx2</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">([&amp;hmtx1, &amp;hmtx2]() &#123;</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">1.l</span>ock();</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">2.l</span>ock();</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">2.</span>unlock();</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">1.</span>unlock();</span></span></span><br><span class="line"><span class="params"><span class="function">    &#125;)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">([&amp;hmtx1, &amp;hmtx2]() &#123;</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">2.l</span>ock();</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">1.l</span>ock();</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">1.</span>unlock();</span></span></span><br><span class="line"><span class="params"><span class="function">        hmtx<span class="number">2.</span>unlock();</span></span></span><br><span class="line"><span class="params"><span class="function">    &#125;)</span></span>;</span><br><span class="line">    t<span class="number">1.</span><span class="built_in">join</span>();</span><br><span class="line">    t<span class="number">2.</span><span class="built_in">join</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>ghost-him
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/posts/f23588fa/" title="C++中线程安全的对两个锁同时加锁">http://example.com/posts/f23588fa/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/89549ed/" rel="prev" title="ZeroLaunch：专为Windows打造的极简应用启动器">
+                  <i class="fa fa-angle-left"></i> ZeroLaunch：专为Windows打造的极简应用启动器
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ghost-him</span>
+  </div>
+
+<span id="timeDate">载入天数...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/10/2023 00:34:47");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小破站已安全运行 "+dnum+" 天 | " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒😘";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ghost-him" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
